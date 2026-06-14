@@ -1,0 +1,12 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Green Space Configuration and Pluvial Flood Risk",
+    "section": "",
+    "text": "Introduction\nThis report investigates how the spatial configuration of green spaces relates to pluvial flood risk in Delft and Xi’an. The study compares both cities using a common grid-based approach, where green-space metrics, impervious surface indicators, and flood-related indicators are calculated per grid cell.\nThe main research question is:\nHow does the spatial configuration of green spaces influence pluvial flooding in urban areas such as Delft and Xi’an?",
+    "crumbs": [
+      "Introduction"
+    ]
+  }
+]
