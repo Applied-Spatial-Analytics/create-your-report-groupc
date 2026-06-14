@@ -1,1 +1,14 @@
 # Problem statement
+
+## Background
+Urban flooding is becoming a growing issue in many cities, especially as heavy rainfall events become more intense and urban areas continue to expand. In dense urban environments, large amounts of impervious surface can reduce infiltration and increase surface runoff. Green spaces can help reduce this pressure by storing water, slowing runoff, and allowing more water to infiltrate into the ground.
+
+However, the role of green space is not only about how much green area is present. Its spatial configuration may also matter. A city district with one large and connected green area may respond differently to rainfall than a district with the same amount of green space divided into many small and isolated patches. This makes it important to look at landscape metrics such as patch size, fragmentation, aggregation, and connectivity.
+
+## Research gap
+
+## Aim
+
+## Research question
+
+## Sub-questions
