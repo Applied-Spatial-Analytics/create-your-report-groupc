@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  author:
+    - name: "Hassan Osman"
+      affiliation: "MSc Geomatics"
+    - name: "Akhil Veeranki"
+      affiliation: "MSc Geomatics"
+    - name: "Daniel Marx"
+      affiliation: "MSc Geomatics"
+
+  title: "Green Space Configuration and Pluvial Flood Risk"
+  subtitle: "A comparative spatial analysis of Delft and Xi’an"
+  date: today
+
+  chapters:
+    - index.qmd
+    - sections/problem_statement.qmd
+    - sections/preliminary.qmd
+    - sections/methods.qmd
+    - sections/typology.qmd
+    - sections/results.qmd
+    - sections/discussion.qmd
+    - sections/conclusion.qmd
+    - sections/references.qmd
+    - sections/appendix.qmd
+
+bibliography: references.bib
+biblio-title: "References"
+nocite: |
+  @*
+
+format:
+  html:
+    toc: true
+    lightbox: true
+    theme: flatly
