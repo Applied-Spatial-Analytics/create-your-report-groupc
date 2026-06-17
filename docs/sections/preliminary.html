@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Preliminary analysis – Green Space Configuration and Pluvial Flood Risk</title>
+<title>1&nbsp; Preliminary maps and research – Green Space Configuration and Pluvial Flood Risk</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sections/methods.html" rel="next">
-<link href="../sections/problem_statement.html" rel="prev">
+<link href="../sections/problem_statement.html" rel="next">
+<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -45,6 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-ffc4c3fc79587ee79da4865b6a08975e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sections/preliminary.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preliminary analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sections/preliminary.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preliminary maps and research</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,6 +104,9 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Green Space Configuration and Pluvial Flood Risk</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -118,14 +124,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sections/problem_statement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem statement</span></span></a>
+  <a href="../sections/preliminary.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preliminary maps and research</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sections/preliminary.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preliminary analysis</span></span></a>
+  <a href="../sections/problem_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Problem statement</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,15 +187,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#study-area-selection" id="toc-study-area-selection" class="nav-link active" data-scroll-target="#study-area-selection"><span class="header-section-number">1.1</span> Study area selection</a></li>
+  <li><a href="#delft-and-xian-as-comparison-cases" id="toc-delft-and-xian-as-comparison-cases" class="nav-link" data-scroll-target="#delft-and-xian-as-comparison-cases"><span class="header-section-number">1.2</span> Delft and Xi’an as comparison cases</a></li>
+  <li><a href="#natural-and-flood-related-context" id="toc-natural-and-flood-related-context" class="nav-link" data-scroll-target="#natural-and-flood-related-context"><span class="header-section-number">1.3</span> Natural and flood-related context</a></li>
+  <li><a href="#built-environment-and-land-cover-context" id="toc-built-environment-and-land-cover-context" class="nav-link" data-scroll-target="#built-environment-and-land-cover-context"><span class="header-section-number">1.4</span> Built environment and land-cover context</a></li>
+  <li><a href="#first-data-exploration" id="toc-first-data-exploration" class="nav-link" data-scroll-target="#first-data-exploration"><span class="header-section-number">1.5</span> First data exploration</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/preliminary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/preliminary.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preliminary analysis</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preliminary maps and research</span></h1>
 </div>
 
 
@@ -206,8 +222,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This chapter introduces the study areas, the first datasets, and the early spatial observations that shaped the direction of the project. The aim of this stage was not yet to produce final conclusions, but to understand whether Delft and Xi’an could be compared using the same spatial method. The first exploration focused on selecting comparable study areas, testing available land-cover and flood-related datasets, and identifying which green-space metrics could be calculated consistently for both cities.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../images/study_area_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Study area overview of Delft and Xi’an."><img src="../images/study_area_overview.png" class="img-fluid figure-img" style="width:100.0%" alt="Study area overview of Delft and Xi’an."></a></p>
+<figcaption>Study area overview of Delft and Xi’an.</figcaption>
+</figure>
+</div>
+<p>Study area overview of Delft and Xi’an.</p>
+<section id="study-area-selection" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="study-area-selection"><span class="header-section-number">1.1</span> Study area selection</h2>
+<p>The first step of the project was to define comparable study areas for Delft and Xi’an. Since the project compares two very different urban contexts, it was important to use the same spatial logic for both cities. Instead of using the full administrative boundaries, a 10 km × 10 km study area was selected for each city. Each study area was then divided into 100 m × 100 m grid cells.</p>
+<p>This grid-based approach makes the two cities easier to compare. It creates a common spatial unit, so that green-space metrics and flood-related values can be calculated in the same way for both Delft and Xi’an. This also avoids comparing only city-wide averages, which would hide many local differences inside the urban fabric.</p>
+<p>For Delft, the selected area includes the city itself and parts of the surrounding urban and rural landscape. This is useful because Delft is not isolated from its surroundings. Its green and water structures continue beyond the municipal boundary. For Xi’an, the selected area focuses on a central urban section where built-up land, green patches, and flood-related surface water change can be analysed together. In both cases, the study area was chosen to capture local spatial patterns rather than the entire city.</p>
+</section>
+<section id="delft-and-xian-as-comparison-cases" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="delft-and-xian-as-comparison-cases"><span class="header-section-number">1.2</span> Delft and Xi’an as comparison cases</h2>
+<p>Delft and Xi’an were selected because they represent very different urban and environmental conditions. Delft is a relatively small Dutch city with a low-lying landscape, a dense water network, and a long tradition of water management. Its landscape includes canals, parks, agricultural land, and open green areas around the city.</p>
+<p>Xi’an is a much larger Chinese city with a different climate, scale, and urban structure. The selected Xi’an study area is more strongly dominated by dense urban development. Green spaces are present, but they often appear as parks, green corridors, street greenery, or smaller patches within the built-up fabric.</p>
+<p>This contrast makes the comparison useful. If similar relationships between green-space configuration and flood-related surface water change appear in both cities, this could suggest that the spatial structure of green space is relevant across different urban contexts. At the same time, differences between the two cities are also important. They may show how local urban form, climate, data quality, and land-cover structure influence the results.</p>
+<p>The comparison is therefore not based on the idea that Delft and Xi’an are similar cities. Instead, the aim is to apply a consistent spatial method to both cities and then compare the patterns that appear.</p>
+</section>
+<section id="natural-and-flood-related-context" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="natural-and-flood-related-context"><span class="header-section-number">1.3</span> Natural and flood-related context</h2>
+<p>The project focuses on pluvial flooding. This means flooding caused by heavy rainfall and local surface water accumulation, rather than flooding from rivers or the sea. Pluvial flooding is strongly connected to urban land cover. In areas with many impervious surfaces, rainfall cannot easily infiltrate into the ground. This can increase runoff and cause water to collect on streets, squares, and other low-lying parts of the city.</p>
+<p>Green spaces can help reduce this problem because they are more permeable than built-up surfaces. They can support infiltration, slow down runoff, temporarily store water, and reduce pressure on drainage systems. However, the effect of green space may not only depend on the total amount of green area. Its spatial configuration may also matter. A large connected park may influence runoff differently than many small isolated green patches, even if the total green area is similar.</p>
+<p>For this reason, the project does not only measure green coverage. It also uses landscape metrics that describe the spatial pattern of green areas, including patch size, fragmentation, aggregation, and connectivity.</p>
+<p>Flood-related conditions were first explored using different available datasets. For Delft, Dutch climate data and water-depth layers for intense rainfall were tested. However, an equivalent pluvial flood-depth layer was not available for Xi’an. To keep the method more comparable between the two cities, the analysis moved toward using FWEI, the Flood Water Extraction Index.</p>
+<p>FWEI was used as an indicator of surface water change. For each city, a before and after FWEI raster was used, and the earlier raster was subtracted from the later raster. The resulting FWEI change layer was then used as a flood-related surface water indicator. It is important to note that this is not the same as direct flood depth. Instead, it is treated as a proxy for changes in surface water conditions during a flood-related period.</p>
+<p>For Xi’an, the selected period was based on a known flood-related period between 22 July 2023 and 16 August 2023. For Delft, finding directly comparable event dates was more difficult, so a broader before and after period was used, from 14 June 2023 to 7 September 2023. This difference is a limitation of the analysis, but using the same FWEI-based workflow makes the two cases more comparable than using completely different flood datasets.</p>
+</section>
+<section id="built-environment-and-land-cover-context" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="built-environment-and-land-cover-context"><span class="header-section-number">1.4</span> Built environment and land-cover context</h2>
+<p>The built environment is important in this project because impervious surfaces influence how water behaves during heavy rainfall. Roads, roofs, pavements, and other hard surfaces reduce infiltration and can increase surface runoff. Because of this, green-space configuration needs to be understood in relation to the surrounding urban fabric.</p>
+<p>The first land-cover exploration showed that data quality and resolution were major issues. For Delft, broad land-cover datasets such as ESA WorldCover were tested, but they were not detailed enough for the scale of the project. More local Dutch data sources were therefore explored. Because the 10 km × 10 km study area extended beyond the municipality of Delft, surrounding municipalities also had to be included and merged. The final Delft green-space layer was converted into a binary raster, where green areas were represented as 1 and non-green areas as 0.</p>
+<p>For Xi’an, the first land-cover datasets also caused problems. Some products were too coarse, while others did not clearly capture smaller green spaces inside the urban area. This was a problem because the project depends on recognising the spatial configuration of green patches. If small parks, street greenery, or fragmented patches are missing, the landscape metrics become less meaningful.</p>
+<p>To improve this, a more detailed green-space dataset was used for Xi’an. The final Xi’an green layer was based on the UGS-1m dataset and was also converted into a binary raster. This made it possible to calculate the same type of landscape metrics for Xi’an as for Delft.</p>
+<p>In both cities, the binary green rasters became the main input for the landscape-metric analysis.</p>
+</section>
+<section id="first-data-exploration" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="first-data-exploration"><span class="header-section-number">1.5</span> First data exploration</h2>
+<p>The first analysis step was to calculate green-space landscape metrics for every 100 m × 100 m grid cell. These metrics were used to describe the spatial configuration of green space within each cell.</p>
+<p>The main metrics tested were Largest Patch Index, Division Index, Aggregation Index, Effective Mesh Size, Mean Patch Area, and Patch Area. Together, these describe different aspects of the green-space pattern. Largest Patch Index shows whether one large green patch dominates a grid cell. Division Index gives an indication of fragmentation. Aggregation Index shows whether green patches are clustered or scattered. Effective Mesh Size relates to the size of connected green structures. Mean Patch Area and Patch Area describe the size of green patches.</p>
+<p>Additional patch-level metrics were also tested, including Radius of Gyration, Contiguity Index, and Euclidean Nearest Neighbour Distance. These metrics can give more detailed information about patch shape, internal connectedness, and isolation. However, they were slower to calculate, especially because the green rasters were high resolution. For the preliminary stage, the focus was therefore placed on metrics that could be calculated more consistently for both cities.</p>
+<p>The FWEI change raster was also aggregated to the grid by calculating the mean FWEI change value per cell. This made it possible to compare green-space configuration and flood-related surface water change using the same spatial units.</p>
+<p>The first correlations showed that the relationships were generally weak, but some patterns were still visible. In Delft, more fragmented green structure tended to be associated with higher FWEI change, while more aggregated or connected green structure tended to be associated with lower FWEI change. In Xi’an, some similar directions appeared, but the relationships were weaker.</p>
+<p>These preliminary results suggest that green-space configuration alone does not explain flood-related surface water change. Other factors, such as impervious surface, elevation, drainage, rainfall, and local urban form, also matter. However, the results are still useful because they show that spatial green patterns can be explored further. The next step of the project is therefore to move beyond simple correlation and construct green-space typologies. These typologies will group grid cells with similar green-space configurations and make it possible to compare flood-related patterns between different types of urban green structure.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -612,17 +675,49 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../sections/problem_statement.html" class="pagination-link" aria-label="Problem statement">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem statement</span></span>
+      <a href="../index.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sections/methods.html" class="pagination-link" aria-label="Methods">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Methods</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../sections/problem_statement.html" class="pagination-link" aria-label="Problem statement">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Problem statement</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/preliminary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/preliminary.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

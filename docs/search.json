@@ -4,9 +4,119 @@
     "href": "index.html",
     "title": "Green Space Configuration and Pluvial Flood Risk",
     "section": "",
-    "text": "Introduction\nThis report investigates how the spatial configuration of green spaces relates to pluvial flood risk in Delft and Xi’an. The study compares both cities using a common grid-based approach, where green-space metrics, impervious surface indicators, and flood-related indicators are calculated per grid cell.\nThe main research question is:\nHow does the spatial configuration of green spaces influence pluvial flooding in urban areas such as Delft and Xi’an?",
+    "text": "Introduction\nThe present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).\nThe repository of this report can be found at this link: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.\nThis project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.\nBoth cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.",
     "crumbs": [
       "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html",
+    "href": "sections/preliminary.html",
+    "title": "1  Preliminary maps and research",
+    "section": "",
+    "text": "1.1 Study area selection\nThis chapter introduces the study areas, the first datasets, and the early spatial observations that shaped the direction of the project. The aim of this stage was not yet to produce final conclusions, but to understand whether Delft and Xi’an could be compared using the same spatial method. The first exploration focused on selecting comparable study areas, testing available land-cover and flood-related datasets, and identifying which green-space metrics could be calculated consistently for both cities.\nStudy area overview of Delft and Xi’an.\nThe first step of the project was to define comparable study areas for Delft and Xi’an. Since the project compares two very different urban contexts, it was important to use the same spatial logic for both cities. Instead of using the full administrative boundaries, a 10 km × 10 km study area was selected for each city. Each study area was then divided into 100 m × 100 m grid cells.\nThis grid-based approach makes the two cities easier to compare. It creates a common spatial unit, so that green-space metrics and flood-related values can be calculated in the same way for both Delft and Xi’an. This also avoids comparing only city-wide averages, which would hide many local differences inside the urban fabric.\nFor Delft, the selected area includes the city itself and parts of the surrounding urban and rural landscape. This is useful because Delft is not isolated from its surroundings. Its green and water structures continue beyond the municipal boundary. For Xi’an, the selected area focuses on a central urban section where built-up land, green patches, and flood-related surface water change can be analysed together. In both cases, the study area was chosen to capture local spatial patterns rather than the entire city.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#delft-and-xian-as-comparison-cases",
+    "href": "sections/preliminary.html#delft-and-xian-as-comparison-cases",
+    "title": "1  Preliminary maps and research",
+    "section": "1.2 Delft and Xi’an as comparison cases",
+    "text": "1.2 Delft and Xi’an as comparison cases\nDelft and Xi’an were selected because they represent very different urban and environmental conditions. Delft is a relatively small Dutch city with a low-lying landscape, a dense water network, and a long tradition of water management. Its landscape includes canals, parks, agricultural land, and open green areas around the city.\nXi’an is a much larger Chinese city with a different climate, scale, and urban structure. The selected Xi’an study area is more strongly dominated by dense urban development. Green spaces are present, but they often appear as parks, green corridors, street greenery, or smaller patches within the built-up fabric.\nThis contrast makes the comparison useful. If similar relationships between green-space configuration and flood-related surface water change appear in both cities, this could suggest that the spatial structure of green space is relevant across different urban contexts. At the same time, differences between the two cities are also important. They may show how local urban form, climate, data quality, and land-cover structure influence the results.\nThe comparison is therefore not based on the idea that Delft and Xi’an are similar cities. Instead, the aim is to apply a consistent spatial method to both cities and then compare the patterns that appear.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#natural-and-flood-related-context",
+    "href": "sections/preliminary.html#natural-and-flood-related-context",
+    "title": "1  Preliminary maps and research",
+    "section": "1.3 Natural and flood-related context",
+    "text": "1.3 Natural and flood-related context\nThe project focuses on pluvial flooding. This means flooding caused by heavy rainfall and local surface water accumulation, rather than flooding from rivers or the sea. Pluvial flooding is strongly connected to urban land cover. In areas with many impervious surfaces, rainfall cannot easily infiltrate into the ground. This can increase runoff and cause water to collect on streets, squares, and other low-lying parts of the city.\nGreen spaces can help reduce this problem because they are more permeable than built-up surfaces. They can support infiltration, slow down runoff, temporarily store water, and reduce pressure on drainage systems. However, the effect of green space may not only depend on the total amount of green area. Its spatial configuration may also matter. A large connected park may influence runoff differently than many small isolated green patches, even if the total green area is similar.\nFor this reason, the project does not only measure green coverage. It also uses landscape metrics that describe the spatial pattern of green areas, including patch size, fragmentation, aggregation, and connectivity.\nFlood-related conditions were first explored using different available datasets. For Delft, Dutch climate data and water-depth layers for intense rainfall were tested. However, an equivalent pluvial flood-depth layer was not available for Xi’an. To keep the method more comparable between the two cities, the analysis moved toward using FWEI, the Flood Water Extraction Index.\nFWEI was used as an indicator of surface water change. For each city, a before and after FWEI raster was used, and the earlier raster was subtracted from the later raster. The resulting FWEI change layer was then used as a flood-related surface water indicator. It is important to note that this is not the same as direct flood depth. Instead, it is treated as a proxy for changes in surface water conditions during a flood-related period.\nFor Xi’an, the selected period was based on a known flood-related period between 22 July 2023 and 16 August 2023. For Delft, finding directly comparable event dates was more difficult, so a broader before and after period was used, from 14 June 2023 to 7 September 2023. This difference is a limitation of the analysis, but using the same FWEI-based workflow makes the two cases more comparable than using completely different flood datasets.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#built-environment-and-land-cover-context",
+    "href": "sections/preliminary.html#built-environment-and-land-cover-context",
+    "title": "1  Preliminary maps and research",
+    "section": "1.4 Built environment and land-cover context",
+    "text": "1.4 Built environment and land-cover context\nThe built environment is important in this project because impervious surfaces influence how water behaves during heavy rainfall. Roads, roofs, pavements, and other hard surfaces reduce infiltration and can increase surface runoff. Because of this, green-space configuration needs to be understood in relation to the surrounding urban fabric.\nThe first land-cover exploration showed that data quality and resolution were major issues. For Delft, broad land-cover datasets such as ESA WorldCover were tested, but they were not detailed enough for the scale of the project. More local Dutch data sources were therefore explored. Because the 10 km × 10 km study area extended beyond the municipality of Delft, surrounding municipalities also had to be included and merged. The final Delft green-space layer was converted into a binary raster, where green areas were represented as 1 and non-green areas as 0.\nFor Xi’an, the first land-cover datasets also caused problems. Some products were too coarse, while others did not clearly capture smaller green spaces inside the urban area. This was a problem because the project depends on recognising the spatial configuration of green patches. If small parks, street greenery, or fragmented patches are missing, the landscape metrics become less meaningful.\nTo improve this, a more detailed green-space dataset was used for Xi’an. The final Xi’an green layer was based on the UGS-1m dataset and was also converted into a binary raster. This made it possible to calculate the same type of landscape metrics for Xi’an as for Delft.\nIn both cities, the binary green rasters became the main input for the landscape-metric analysis.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#first-data-exploration",
+    "href": "sections/preliminary.html#first-data-exploration",
+    "title": "1  Preliminary maps and research",
+    "section": "1.5 First data exploration",
+    "text": "1.5 First data exploration\nThe first analysis step was to calculate green-space landscape metrics for every 100 m × 100 m grid cell. These metrics were used to describe the spatial configuration of green space within each cell.\nThe main metrics tested were Largest Patch Index, Division Index, Aggregation Index, Effective Mesh Size, Mean Patch Area, and Patch Area. Together, these describe different aspects of the green-space pattern. Largest Patch Index shows whether one large green patch dominates a grid cell. Division Index gives an indication of fragmentation. Aggregation Index shows whether green patches are clustered or scattered. Effective Mesh Size relates to the size of connected green structures. Mean Patch Area and Patch Area describe the size of green patches.\nAdditional patch-level metrics were also tested, including Radius of Gyration, Contiguity Index, and Euclidean Nearest Neighbour Distance. These metrics can give more detailed information about patch shape, internal connectedness, and isolation. However, they were slower to calculate, especially because the green rasters were high resolution. For the preliminary stage, the focus was therefore placed on metrics that could be calculated more consistently for both cities.\nThe FWEI change raster was also aggregated to the grid by calculating the mean FWEI change value per cell. This made it possible to compare green-space configuration and flood-related surface water change using the same spatial units.\nThe first correlations showed that the relationships were generally weak, but some patterns were still visible. In Delft, more fragmented green structure tended to be associated with higher FWEI change, while more aggregated or connected green structure tended to be associated with lower FWEI change. In Xi’an, some similar directions appeared, but the relationships were weaker.\nThese preliminary results suggest that green-space configuration alone does not explain flood-related surface water change. Other factors, such as impervious surface, elevation, drainage, rainfall, and local urban form, also matter. However, the results are still useful because they show that spatial green patterns can be explored further. The next step of the project is therefore to move beyond simple correlation and construct green-space typologies. These typologies will group grid cells with similar green-space configurations and make it possible to compare flood-related patterns between different types of urban green structure.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/problem_statement.html",
+    "href": "sections/problem_statement.html",
+    "title": "2  Problem statement",
+    "section": "",
+    "text": "2.1 Background\nPluvial flooding is a problem in many cities. One reason for this is that cities have a lot of hard surfaces. When heavy rainfall happens, water cannot easily infiltrate into the ground. Instead, it stays on the surface or flows quickly to lower areas.\nGreen spaces can help with this because they are more permeable. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. Vegetation can also intercept rainfall before it reaches the ground.\nHowever, what if it is not only important how much green space a city has, but also how that green space is arranged? For example, one large connected park may work differently from many small green patches spread around the city, even if the total green area is the same.\nBecause of this, we look at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include metrics like patch size, fragmentation, aggregation, and connectivity.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+    ]
+  },
+  {
+    "objectID": "sections/problem_statement.html#research-gap",
+    "href": "sections/problem_statement.html#research-gap",
+    "title": "2  Problem statement",
+    "section": "2.2 Research gap",
+    "text": "2.2 Research gap",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+    ]
+  },
+  {
+    "objectID": "sections/problem_statement.html#aim",
+    "href": "sections/problem_statement.html#aim",
+    "title": "2  Problem statement",
+    "section": "2.3 Aim",
+    "text": "2.3 Aim",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+    ]
+  },
+  {
+    "objectID": "sections/problem_statement.html#research-question",
+    "href": "sections/problem_statement.html#research-question",
+    "title": "2  Problem statement",
+    "section": "2.4 Research question",
+    "text": "2.4 Research question",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+    ]
+  },
+  {
+    "objectID": "sections/problem_statement.html#sub-questions",
+    "href": "sections/problem_statement.html#sub-questions",
+    "title": "2  Problem statement",
+    "section": "2.5 Sub-questions",
+    "text": "2.5 Sub-questions",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html",
+    "href": "sections/methods.html",
+    "title": "3  Methods",
+    "section": "",
+    "text": "This is a small test to check whether R code runs inside the report.\n\n1 + 1\n\n[1] 2\n\n\n\nplot(cars)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
     ]
   }
 ]

@@ -11,14 +11,17 @@ book:
     - name: "Daniel Marx"
       affiliation: "MSc Geomatics"
 
+  repo-url: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git
+  repo-actions: [edit, source, issue]
+
   title: "Green Space Configuration and Pluvial Flood Risk"
   subtitle: "A comparative spatial analysis of Delft and Xi’an"
   date: today
 
   chapters:
     - index.qmd
-    - sections/problem_statement.qmd
     - sections/preliminary.qmd
+    - sections/problem_statement.qmd
     - sections/methods.qmd
     - sections/correlation.qmd
     - sections/typology.qmd

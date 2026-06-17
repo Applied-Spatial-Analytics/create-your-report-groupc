@@ -1,7 +1,9 @@
 # Introduction {.unnumbered}
 
-This report investigates how the spatial configuration of green spaces relates to pluvial flood risk in Delft and Xi’an. The study compares both cities using a common grid-based approach, where green-space metrics, impervious surface indicators, and flood-related indicators are calculated per grid cell.
+The present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).
 
-The main research question is:
+The repository of this report can be found at this link: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.
 
-**How does the spatial configuration of green spaces influence pluvial flooding in urban areas such as Delft and Xi’an?**
+This project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.
+
+Both cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.

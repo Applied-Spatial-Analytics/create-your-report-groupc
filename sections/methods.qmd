@@ -1,1 +1,10 @@
 # Methods
+This is a small test to check whether R code runs inside the report.
+
+```{r}
+1 + 1
+```
+
+```{r}
+plot(cars)
+```
