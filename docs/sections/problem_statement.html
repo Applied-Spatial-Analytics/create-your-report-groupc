@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -170,13 +189,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sections/references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">References</span></span></a>
+ <span class="menu-text">References</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sections/appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
     </ul>
@@ -221,24 +240,52 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="background" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="background"><span class="header-section-number">2.1</span> Background</h2>
-<p>Pluvial flooding is a problem in many cities. One reason for this is that cities have a lot of hard surfaces. When heavy rainfall happens, water cannot easily infiltrate into the ground. Instead, it stays on the surface or flows quickly to lower areas.</p>
-<p>Green spaces can help with this because they are more permeable. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. Vegetation can also intercept rainfall before it reaches the ground.</p>
-<p>However, what if it is not only important how much green space a city has, but also how that green space is arranged? For example, one large connected park may work differently from many small green patches spread around the city, even if the total green area is the same.</p>
-<p>Because of this, we look at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include metrics like patch size, fragmentation, aggregation, and connectivity.</p>
+<p>Pluvial flooding is a problem in many cities. It happens when intense rainfall leads to overland flow or ponding before the water can enter a watercourse, sewer, or drainage system <span class="citation" data-cites="prokic2019">(<a href="references.html#ref-prokic2019" role="doc-biblioref">Prokić et al. 2019</a>)</span>. In urban areas this can become worse because cities contain many hard surfaces, such as roads, roofs, and pavements. These surfaces reduce infiltration and can increase surface runoff <span class="citation" data-cites="meerow2019">(<a href="references.html#ref-meerow2019" role="doc-biblioref">Meerow 2019</a>)</span>.</p>
+<p>Green spaces can help with this because they are more permeable than built-up surfaces. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. In green infrastructure planning, stormwater management and flood mitigation are often seen as important benefits of urban green space <span class="citation" data-cites="meerow2019">(<a href="references.html#ref-meerow2019" role="doc-biblioref">Meerow 2019</a>)</span>.</p>
+<p>However, it may not only be important how much green space a city has, but also how that green space is arranged. For example, one large connected park may function differently from many small green patches spread across the city, even if the total green area is similar. Previous green infrastructure studies also show that the spatial distribution and connectivity of green areas matter for planning and ecosystem service provision <span class="citation" data-cites="brom2023">(<a href="references.html#ref-brom2023" role="doc-biblioref">Brom et al. 2023</a>)</span>.</p>
+<p>Because of this, this project looks at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include landscape metrics such as patch size, fragmentation, aggregation, and connectivity.</p>
 </section>
 <section id="research-gap" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="research-gap"><span class="header-section-number">2.2</span> Research gap</h2>
+<p>Many studies and planning approaches discuss the role of green infrastructure and nature-based solutions in relation to stormwater management, climate adaptation, and flood risk <span class="citation" data-cites="sarabi2022">(<a href="references.html#ref-sarabi2022" role="doc-biblioref">Sarabi et al. 2022</a>)</span>. However, it is still difficult to compare this relationship between different urban contexts. Delft and Xi’an are very different cities. Delft is smaller, low-lying, and has a dense water network, while Xi’an is much larger and has a different urban structure and climate context.</p>
+<p>This makes the comparison challenging. If different datasets and different methods are used for each city, the results become difficult to compare. <span class="citation" data-cites="meerow2019">Meerow (<a href="references.html#ref-meerow2019" role="doc-biblioref">2019</a>)</span> also shows that cross-city green infrastructure analysis can be limited by differences in data availability and spatial units. Therefore, this project uses the same grid-based method for both cities. This allows green-space configuration and flood-related surface water change to be analysed in the same spatial format.</p>
 </section>
 <section id="aim" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="aim"><span class="header-section-number">2.3</span> Aim</h2>
+<p>The aim of this project is to explore how the spatial configuration of green spaces relates to flood-related surface water change in Delft and Xi’an.</p>
+<p>To do this, both study areas are divided into 100 m × 100 m grid cells. For each grid cell, several green-space landscape metrics are calculated. These metrics are then compared with surface water change values based on the Flood Water Extraction Index (FWEI). The project also uses typology construction to group grid cells with similar green-space patterns.</p>
+<p>The goal is not to prove that green space is the only factor affecting pluvial flooding. Other factors, such as impervious surface, elevation, drainage, and rainfall, also play an important role. Instead, the goal is to investigate whether visible spatial relationships exist between green-space configuration and flood-related surface water change.</p>
 </section>
 <section id="research-question" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="research-question"><span class="header-section-number">2.4</span> Research question</h2>
+<p>How does the spatial configuration of green spaces influence pluvial flood-related surface water change in urban areas such as Delft and Xi’an?</p>
 </section>
 <section id="sub-questions" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sub-questions"><span class="header-section-number">2.5</span> Sub-questions</h2>
+<ol type="1">
+<li><p>What spatial datasets are available for Delft and Xi’an, and how comparable are they for analysing green space and pluvial flooding?</p></li>
+<li><p>Which GIS and remote-sensing methods can be used to analyse the relationship between green-space configuration and flood-related surface water change?</p></li>
+<li><p>Which green-space landscape metrics can be calculated for both cities using a common grid-based method?</p></li>
+<li><p>What meaningful green-space typologies can be derived from the landscape metrics?</p></li>
+<li><p>How does FWEI-based surface water change vary between different green-space typologies?</p></li>
+<li><p>How do the relationships between green-space configuration and flood-related surface water change differ between Delft and Xi’an?</p></li>
+</ol>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-brom2023" class="csl-entry" role="listitem">
+Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. <span>“A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.”</span> <em>Land</em> 12 (2): 415. <a href="https://doi.org/10.3390/land12020415">https://doi.org/10.3390/land12020415</a>.
+</div>
+<div id="ref-meerow2019" class="csl-entry" role="listitem">
+Meerow, Sara. 2019. <span>“A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.”</span> <em>Environmental Research Letters</em> 14 (12): 125011. <a href="https://doi.org/10.1088/1748-9326/ab502c">https://doi.org/10.1088/1748-9326/ab502c</a>.
+</div>
+<div id="ref-prokic2019" class="csl-entry" role="listitem">
+Prokić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. <span>“Pluvial Flooding in Urban Areas Across the European Continent.”</span> <em>Geographica Pannonica</em> 23 (4): 216–32. <a href="https://doi.org/10.5937/gp23-23508">https://doi.org/10.5937/gp23-23508</a>.
+</div>
+<div id="ref-sarabi2022" class="csl-entry" role="listitem">
+Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>“The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.”</span> <em>Sustainable Cities and Society</em> 78: 103608. <a href="https://doi.org/10.1016/j.scs.2021.103608">https://doi.org/10.1016/j.scs.2021.103608</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

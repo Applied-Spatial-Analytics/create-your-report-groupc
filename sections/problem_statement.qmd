@@ -1,19 +1,44 @@
 # Problem statement
 
 ## Background
-Pluvial flooding is a problem in many cities. One reason for this is that cities have a lot of hard surfaces. When heavy rainfall happens, water cannot easily infiltrate into the ground. Instead, it stays on the surface or flows quickly to lower areas.
 
-Green spaces can help with this because they are more permeable. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. Vegetation can also intercept rainfall before it reaches the ground.
+Pluvial flooding is a problem in many cities. It happens when intense rainfall leads to overland flow or ponding before the water can enter a watercourse, sewer, or drainage system [@prokic2019]. In urban areas this can become worse because cities contain many hard surfaces, such as roads, roofs, and pavements. These surfaces reduce infiltration and can increase surface runoff [@meerow2019].
 
-However, what if it is not only important how much green space a city has, but also how that green space is arranged? For example, one large connected park may work differently from many small green patches spread around the city, even if the total green area is the same.
+Green spaces can help with this because they are more permeable than built-up surfaces. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. In green infrastructure planning, stormwater management and flood mitigation are often seen as important benefits of urban green space [@meerow2019].
 
-Because of this, we look at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include metrics like patch size, fragmentation, aggregation, and connectivity.
+However, it may not only be important how much green space a city has, but also how that green space is arranged. For example, one large connected park may function differently from many small green patches spread across the city, even if the total green area is similar. Previous green infrastructure studies also show that the spatial distribution and connectivity of green areas matter for planning and ecosystem service provision [@brom2023].
 
+Because of this, this project looks at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include landscape metrics such as patch size, fragmentation, aggregation, and connectivity.
 
 ## Research gap
 
+Many studies and planning approaches discuss the role of green infrastructure and nature-based solutions in relation to stormwater management, climate adaptation, and flood risk [@sarabi2022]. However, it is still difficult to compare this relationship between different urban contexts. Delft and Xi’an are very different cities. Delft is smaller, low-lying, and has a dense water network, while Xi’an is much larger and has a different urban structure and climate context.
+
+This makes the comparison challenging. If different datasets and different methods are used for each city, the results become difficult to compare. @meerow2019 also shows that cross-city green infrastructure analysis can be limited by differences in data availability and spatial units. Therefore, this project uses the same grid-based method for both cities. This allows green-space configuration and flood-related surface water change to be analysed in the same spatial format.
+
 ## Aim
+
+The aim of this project is to explore how the spatial configuration of green spaces relates to flood-related surface water change in Delft and Xi’an.
+
+To do this, both study areas are divided into 100 m × 100 m grid cells. For each grid cell, several green-space landscape metrics are calculated. These metrics are then compared with surface water change values based on the Flood Water Extraction Index (FWEI). The project also uses typology construction to group grid cells with similar green-space patterns.
+
+The goal is not to prove that green space is the only factor affecting pluvial flooding. Other factors, such as impervious surface, elevation, drainage, and rainfall, also play an important role. Instead, the goal is to investigate whether visible spatial relationships exist between green-space configuration and flood-related surface water change.
 
 ## Research question
 
+How does the spatial configuration of green spaces influence pluvial flood-related surface water change in urban areas such as Delft and Xi’an?
+
 ## Sub-questions
+
+1. What spatial datasets are available for Delft and Xi’an, and how comparable are they for analysing green space and pluvial flooding?
+
+2. Which GIS and remote-sensing methods can be used to analyse the relationship between green-space configuration and flood-related surface water change?
+
+3. Which green-space landscape metrics can be calculated for both cities using a common grid-based method?
+
+4. What meaningful green-space typologies can be derived from the landscape metrics?
+
+5. How does FWEI-based surface water change vary between different green-space typologies?
+
+6. How do the relationships between green-space configuration and flood-related surface water change differ between Delft and Xi’an?
+

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Green Space Configuration and Pluvial Flood Risk",
     "section": "",
-    "text": "Introduction\nThe present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).\nThe repository of this report can be found at this link: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.\nThis project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.\nBoth cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.",
+    "text": "Introduction\nThe present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).\nThe repository of this report can be found at this link: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.\nThis project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.\nBoth cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
       "Introduction"
     ]
@@ -54,7 +54,7 @@
     "href": "sections/preliminary.html#first-data-exploration",
     "title": "1  Preliminary maps and research",
     "section": "1.5 First data exploration",
-    "text": "1.5 First data exploration\nThe first analysis step was to calculate green-space landscape metrics for every 100 m × 100 m grid cell. These metrics were used to describe the spatial configuration of green space within each cell.\nThe main metrics tested were Largest Patch Index, Division Index, Aggregation Index, Effective Mesh Size, Mean Patch Area, and Patch Area. Together, these describe different aspects of the green-space pattern. Largest Patch Index shows whether one large green patch dominates a grid cell. Division Index gives an indication of fragmentation. Aggregation Index shows whether green patches are clustered or scattered. Effective Mesh Size relates to the size of connected green structures. Mean Patch Area and Patch Area describe the size of green patches.\nAdditional patch-level metrics were also tested, including Radius of Gyration, Contiguity Index, and Euclidean Nearest Neighbour Distance. These metrics can give more detailed information about patch shape, internal connectedness, and isolation. However, they were slower to calculate, especially because the green rasters were high resolution. For the preliminary stage, the focus was therefore placed on metrics that could be calculated more consistently for both cities.\nThe FWEI change raster was also aggregated to the grid by calculating the mean FWEI change value per cell. This made it possible to compare green-space configuration and flood-related surface water change using the same spatial units.\nThe first correlations showed that the relationships were generally weak, but some patterns were still visible. In Delft, more fragmented green structure tended to be associated with higher FWEI change, while more aggregated or connected green structure tended to be associated with lower FWEI change. In Xi’an, some similar directions appeared, but the relationships were weaker.\nThese preliminary results suggest that green-space configuration alone does not explain flood-related surface water change. Other factors, such as impervious surface, elevation, drainage, rainfall, and local urban form, also matter. However, the results are still useful because they show that spatial green patterns can be explored further. The next step of the project is therefore to move beyond simple correlation and construct green-space typologies. These typologies will group grid cells with similar green-space configurations and make it possible to compare flood-related patterns between different types of urban green structure.",
+    "text": "1.5 First data exploration\nThe first analysis step was to calculate green-space landscape metrics for every 100 m × 100 m grid cell. These metrics were used to describe the spatial configuration of green space within each cell.\nThe main metrics tested were Largest Patch Index, Division Index, Aggregation Index, Effective Mesh Size, Mean Patch Area, and Patch Area. Together, these describe different aspects of the green-space pattern. Largest Patch Index shows whether one large green patch dominates a grid cell. Division Index gives an indication of fragmentation. Aggregation Index shows whether green patches are clustered or scattered. Effective Mesh Size relates to the size of connected green structures. Mean Patch Area and Patch Area describe the size of green patches.\nAdditional patch-level metrics were also tested, including Radius of Gyration, Contiguity Index, and Euclidean Nearest Neighbour Distance. These metrics can give more detailed information about patch shape, internal connectedness, and isolation. However, they were slower to calculate, especially because the green rasters were high resolution. For the preliminary stage, the focus was therefore placed on metrics that could be calculated more consistently for both cities.\nThe FWEI change raster was also aggregated to the grid by calculating the mean FWEI change value per cell. This made it possible to compare green-space configuration and flood-related surface water change using the same spatial units.\nThe first correlations showed that the relationships were generally weak, but some patterns were still visible. In Delft, more fragmented green structure tended to be associated with higher FWEI change, while more aggregated or connected green structure tended to be associated with lower FWEI change. In Xi’an, some similar directions appeared, but the relationships were weaker.\nThese preliminary results suggest that green-space configuration alone does not explain flood-related surface water change. Other factors, such as impervious surface, elevation, drainage, rainfall, and local urban form, also matter. However, the results are still useful because they show that spatial green patterns can be explored further. The next step of the project is therefore to move beyond simple correlation and construct green-space typologies. These typologies will group grid cells with similar green-space configurations and make it possible to compare flood-related patterns between different types of urban green structure.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
     ]
@@ -64,7 +64,7 @@
     "href": "sections/problem_statement.html",
     "title": "2  Problem statement",
     "section": "",
-    "text": "2.1 Background\nPluvial flooding is a problem in many cities. One reason for this is that cities have a lot of hard surfaces. When heavy rainfall happens, water cannot easily infiltrate into the ground. Instead, it stays on the surface or flows quickly to lower areas.\nGreen spaces can help with this because they are more permeable. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. Vegetation can also intercept rainfall before it reaches the ground.\nHowever, what if it is not only important how much green space a city has, but also how that green space is arranged? For example, one large connected park may work differently from many small green patches spread around the city, even if the total green area is the same.\nBecause of this, we look at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include metrics like patch size, fragmentation, aggregation, and connectivity.",
+    "text": "2.1 Background\nPluvial flooding is a problem in many cities. It happens when intense rainfall leads to overland flow or ponding before the water can enter a watercourse, sewer, or drainage system (Prokić et al. 2019). In urban areas this can become worse because cities contain many hard surfaces, such as roads, roofs, and pavements. These surfaces reduce infiltration and can increase surface runoff (Meerow 2019).\nGreen spaces can help with this because they are more permeable than built-up surfaces. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. In green infrastructure planning, stormwater management and flood mitigation are often seen as important benefits of urban green space (Meerow 2019).\nHowever, it may not only be important how much green space a city has, but also how that green space is arranged. For example, one large connected park may function differently from many small green patches spread across the city, even if the total green area is similar. Previous green infrastructure studies also show that the spatial distribution and connectivity of green areas matter for planning and ecosystem service provision (Brom et al. 2023).\nBecause of this, this project looks at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include landscape metrics such as patch size, fragmentation, aggregation, and connectivity.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "sections/problem_statement.html#research-gap",
     "title": "2  Problem statement",
     "section": "2.2 Research gap",
-    "text": "2.2 Research gap",
+    "text": "2.2 Research gap\nMany studies and planning approaches discuss the role of green infrastructure and nature-based solutions in relation to stormwater management, climate adaptation, and flood risk (Sarabi et al. 2022). However, it is still difficult to compare this relationship between different urban contexts. Delft and Xi’an are very different cities. Delft is smaller, low-lying, and has a dense water network, while Xi’an is much larger and has a different urban structure and climate context.\nThis makes the comparison challenging. If different datasets and different methods are used for each city, the results become difficult to compare. Meerow (2019) also shows that cross-city green infrastructure analysis can be limited by differences in data availability and spatial units. Therefore, this project uses the same grid-based method for both cities. This allows green-space configuration and flood-related surface water change to be analysed in the same spatial format.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
     ]
@@ -84,7 +84,7 @@
     "href": "sections/problem_statement.html#aim",
     "title": "2  Problem statement",
     "section": "2.3 Aim",
-    "text": "2.3 Aim",
+    "text": "2.3 Aim\nThe aim of this project is to explore how the spatial configuration of green spaces relates to flood-related surface water change in Delft and Xi’an.\nTo do this, both study areas are divided into 100 m × 100 m grid cells. For each grid cell, several green-space landscape metrics are calculated. These metrics are then compared with surface water change values based on the Flood Water Extraction Index (FWEI). The project also uses typology construction to group grid cells with similar green-space patterns.\nThe goal is not to prove that green space is the only factor affecting pluvial flooding. Other factors, such as impervious surface, elevation, drainage, and rainfall, also play an important role. Instead, the goal is to investigate whether visible spatial relationships exist between green-space configuration and flood-related surface water change.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
     ]
@@ -94,7 +94,7 @@
     "href": "sections/problem_statement.html#research-question",
     "title": "2  Problem statement",
     "section": "2.4 Research question",
-    "text": "2.4 Research question",
+    "text": "2.4 Research question\nHow does the spatial configuration of green spaces influence pluvial flood-related surface water change in urban areas such as Delft and Xi’an?",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "sections/problem_statement.html#sub-questions",
     "title": "2  Problem statement",
     "section": "2.5 Sub-questions",
-    "text": "2.5 Sub-questions",
+    "text": "2.5 Sub-questions\n\nWhat spatial datasets are available for Delft and Xi’an, and how comparable are they for analysing green space and pluvial flooding?\nWhich GIS and remote-sensing methods can be used to analyse the relationship between green-space configuration and flood-related surface water change?\nWhich green-space landscape metrics can be calculated for both cities using a common grid-based method?\nWhat meaningful green-space typologies can be derived from the landscape metrics?\nHow does FWEI-based surface water change vary between different green-space typologies?\nHow do the relationships between green-space configuration and flood-related surface water change differ between Delft and Xi’an?\n\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
     ]
@@ -114,9 +114,79 @@
     "href": "sections/methods.html",
     "title": "3  Methods",
     "section": "",
-    "text": "This is a small test to check whether R code runs inside the report.\n\n1 + 1\n\n[1] 2\n\n\n\nplot(cars)",
+    "text": "This is a small test to check whether R code runs inside the report.\n\n1 + 1\n\n[1] 2\n\n\n\nplot(cars)\n\n\n\n\n\n\n\n\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/correlation.html",
+    "href": "sections/correlation.html",
+    "title": "4  Correlation analysis",
+    "section": "",
+    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Correlation analysis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/typology.html",
+    "href": "sections/typology.html",
+    "title": "5  Typology construction",
+    "section": "",
+    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Typology construction</span>"
+    ]
+  },
+  {
+    "objectID": "sections/results.html",
+    "href": "sections/results.html",
+    "title": "6  Results",
+    "section": "",
+    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "sections/discussion.html",
+    "href": "sections/discussion.html",
+    "title": "7  Discussion",
+    "section": "",
+    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discussion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/conclusion.html",
+    "href": "sections/conclusion.html",
+    "title": "8  Conclusion",
+    "section": "",
+    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Conclusion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/references.html",
+    "href": "sections/references.html",
+    "title": "References",
+    "section": "",
+    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope\nOnaolapo, and Jens-Christian Svenning. 2023. “A Decision Support\nTool for Green Infrastructure Planning in the Face of Rapid\nUrbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model\nfor Evaluating Ecosystem Service Tradeoffs and Synergies Across Three\nCoastal Megacities.” Environmental Research Letters 14\n(12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial\nFlooding in Urban Areas Across the European Continent.”\nGeographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022.\n“The Nature-Based Solutions Planning Support System: A Playground\nfor Site and Solution Prioritization.” Sustainable Cities and\nSociety 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "sections/appendix.html",
+    "href": "sections/appendix.html",
+    "title": "9  Appendix",
+    "section": "",
+    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Appendix</span>"
     ]
   }
 ]
