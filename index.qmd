@@ -2,7 +2,7 @@
 
 The present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).
 
-The repository of this report can be found at this link: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.
+The repository of this report can be found [here](https://github.com/Applied-Spatial-Analytics/create-your-report-groupc).
 
 This project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.
 

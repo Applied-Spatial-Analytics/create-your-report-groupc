@@ -20,16 +20,15 @@ book:
 
   chapters:
     - index.qmd
-    - sections/preliminary.qmd
     - sections/problem_statement.qmd
+    - sections/preliminary.qmd
     - sections/methods.qmd
-    - sections/correlation.qmd
-    - sections/typology.qmd
     - sections/results.qmd
+    - sections/typology.qmd
     - sections/discussion.qmd
     - sections/conclusion.qmd
     - sections/references.qmd
-    - sections/appendix.qmd
+
 
 bibliography: references.bib
 biblio-title: "References"

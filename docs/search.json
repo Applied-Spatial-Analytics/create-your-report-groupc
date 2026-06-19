@@ -4,109 +4,119 @@
     "href": "index.html",
     "title": "Green Space Configuration and Pluvial Flood Risk",
     "section": "",
-    "text": "Introduction\nThe present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).\nThe repository of this report can be found at this link: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.\nThis project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.\nBoth cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "text": "Introduction\nThe present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).\nThe repository of this report can be found here.\nThis project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.\nBoth cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
       "Introduction"
     ]
   },
   {
-    "objectID": "sections/preliminary.html",
-    "href": "sections/preliminary.html",
-    "title": "1  Preliminary maps and research",
-    "section": "",
-    "text": "1.1 Study area selection\nThis chapter introduces the study areas, the first datasets, and the early spatial observations that shaped the direction of the project. The aim of this stage was not yet to produce final conclusions, but to understand whether Delft and Xi’an could be compared using the same spatial method. The first exploration focused on selecting comparable study areas, testing available land-cover and flood-related datasets, and identifying which green-space metrics could be calculated consistently for both cities.\nStudy area overview of Delft and Xi’an.\nThe first step of the project was to define comparable study areas for Delft and Xi’an. Since the project compares two very different urban contexts, it was important to use the same spatial logic for both cities. Instead of using the full administrative boundaries, a 10 km × 10 km study area was selected for each city. Each study area was then divided into 100 m × 100 m grid cells.\nThis grid-based approach makes the two cities easier to compare. It creates a common spatial unit, so that green-space metrics and flood-related values can be calculated in the same way for both Delft and Xi’an. This also avoids comparing only city-wide averages, which would hide many local differences inside the urban fabric.\nFor Delft, the selected area includes the city itself and parts of the surrounding urban and rural landscape. This is useful because Delft is not isolated from its surroundings. Its green and water structures continue beyond the municipal boundary. For Xi’an, the selected area focuses on a central urban section where built-up land, green patches, and flood-related surface water change can be analysed together. In both cases, the study area was chosen to capture local spatial patterns rather than the entire city.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
-    ]
-  },
-  {
-    "objectID": "sections/preliminary.html#delft-and-xian-as-comparison-cases",
-    "href": "sections/preliminary.html#delft-and-xian-as-comparison-cases",
-    "title": "1  Preliminary maps and research",
-    "section": "1.2 Delft and Xi’an as comparison cases",
-    "text": "1.2 Delft and Xi’an as comparison cases\nDelft and Xi’an were selected because they represent very different urban and environmental conditions. Delft is a relatively small Dutch city with a low-lying landscape, a dense water network, and a long tradition of water management. Its landscape includes canals, parks, agricultural land, and open green areas around the city.\nXi’an is a much larger Chinese city with a different climate, scale, and urban structure. The selected Xi’an study area is more strongly dominated by dense urban development. Green spaces are present, but they often appear as parks, green corridors, street greenery, or smaller patches within the built-up fabric.\nThis contrast makes the comparison useful. If similar relationships between green-space configuration and flood-related surface water change appear in both cities, this could suggest that the spatial structure of green space is relevant across different urban contexts. At the same time, differences between the two cities are also important. They may show how local urban form, climate, data quality, and land-cover structure influence the results.\nThe comparison is therefore not based on the idea that Delft and Xi’an are similar cities. Instead, the aim is to apply a consistent spatial method to both cities and then compare the patterns that appear.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
-    ]
-  },
-  {
-    "objectID": "sections/preliminary.html#natural-and-flood-related-context",
-    "href": "sections/preliminary.html#natural-and-flood-related-context",
-    "title": "1  Preliminary maps and research",
-    "section": "1.3 Natural and flood-related context",
-    "text": "1.3 Natural and flood-related context\nThe project focuses on pluvial flooding. This means flooding caused by heavy rainfall and local surface water accumulation, rather than flooding from rivers or the sea. Pluvial flooding is strongly connected to urban land cover. In areas with many impervious surfaces, rainfall cannot easily infiltrate into the ground. This can increase runoff and cause water to collect on streets, squares, and other low-lying parts of the city.\nGreen spaces can help reduce this problem because they are more permeable than built-up surfaces. They can support infiltration, slow down runoff, temporarily store water, and reduce pressure on drainage systems. However, the effect of green space may not only depend on the total amount of green area. Its spatial configuration may also matter. A large connected park may influence runoff differently than many small isolated green patches, even if the total green area is similar.\nFor this reason, the project does not only measure green coverage. It also uses landscape metrics that describe the spatial pattern of green areas, including patch size, fragmentation, aggregation, and connectivity.\nFlood-related conditions were first explored using different available datasets. For Delft, Dutch climate data and water-depth layers for intense rainfall were tested. However, an equivalent pluvial flood-depth layer was not available for Xi’an. To keep the method more comparable between the two cities, the analysis moved toward using FWEI, the Flood Water Extraction Index.\nFWEI was used as an indicator of surface water change. For each city, a before and after FWEI raster was used, and the earlier raster was subtracted from the later raster. The resulting FWEI change layer was then used as a flood-related surface water indicator. It is important to note that this is not the same as direct flood depth. Instead, it is treated as a proxy for changes in surface water conditions during a flood-related period.\nFor Xi’an, the selected period was based on a known flood-related period between 22 July 2023 and 16 August 2023. For Delft, finding directly comparable event dates was more difficult, so a broader before and after period was used, from 14 June 2023 to 7 September 2023. This difference is a limitation of the analysis, but using the same FWEI-based workflow makes the two cases more comparable than using completely different flood datasets.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
-    ]
-  },
-  {
-    "objectID": "sections/preliminary.html#built-environment-and-land-cover-context",
-    "href": "sections/preliminary.html#built-environment-and-land-cover-context",
-    "title": "1  Preliminary maps and research",
-    "section": "1.4 Built environment and land-cover context",
-    "text": "1.4 Built environment and land-cover context\nThe built environment is important in this project because impervious surfaces influence how water behaves during heavy rainfall. Roads, roofs, pavements, and other hard surfaces reduce infiltration and can increase surface runoff. Because of this, green-space configuration needs to be understood in relation to the surrounding urban fabric.\nThe first land-cover exploration showed that data quality and resolution were major issues. For Delft, broad land-cover datasets such as ESA WorldCover were tested, but they were not detailed enough for the scale of the project. More local Dutch data sources were therefore explored. Because the 10 km × 10 km study area extended beyond the municipality of Delft, surrounding municipalities also had to be included and merged. The final Delft green-space layer was converted into a binary raster, where green areas were represented as 1 and non-green areas as 0.\nFor Xi’an, the first land-cover datasets also caused problems. Some products were too coarse, while others did not clearly capture smaller green spaces inside the urban area. This was a problem because the project depends on recognising the spatial configuration of green patches. If small parks, street greenery, or fragmented patches are missing, the landscape metrics become less meaningful.\nTo improve this, a more detailed green-space dataset was used for Xi’an. The final Xi’an green layer was based on the UGS-1m dataset and was also converted into a binary raster. This made it possible to calculate the same type of landscape metrics for Xi’an as for Delft.\nIn both cities, the binary green rasters became the main input for the landscape-metric analysis.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
-    ]
-  },
-  {
-    "objectID": "sections/preliminary.html#first-data-exploration",
-    "href": "sections/preliminary.html#first-data-exploration",
-    "title": "1  Preliminary maps and research",
-    "section": "1.5 First data exploration",
-    "text": "1.5 First data exploration\nThe first analysis step was to calculate green-space landscape metrics for every 100 m × 100 m grid cell. These metrics were used to describe the spatial configuration of green space within each cell.\nThe main metrics tested were Largest Patch Index, Division Index, Aggregation Index, Effective Mesh Size, Mean Patch Area, and Patch Area. Together, these describe different aspects of the green-space pattern. Largest Patch Index shows whether one large green patch dominates a grid cell. Division Index gives an indication of fragmentation. Aggregation Index shows whether green patches are clustered or scattered. Effective Mesh Size relates to the size of connected green structures. Mean Patch Area and Patch Area describe the size of green patches.\nAdditional patch-level metrics were also tested, including Radius of Gyration, Contiguity Index, and Euclidean Nearest Neighbour Distance. These metrics can give more detailed information about patch shape, internal connectedness, and isolation. However, they were slower to calculate, especially because the green rasters were high resolution. For the preliminary stage, the focus was therefore placed on metrics that could be calculated more consistently for both cities.\nThe FWEI change raster was also aggregated to the grid by calculating the mean FWEI change value per cell. This made it possible to compare green-space configuration and flood-related surface water change using the same spatial units.\nThe first correlations showed that the relationships were generally weak, but some patterns were still visible. In Delft, more fragmented green structure tended to be associated with higher FWEI change, while more aggregated or connected green structure tended to be associated with lower FWEI change. In Xi’an, some similar directions appeared, but the relationships were weaker.\nThese preliminary results suggest that green-space configuration alone does not explain flood-related surface water change. Other factors, such as impervious surface, elevation, drainage, rainfall, and local urban form, also matter. However, the results are still useful because they show that spatial green patterns can be explored further. The next step of the project is therefore to move beyond simple correlation and construct green-space typologies. These typologies will group grid cells with similar green-space configurations and make it possible to compare flood-related patterns between different types of urban green structure.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preliminary maps and research</span>"
-    ]
-  },
-  {
     "objectID": "sections/problem_statement.html",
     "href": "sections/problem_statement.html",
-    "title": "2  Problem statement",
+    "title": "1  Problem statement",
     "section": "",
-    "text": "2.1 Background\nPluvial flooding is a problem in many cities. It happens when intense rainfall leads to overland flow or ponding before the water can enter a watercourse, sewer, or drainage system (Prokić et al. 2019). In urban areas this can become worse because cities contain many hard surfaces, such as roads, roofs, and pavements. These surfaces reduce infiltration and can increase surface runoff (Meerow 2019).\nGreen spaces can help with this because they are more permeable than built-up surfaces. They can store some rainwater, slow down runoff, allow more water to enter the soil, and reduce pressure on drainage systems. In green infrastructure planning, stormwater management and flood mitigation are often seen as important benefits of urban green space (Meerow 2019).\nHowever, it may not only be important how much green space a city has, but also how that green space is arranged. For example, one large connected park may function differently from many small green patches spread across the city, even if the total green area is similar. Previous green infrastructure studies also show that the spatial distribution and connectivity of green areas matter for planning and ecosystem service provision (Brom et al. 2023).\nBecause of this, this project looks at the spatial configuration of green spaces. This means that we do not only measure green coverage, but also include landscape metrics such as patch size, fragmentation, aggregation, and connectivity.",
+    "text": "1.1 Background\nPluvial flooding is an increasing concern in urban areas. It occurs when intense rainfall produces overland flow or surface ponding before the water can enter drainage systems, canals, rivers, or other water bodies (Prokić et al. 2019). In cities, this process is often strengthened by the presence of impervious surfaces such as roads, roofs, pavements, and compacted urban land. These surfaces limit infiltration and can increase the amount of water that remains on the surface after rainfall events.\nGreen infrastructure is often discussed as one way to reduce the effects of urban flooding. Green spaces can absorb, store, and slow down rainwater, which may reduce pressure on urban drainage systems. In green infrastructure planning, stormwater management and flood mitigation are therefore often treated as important ecosystem services (Meerow 2019). However, the presence of green space alone does not fully explain how it may affect flood-related processes. The spatial configuration of green space is also important.\nFor example, a large connected park may function differently from many small and isolated green patches, even if the total amount of green space is similar. Green-space patches can differ in size, shape, connectivity, and fragmentation. These spatial properties may influence how green areas interact with runoff, water storage, and surface-water accumulation. Previous work on green infrastructure planning also shows that spatial distribution and connectivity are important for understanding ecosystem service provision (Brom et al. 2023).\nThis project therefore focuses not only on the total amount of green space, but also on its spatial configuration. The analysis uses landscape metrics to describe green-space patterns in Delft and Xi’an and compares these patterns with flood-related surface water change derived from remote sensing.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Problem statement</span>"
     ]
   },
   {
     "objectID": "sections/problem_statement.html#research-gap",
     "href": "sections/problem_statement.html#research-gap",
-    "title": "2  Problem statement",
-    "section": "2.2 Research gap",
-    "text": "2.2 Research gap\nMany studies and planning approaches discuss the role of green infrastructure and nature-based solutions in relation to stormwater management, climate adaptation, and flood risk (Sarabi et al. 2022). However, it is still difficult to compare this relationship between different urban contexts. Delft and Xi’an are very different cities. Delft is smaller, low-lying, and has a dense water network, while Xi’an is much larger and has a different urban structure and climate context.\nThis makes the comparison challenging. If different datasets and different methods are used for each city, the results become difficult to compare. Meerow (2019) also shows that cross-city green infrastructure analysis can be limited by differences in data availability and spatial units. Therefore, this project uses the same grid-based method for both cities. This allows green-space configuration and flood-related surface water change to be analysed in the same spatial format.",
+    "title": "1  Problem statement",
+    "section": "1.2 Research gap",
+    "text": "1.2 Research gap\nMany studies discuss the role of green infrastructure and nature-based solutions in relation to stormwater management, climate adaptation, and flood risk (Sarabi et al. 2022). However, comparing this relationship between different cities remains difficult. Cities often differ in size, climate, data availability, spatial resolution, and land-cover structure. These differences can make direct comparison unreliable if each city is analysed using different datasets or spatial units.\nDelft and Xi’an provide a useful comparison because they represent very different urban contexts. Delft is a relatively small Dutch city with a low-lying landscape and a dense water network. Xi’an is a much larger Chinese city with a different urban structure, climate context, and spatial scale. Because of these differences, the project does not compare the full administrative areas of both cities. Instead, it uses a common spatial framework based on equal-sized study areas and a shared grid-based method.\nA second challenge is that equivalent pluvial flood-risk datasets were not available for both cities. Delft has local flood-related data, but a directly comparable high-resolution pluvial flood dataset for Xi’an was not available. To make the comparison more consistent, the analysis uses the Flood Water Extraction Index (FWEI) for both cities. FWEI is used as a remote-sensing-based proxy for flood-related surface water change. This makes it possible to compare green-space patterns and surface water change using the same type of flood-related indicator for both Delft and Xi’an.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Problem statement</span>"
     ]
   },
   {
     "objectID": "sections/problem_statement.html#aim",
     "href": "sections/problem_statement.html#aim",
-    "title": "2  Problem statement",
-    "section": "2.3 Aim",
-    "text": "2.3 Aim\nThe aim of this project is to explore how the spatial configuration of green spaces relates to flood-related surface water change in Delft and Xi’an.\nTo do this, both study areas are divided into 100 m × 100 m grid cells. For each grid cell, several green-space landscape metrics are calculated. These metrics are then compared with surface water change values based on the Flood Water Extraction Index (FWEI). The project also uses typology construction to group grid cells with similar green-space patterns.\nThe goal is not to prove that green space is the only factor affecting pluvial flooding. Other factors, such as impervious surface, elevation, drainage, and rainfall, also play an important role. Instead, the goal is to investigate whether visible spatial relationships exist between green-space configuration and flood-related surface water change.",
+    "title": "1  Problem statement",
+    "section": "1.3 Aim",
+    "text": "1.3 Aim\nThe aim of this project is to analyse how the spatial configuration of green spaces is related to pluvial flood-related surface water change in two different urban contexts. The project compares Delft and Xi’an using a shared grid-based approach, binary green-space rasters, landscape metrics, FWEI-based surface water change, correlation analysis, and typology construction.\nThe goal is not to prove a direct causal relationship between green space and flooding. Instead, the project aims to explore whether certain green-space configurations are associated with higher or lower flood-related surface water change, and whether similar green-space typologies can be identified in both cities.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Problem statement</span>"
     ]
   },
   {
     "objectID": "sections/problem_statement.html#research-question",
     "href": "sections/problem_statement.html#research-question",
-    "title": "2  Problem statement",
-    "section": "2.4 Research question",
-    "text": "2.4 Research question\nHow does the spatial configuration of green spaces influence pluvial flood-related surface water change in urban areas such as Delft and Xi’an?",
+    "title": "1  Problem statement",
+    "section": "1.4 Research question",
+    "text": "1.4 Research question\nHow does the spatial configuration of green spaces relate to pluvial flood-related surface water change in urban areas such as Delft and Xi’an?",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Problem statement</span>"
     ]
   },
   {
     "objectID": "sections/problem_statement.html#sub-questions",
     "href": "sections/problem_statement.html#sub-questions",
-    "title": "2  Problem statement",
-    "section": "2.5 Sub-questions",
-    "text": "2.5 Sub-questions\n\nWhat spatial datasets are available for Delft and Xi’an, and how comparable are they for analysing green space and pluvial flooding?\nWhich GIS and remote-sensing methods can be used to analyse the relationship between green-space configuration and flood-related surface water change?\nWhich green-space landscape metrics can be calculated for both cities using a common grid-based method?\nWhat meaningful green-space typologies can be derived from the landscape metrics?\nHow does FWEI-based surface water change vary between different green-space typologies?\nHow do the relationships between green-space configuration and flood-related surface water change differ between Delft and Xi’an?\n\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "title": "1  Problem statement",
+    "section": "1.5 Sub-questions",
+    "text": "1.5 Sub-questions\n\nWhat spatial datasets are available for Delft and Xi’an, and how comparable are they for analysing green space and pluvial flood-related surface water change?\nWhich GIS and remote-sensing methods can be used to analyse the relationship between green-space configuration and flood-related surface water change?\nWhich green-space landscape metrics can be calculated for both cities using a common grid-based method?\nWhat meaningful green-space typologies can be derived from the landscape metrics?\nHow does FWEI-based surface water change vary between different green-space typologies?\nHow do the relationships between green-space configuration and flood-related surface water change differ between Delft and Xi’an?\n\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Problem statement</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Problem statement</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html",
+    "href": "sections/preliminary.html",
+    "title": "2  Preliminary maps and research",
+    "section": "",
+    "text": "2.1 Study area selection\nThe study areas were selected to allow a consistent comparison between Delft and Xi’an. Because the two cities are very different in size, it would not be meaningful to compare their full administrative boundaries directly. Delft is relatively compact, while Xi’an is a much larger metropolitan area. A full-city comparison would therefore create an imbalance in scale, data volume, and spatial heterogeneity.\nTo reduce this problem, both cities were analysed using a 10 km by 10 km study area. For Delft, this extent covers the city and its immediate surroundings. For Xi’an, the same-sized extent was placed over a central urban area that contains a mixture of dense built-up land, green spaces, roads, and open areas. This creates a more balanced comparison because both cases are analysed using the same spatial extent.\nA 100 m by 100 m grid was then created for each city. This grid is the main spatial unit of analysis. All green-space metrics and flood-related indicators were calculated per grid cell. The grid-based approach makes it possible to compare different datasets with different raster resolutions in a common spatial framework. It also allows the results to be mapped, compared, and clustered into spatial typologies.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#study-area-selection",
+    "href": "sections/preliminary.html#study-area-selection",
+    "title": "2  Preliminary maps and research",
+    "section": "",
+    "text": "Figure 2.1: Study area selection for Delft and Xi’an.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#delft-and-xian-as-comparison-cases",
+    "href": "sections/preliminary.html#delft-and-xian-as-comparison-cases",
+    "title": "2  Preliminary maps and research",
+    "section": "2.2 Delft and Xi’an as comparison cases",
+    "text": "2.2 Delft and Xi’an as comparison cases\nDelft and Xi’an were chosen because they represent contrasting urban and environmental contexts. Delft is a smaller Dutch city located in a low-lying delta landscape. It contains a dense network of canals, water bodies, streets, buildings, and urban green spaces. Because of its low elevation and highly managed water system, Delft is a relevant case for studying flood-related urban water issues.\nXi’an is much larger and has a different urban structure. The selected Xi’an study area represents a dense urban environment with large built-up areas, major roads, and green spaces distributed across the city. Compared with Delft, Xi’an has a different climate context, different land-cover patterns, and a different scale of urban development. This contrast makes it useful for testing whether a shared spatial method can identify comparable green-space patterns in very different cities.\nThe comparison is therefore not based on the assumption that Delft and Xi’an are similar cities. Instead, the project uses them as contrasting cases. The purpose is to examine whether a common spatial workflow can be applied to both cities and whether similar green-space typologies can be identified despite their differences.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#natural-and-flood-related-context",
+    "href": "sections/preliminary.html#natural-and-flood-related-context",
+    "title": "2  Preliminary maps and research",
+    "section": "2.3 Natural and flood-related context",
+    "text": "2.3 Natural and flood-related context\nThe flood-related focus of this project is pluvial flooding. Pluvial flooding is connected to intense rainfall and surface water accumulation within the urban area. This is different from coastal flooding or river flooding, which are mainly driven by sea levels, storm surges, or river discharge. A pluvial focus is useful for this project because rainfall-driven surface water accumulation can occur in both Delft and Xi’an, even though their wider geographical settings are different.\nFor Delft, local flood-related data were available, but an equivalent high-resolution pluvial flood-risk dataset was not available for Xi’an. To keep the comparison consistent, the main flood-related indicator in the project is therefore based on FWEI. For both cities, FWEI layers before and after a rainfall or flood-related event were used. The difference between the after and before layers was calculated as an indicator of surface water change.\nThis approach does not measure flood depth directly. Instead, it provides a remote-sensing-based proxy for areas where surface water increased between the two moments. For this reason, the project uses careful wording such as “flood-related surface water change” rather than treating the FWEI output as a direct flood-depth map.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#built-environment-and-land-cover-context",
+    "href": "sections/preliminary.html#built-environment-and-land-cover-context",
+    "title": "2  Preliminary maps and research",
+    "section": "2.4 Built environment and land-cover context",
+    "text": "2.4 Built environment and land-cover context\nThe built environment is important for this project because impervious surfaces influence how rainfall moves through cities. Dense built-up areas often contain more hard surfaces and fewer infiltration opportunities. Green spaces can interrupt this pattern by providing more permeable surfaces, but their effect may depend on how they are arranged.\nThe analysis therefore uses binary green-space rasters for both Delft and Xi’an. In these rasters, green areas are represented as value 1 and non-green areas as value 0. The Delft green-space raster was created from local land-cover processing and was originally very high resolution. The Xi’an green-space raster was derived from a high-resolution urban green-space dataset. To make the metric calculation more computationally manageable and comparable, both green rasters were aggregated to approximately 5 m resolution before landscape metrics were calculated.\nInitial visual inspection showed that both cities contain a mixture of highly green cells, moderately green cells, low-green cells, and cells with almost no green space. This supported the decision to move beyond simple green coverage and include landscape metrics that describe the configuration of green patches.\n\n\n\n\n\n\n\nFigure 2.2: Green coverage per 100 m grid cell in Delft.\n\n\n\n\n\n\n\n\n\nFigure 2.3: Green coverage per 100 m grid cell in Xi’an.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Preliminary maps and research</span>"
+    ]
+  },
+  {
+    "objectID": "sections/preliminary.html#first-data-exploration",
+    "href": "sections/preliminary.html#first-data-exploration",
+    "title": "2  Preliminary maps and research",
+    "section": "2.5 First data exploration",
+    "text": "2.5 First data exploration\nThe first data exploration confirmed that the grid-based approach could be used for both cities. The final workflow successfully calculated green-space metrics for 10,000 grid cells in Delft and 10,000 grid cells in Xi’an. For each grid cell, the analysis calculated green coverage, patch area, radius of gyration, contiguity, nearest-neighbour distance, FWEI change, flood share, and distance from FWEI-derived flooded pixels to the nearest green pixel.\nThe first outputs also showed that the method produces meaningful spatial variation. Some grid cells contain large and contiguous green patches, while others contain only small, fragmented, or almost absent green areas. The FWEI-based variables also vary spatially, allowing comparison between green-space configuration and flood-related surface water change.\nThe preliminary analysis also showed that the relationship is not as simple as “more green space means less flood-related water”. In the current outputs, some greener cells also show higher FWEI change or flood share. This suggests that the results need to be interpreted carefully. Green spaces may be located in low-lying, open, or wetter areas where surface water is more visible in remote-sensing data. Therefore, the analysis should be understood as an exploration of spatial association rather than proof of direct causality.\nThe preliminary findings support the need for a typology-based approach. Instead of only analysing individual correlations, the project groups grid cells into green-space typologies. These typologies help describe recurring spatial patterns, such as highly green contiguous areas, moderately green connected areas, low-green dispersed areas, and sparse fragmented areas. These groups can then be compared with the FWEI-based flood-related indicators.\n\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Preliminary maps and research</span>"
     ]
   },
   {
@@ -114,19 +124,149 @@
     "href": "sections/methods.html",
     "title": "3  Methods",
     "section": "",
-    "text": "This is a small test to check whether R code runs inside the report.\n\n1 + 1\n\n[1] 2\n\n\n\nplot(cars)\n\n\n\n\n\n\n\n\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "text": "3.1 Research workflow\nThe project uses a GIS and remote-sensing workflow to compare green-space configuration and flood-related surface water change in Delft and Xi’an. The workflow consists of six main steps.\nFirst, a 10 km by 10 km study area was selected for each city. Second, both study areas were divided into 100 m by 100 m grid cells. Third, binary green-space rasters were prepared for both cities and used to calculate green-space landscape metrics per grid cell. Fourth, before and after FWEI rasters were used to calculate surface water change. Fifth, the relationship between green-space metrics and FWEI-based indicators was explored using correlation analysis. Finally, K-means clustering was used to construct green-space typologies.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
     ]
   },
   {
-    "objectID": "sections/correlation.html",
-    "href": "sections/correlation.html",
-    "title": "4  Correlation analysis",
+    "objectID": "sections/methods.html#research-workflow",
+    "href": "sections/methods.html#research-workflow",
+    "title": "3  Methods",
     "section": "",
-    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "text": "Figure 3.1: Overview of the research workflow.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Correlation analysis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#spatial-unit-of-analysis",
+    "href": "sections/methods.html#spatial-unit-of-analysis",
+    "title": "3  Methods",
+    "section": "3.2 Spatial unit of analysis",
+    "text": "3.2 Spatial unit of analysis\nA common grid-based method was used to make Delft and Xi’an comparable. Each study area was divided into 100 m by 100 m grid cells, resulting in 10,000 cells per city. This grid size was chosen as a compromise between spatial detail and computational feasibility. It is small enough to capture local variation in green-space configuration, but large enough to reduce noise from individual pixels.\nAll metrics were calculated per grid cell. This means that each cell received a set of green-space variables and flood-related variables. The grid therefore acts as the common analytical unit connecting the different raster datasets.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#data-preparation",
+    "href": "sections/methods.html#data-preparation",
+    "title": "3  Methods",
+    "section": "3.3 Data preparation",
+    "text": "3.3 Data preparation\nThe main datasets used in the analysis were binary green-space rasters and FWEI rasters for Delft and Xi’an. The green-space rasters were prepared as binary maps, where green space has value 1 and non-green space has value 0. Because the original raster resolutions differed between the cities, both green rasters were aggregated to approximately 5 m resolution for the landscape metric calculation. Modal aggregation was used so that each new raster cell received the most common value from the original pixels.\nThe FWEI data consisted of before and after rasters for both cities. These rasters were aligned with the green-space analysis grid and used to calculate surface water change. The after raster was subtracted from the before raster using the following logic:\nFWEI change = FWEI after - FWEI before\nPositive values indicate an increase in the FWEI signal after the event, which is interpreted as an increase in surface water presence. This is treated as a flood-related surface water change proxy, not as direct flood depth.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#green-space-metrics",
+    "href": "sections/methods.html#green-space-metrics",
+    "title": "3  Methods",
+    "section": "3.4 Green-space metrics",
+    "text": "3.4 Green-space metrics\nGreen-space configuration was measured using a combination of green coverage and patch-based landscape metrics. The decision to focus on patch metrics was made because the green rasters are binary maps with one main class of interest: green space. Patch metrics are therefore more suitable than broad class metrics because they describe the size, shape, and spatial arrangement of individual green patches.\nThe following green-space variables were calculated for each 100 m grid cell:\n\n\n\n\n\n\n\n\nVariable\nMeaning\nInterpretation\n\n\n\n\ngreen_percent\nPercentage of the grid cell covered by green pixels\nTotal amount of green space\n\n\narea\nMean area of green patches\nLarger values indicate larger green patches\n\n\ngyrate\nMean radius of gyration of green patches\nHigher values indicate more spatially extensive patches\n\n\ncontig\nMean contiguity of green patches\nHigher values indicate more internally connected patches\n\n\nenn\nMean Euclidean nearest-neighbour distance between patches\nHigher values indicate more isolated patches\n\n\n\nThe metrics were calculated in R using the landscapemetrics package. For each grid cell, the green raster was cropped and masked to the cell boundary. The metrics were then calculated only for the green class. If a cell contained no green pixels, the green metric values were set to zero or left as missing where appropriate.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#fwei-change-and-flood-related-variables",
+    "href": "sections/methods.html#fwei-change-and-flood-related-variables",
+    "title": "3  Methods",
+    "section": "3.5 FWEI change and flood-related variables",
+    "text": "3.5 FWEI change and flood-related variables\nTwo main FWEI-based variables were calculated per grid cell. The first was fwei_change_mean, which represents the mean FWEI change value within each grid cell. This variable captures the average change in surface water signal after the event.\nThe second variable was flood_share. To calculate this, the FWEI change raster was converted into a binary surface-water increase mask using a threshold. Pixels with FWEI change greater than 0.05 were classified as 1, while all other pixels were classified as 0. The mean value of this binary raster was then calculated per grid cell. This means that flood_share represents the proportion of each grid cell classified as FWEI-derived increased surface water.\nThis variable should be interpreted carefully. It does not represent flood depth and it does not prove that every classified pixel was flooded. Instead, it provides a consistent indicator of flood-related surface water increase for both cities.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#distance-from-flooded-pixels-to-green-space",
+    "href": "sections/methods.html#distance-from-flooded-pixels-to-green-space",
+    "title": "3  Methods",
+    "section": "3.6 Distance from flooded pixels to green space",
+    "text": "3.6 Distance from flooded pixels to green space\nAn additional variable, mean_dist_green, was calculated to describe the spatial relationship between FWEI-derived flooded pixels and nearby green space. First, a distance raster was created from the binary green-space raster. This raster gives the distance from each non-green pixel to the nearest green pixel. The distance raster was then masked using the FWEI-derived binary surface-water increase mask.\nFor each grid cell, the mean distance from FWEI-derived flooded pixels to the nearest green pixel was calculated. Lower values indicate that the surface-water increase pixels are closer to green areas. Higher values indicate that the surface-water increase pixels are farther away from green areas.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#correlation-analysis",
+    "href": "sections/methods.html#correlation-analysis",
+    "title": "3  Methods",
+    "section": "3.7 Correlation analysis",
+    "text": "3.7 Correlation analysis\nPearson correlation analysis was used to explore the relationship between green-space metrics and flood-related variables. The green-space variables were compared with fwei_change_mean and flood_share for both Delft and Xi’an.\nThe correlation analysis was used as an exploratory method. A positive correlation means that higher values of a green-space metric tend to occur in cells with higher FWEI change or flood share. A negative correlation means that higher values of a green-space metric tend to occur in cells with lower FWEI change or flood share. These correlations do not prove causality. They only show spatial association between variables.\nThe correlation outputs were saved as a CSV file and visualised as a correlation overview plot.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#typology-construction",
+    "href": "sections/methods.html#typology-construction",
+    "title": "3  Methods",
+    "section": "3.8 Typology construction",
+    "text": "3.8 Typology construction\nK-means clustering was used to construct green-space typologies. The clustering was based on the green-space metrics green_percent, area, gyrate, contig, and enn. These variables were standardised before clustering so that variables with larger numerical ranges did not dominate the clustering process.\nFour clusters were created for each city. These clusters represent recurring types of green-space configuration. The typologies were then interpreted using the mean values of the green-space metrics and flood-related indicators.\nThe resulting typologies can be broadly interpreted as:\n\n\n\nTypology\nGeneral interpretation\n\n\n\n\nTypology 1\nModerately green connected areas\n\n\nTypology 2\nHighly green and contiguous areas\n\n\nTypology 3\nSparse green fragmented areas\n\n\nTypology 4\nLow green dispersed areas\n\n\n\nThe typologies were used to compare whether different green-space configurations show different levels of FWEI-based surface water change. The typology maps and summary tables were saved for both Delft and Xi’an.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/methods.html#software-and-reproducibility",
+    "href": "sections/methods.html#software-and-reproducibility",
+    "title": "3  Methods",
+    "section": "3.9 Software and reproducibility",
+    "text": "3.9 Software and reproducibility\nThe analysis was carried out in R using a reproducible script-based workflow. The main packages used were terra, sf, landscapemetrics, dplyr, ggplot2, and readr. The scripts were stored in the src folder and all processed outputs were saved using relative paths.\nThe main scripts were:\n\n\n\n\n\n\n\nScript\nPurpose\n\n\n\n\n01_green_metrics_delft.R\nCalculates green metrics and FWEI-based variables for Delft\n\n\n02_green_metrics_xian.R\nCalculates green metrics and FWEI-based variables for Xi’an\n\n\n03_make_maps_and_plots.R\nCreates maps, correlations, typologies, and summary outputs\n\n\n\nThe final outputs include grid-level GeoPackages, CSV tables, correlation outputs, typology maps, and figure files. This structure makes the workflow easier to rerun and makes the analysis more transparent.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Methods</span>"
+    ]
+  },
+  {
+    "objectID": "sections/results.html",
+    "href": "sections/results.html",
+    "title": "4  Results",
+    "section": "",
+    "text": "4.1 Green-space patterns\nThe first part of the results shows how green space is distributed across the 100 m by 100 m grid cells in Delft and Xi’an. The analysis successfully produced grid-level green-space metrics for 10,000 cells in Delft and 10,000 cells in Xi’an. Each grid cell contains values for total green coverage and several patch-based landscape metrics.\nThe green percentage maps show clear spatial variation in both cities. Some cells contain almost no green space, while other cells are dominated by green areas. This confirms that a simple city-wide percentage of green space would not be enough for this analysis. The spatial distribution of green space differs within each city and needs to be analysed at the grid-cell level.\nThe patch metrics provide more detail about the configuration of green space. The area metric describes the mean size of green patches within each grid cell. The contig metric describes how internally connected the green patches are. The enn metric describes the mean distance to the nearest neighbouring green patch. Together, these metrics allow a distinction between cells with large connected green areas and cells with smaller or more isolated green patches.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "sections/results.html#green-space-patterns",
+    "href": "sections/results.html#green-space-patterns",
+    "title": "4  Results",
+    "section": "",
+    "text": "Figure 4.1: Green coverage per 100 m grid cell in Delft.\n\n\n\n\n\n\n\n\n\n\nFigure 4.2: Green coverage per 100 m grid cell in Xi’an.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "sections/results.html#fwei-based-surface-water-change",
+    "href": "sections/results.html#fwei-based-surface-water-change",
+    "title": "4  Results",
+    "section": "4.2 FWEI-based surface water change",
+    "text": "4.2 FWEI-based surface water change\nThe second part of the results shows the spatial distribution of flood-related surface water change. This was calculated using the difference between the after-event and before-event FWEI rasters. The resulting variable, fwei_change_mean, represents the average FWEI change within each grid cell.\nPositive FWEI change values indicate an increase in the surface water signal after the event. These values are interpreted as flood-related surface water change, not as direct flood depth. A second variable, flood_share, was also calculated. This represents the proportion of each grid cell classified as increased surface water using the FWEI change threshold.\n\n\n\n\n\n\n\nFigure 4.3: Mean FWEI change per 100 m grid cell in Delft.\n\n\n\n\n\n\n\n\n\nFigure 4.4: Mean FWEI change per 100 m grid cell in Xi’an.\n\n\n\n\n\n\n\n\n\n\nFigure 4.5: FWEI-derived flood share per 100 m grid cell in Delft.\n\n\n\n\n\n\n\n\n\nFigure 4.6: FWEI-derived flood share per 100 m grid cell in Xi’an.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "sections/results.html#correlation-analysis",
+    "href": "sections/results.html#correlation-analysis",
+    "title": "4  Results",
+    "section": "4.3 Correlation analysis",
+    "text": "4.3 Correlation analysis\nPearson correlations were calculated between the green-space metrics and the two FWEI-based flood-related indicators: fwei_change_mean and flood_share. The results show mostly weak to moderate correlations. This means that there is some spatial association between green-space configuration and surface water change, but the relationship is not strong enough to suggest a simple direct pattern.\nFor Delft, the strongest relationship was found between mean patch area and flood_share with a correlation of 0.397. Green percentage, radius of gyration, and contiguity also showed positive correlations with flood_share. For fwei_change_mean, the correlations were weaker, with green percentage showing a value of 0.242 and mean patch area showing a value of 0.207. The nearest-neighbour distance metric had a weak negative relationship with both flood-related variables.\nFor Xi’an, the strongest relationship was also found between green percentage and flood_share, with a correlation of 0.367. Mean patch area and radius of gyration also had positive relationships with flood_share. The correlations with fwei_change_mean were weaker than those with flood_share. The mean_dist_green variable had a negative correlation with both FWEI variables in Xi’an, meaning that surface water increase tended to occur closer to green areas.\n\n\n\nCity\nGreen-space metric\nFWEI change mean\nFlood share\n\n\n\n\nDelft\nGreen percentage\n0.242\n0.344\n\n\nDelft\nMean patch area\n0.207\n0.397\n\n\nDelft\nRadius of gyration\n0.202\n0.372\n\n\nDelft\nContiguity\n0.196\n0.344\n\n\nDelft\nNearest-neighbour distance\n-0.087\n-0.083\n\n\nDelft\nMean distance to green\n0.168\n0.186\n\n\nXi’an\nGreen percentage\n0.158\n0.367\n\n\nXi’an\nMean patch area\n0.120\n0.309\n\n\nXi’an\nRadius of gyration\n0.098\n0.262\n\n\nXi’an\nContiguity\n0.073\n0.216\n\n\nXi’an\nNearest-neighbour distance\n-0.039\n-0.054\n\n\nXi’an\nMean distance to green\n-0.144\n-0.237\n\n\n\n\n\n\n\n\n\n\nFigure 4.7: Correlation between green-space metrics and FWEI-based flood-related indicators.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "sections/results.html#main-findings-from-the-results",
+    "href": "sections/results.html#main-findings-from-the-results",
+    "title": "4  Results",
+    "section": "4.4 Main findings from the results",
+    "text": "4.4 Main findings from the results\nThe correlation results show that the relationship between green-space configuration and flood-related surface water change is more complex than expected. A simple assumption would be that more green space leads to less surface water increase. However, the results do not show this pattern. In both Delft and Xi’an, greener cells and cells with larger or more contiguous green patches often show higher FWEI change or higher flood share.\nThis does not mean that green space causes flooding. A more careful interpretation is that green spaces may often be located in areas where surface water is more likely to be detected. These may include open areas, parks, low-lying areas, or places where water can accumulate visibly after rainfall. In contrast, dense built-up areas may contain water on roads, roofs, or drainage surfaces that is harder to detect using FWEI. Therefore, the results should be interpreted as spatial associations between green-space configuration and surface water change, rather than causal effects.\nThe results also show that the flood_share variable gives stronger correlations than fwei_change_mean in both cities. This suggests that the spatial extent of FWEI-derived surface water increase may be more closely related to green-space patterns than the average intensity of FWEI change.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Results</span>"
     ]
   },
   {
@@ -134,39 +274,129 @@
     "href": "sections/typology.html",
     "title": "5  Typology construction",
     "section": "",
-    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "text": "5.1 Purpose of the typology\nThe typology construction was used to group grid cells with similar green-space configurations. Instead of looking only at individual metrics, the typology approach combines several green-space metrics into broader spatial categories. This makes it easier to compare recurring green-space patterns across Delft and Xi’an.\nK-means clustering was used to create four typologies for each city. The clustering was based on the following variables: green percentage, mean patch area, radius of gyration, contiguity, and nearest-neighbour distance. These variables describe both the amount of green space and its spatial configuration. Before clustering, the variables were standardised so that metrics with larger numerical ranges did not dominate the result.\nThe four typologies were interpreted using the mean values of the green-space and flood-related variables. The labels are not created automatically by the K-means algorithm. They were assigned afterwards based on the characteristics of each group.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Typology construction</span>"
     ]
   },
   {
-    "objectID": "sections/results.html",
-    "href": "sections/results.html",
-    "title": "6  Results",
-    "section": "",
-    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "objectID": "sections/typology.html#delft-typologies",
+    "href": "sections/typology.html#delft-typologies",
+    "title": "5  Typology construction",
+    "section": "5.2 Delft typologies",
+    "text": "5.2 Delft typologies\nThe Delft typology map shows four distinct green-space configurations. Typology 2 represents the greenest and most contiguous cells. These cells have the highest mean green percentage, the largest mean patch area, and the highest contiguity. Typology 3 represents cells with almost no green space. Typology 4 represents low-green cells with small and more dispersed green patches. Typology 1 represents moderately green connected areas.\n\n\n\n\n\n\n\nFigure 5.1: Green-space typologies in Delft.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDelft typology\nSuggested interpretation\nNumber of cells\nGreen %\nMean patch area\nContiguity\nENN\nFWEI change\nFlood share\n\n\n\n\nTypology 1\nModerately green connected areas\n2408\n47.2\n0.175\n0.510\n14.6\n0.018\n0.308\n\n\nTypology 2\nHighly green and contiguous areas\n690\n79.3\n0.760\n0.855\n11.0\n0.031\n0.462\n\n\nTypology 3\nSparse green fragmented areas\n2242\n0.3\n0.006\n0.101\n11.8\n-0.007\n0.225\n\n\nTypology 4\nLow green dispersed areas\n4660\n14.2\n0.024\n0.212\n19.8\n-0.001\n0.131\n\n\n\nIn Delft, Typology 2 has the highest mean FWEI change and the highest flood share. This means that the greenest and most contiguous cells also show the strongest FWEI-derived surface water increase. Typology 1 also has relatively high flood-related values, while Typology 4 has the lowest flood share. Typology 3 has almost no green space but still shows a flood share of 0.225, which suggests that surface water increase is not only associated with green areas.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Results</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Typology construction</span>"
+    ]
+  },
+  {
+    "objectID": "sections/typology.html#xian-typologies",
+    "href": "sections/typology.html#xian-typologies",
+    "title": "5  Typology construction",
+    "section": "5.3 Xi’an typologies",
+    "text": "5.3 Xi’an typologies\nThe Xi’an typology map also shows four green-space configurations. The same general pattern appears: Typology 2 is the highly green and contiguous group, Typology 3 is the sparse green group, Typology 4 is a low-green dispersed group, and Typology 1 is a moderately green connected group.\n\n\n\n\n\n\n\nFigure 5.2: Green-space typologies in Xi’an.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nXi’an typology\nSuggested interpretation\nNumber of cells\nGreen %\nMean patch area\nContiguity\nENN\nFWEI change\nFlood share\n\n\n\n\nTypology 1\nModerately green connected areas\n3971\n33.2\n0.169\n0.654\n16.4\n0.023\n0.180\n\n\nTypology 2\nHighly green and contiguous areas\n1171\n76.3\n0.736\n0.877\n12.8\n0.031\n0.314\n\n\nTypology 3\nSparse green fragmented areas\n1702\n0.5\n0.012\n0.253\n14.4\n0.018\n0.089\n\n\nTypology 4\nLow green dispersed areas\n3156\n17.8\n0.058\n0.451\n29.5\n0.022\n0.147\n\n\n\nIn Xi’an, Typology 2 also has the highest mean FWEI change and the highest flood share. This is similar to Delft. Typology 3, which has almost no green space, has the lowest flood share. Typology 4 has low green coverage and a relatively high nearest-neighbour distance, meaning that green patches are more dispersed and isolated.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Typology construction</span>"
+    ]
+  },
+  {
+    "objectID": "sections/typology.html#comparison-of-typologies-between-delft-and-xian",
+    "href": "sections/typology.html#comparison-of-typologies-between-delft-and-xian",
+    "title": "5  Typology construction",
+    "section": "5.4 Comparison of typologies between Delft and Xi’an",
+    "text": "5.4 Comparison of typologies between Delft and Xi’an\nThe typology results show that similar green-space configurations can be identified in both cities, despite the differences between Delft and Xi’an. In both cases, the clustering produced a highly green and contiguous typology, a moderately green typology, a low-green dispersed typology, and a sparse green typology.\nThis is an important result because it suggests that the grid-based landscape metric method can identify comparable spatial patterns across different urban contexts. The actual locations of the typologies differ between the cities, but the general types are similar.\nThe strongest flood-related values occur in Typology 2 in both Delft and Xi’an. This typology has the highest green coverage, largest patch area, and highest contiguity. This finding should be interpreted carefully. It does not mean that highly green and contiguous areas increase flooding. Instead, it suggests that these areas are spatially associated with higher FWEI-derived surface water increase. This could be because parks, open green areas, and low-lying spaces are more likely to store visible surface water after rainfall.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Typology construction</span>"
+    ]
+  },
+  {
+    "objectID": "sections/typology.html#typology-interpretation",
+    "href": "sections/typology.html#typology-interpretation",
+    "title": "5  Typology construction",
+    "section": "5.5 Typology interpretation",
+    "text": "5.5 Typology interpretation\nThe typology construction helps move the analysis beyond individual correlations. While the correlation analysis shows the strength and direction of relationships between variables, the typology analysis shows how combinations of green-space characteristics relate to flood-related indicators.\nThe results suggest that the most flood-related surface water change is not found in the most fragmented green areas, but in the highly green and contiguous areas. This pattern appears in both cities. The lowest flood share is found in low-green or sparse-green typologies, especially in Xi’an. This may reflect the ability of remote sensing to detect water more clearly in open green areas than in dense built-up areas.\nOverall, the typology results show that green-space configuration and FWEI-based surface water change are related, but not in a simple protective direction. The relationship depends on the spatial context of the green areas and the way surface water is detected.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Typology construction</span>"
     ]
   },
   {
     "objectID": "sections/discussion.html",
     "href": "sections/discussion.html",
-    "title": "7  Discussion",
+    "title": "6  Discussion",
     "section": "",
-    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "text": "6.1 Interpretation of the main findings\nThe aim of this project was to analyse how green-space configuration relates to pluvial flood-related surface water change in Delft and Xi’an. The results show that there is a measurable relationship between the green-space metrics and the FWEI-based indicators, but this relationship is not straightforward.\nIn both cities, higher green coverage, larger green patches, and more contiguous green areas were generally associated with higher FWEI change or higher flood share. This is different from the simple expectation that more green space should always reduce flood-related surface water. The findings therefore need to be interpreted as spatial associations, not as direct causal effects.\nOne possible explanation is that green spaces are often located in areas where surface water can accumulate and remain visible after rainfall. Parks, fields, open spaces, and low-lying green areas may temporarily store water. In a remote-sensing-based index such as FWEI, this can appear as increased surface water. In this sense, higher FWEI values in green areas do not necessarily mean that green spaces are performing badly. They may indicate that water is being stored or retained in open areas rather than moving immediately into built-up spaces.\nAnother possible explanation is related to detectability. Surface water may be easier to detect in open green areas than in dense urban areas. In built-up areas, water can be hidden by buildings, shadows, narrow streets, roofs, or drainage infrastructure. This means that the FWEI signal may capture surface water more clearly in open landscapes than in compact urban fabric. Therefore, the positive relationship between green metrics and FWEI-based indicators may partly reflect how remote sensing observes water, rather than the actual hydrological effect of green space.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Discussion</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discussion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/discussion.html#comparison-between-delft-and-xian",
+    "href": "sections/discussion.html#comparison-between-delft-and-xian",
+    "title": "6  Discussion",
+    "section": "6.2 Comparison between Delft and Xi’an",
+    "text": "6.2 Comparison between Delft and Xi’an\nA useful outcome of the project is that the same workflow could be applied to both Delft and Xi’an. The two cities differ strongly in size, urban structure, climate context, and data availability. Despite these differences, the grid-based method produced comparable outputs for both cases. This supports the use of a shared spatial framework for cross-city green infrastructure analysis, which is important because differences in data and spatial units can make comparisons difficult (Meerow 2019).\nThe typology results were especially useful for comparison. Both cities showed four similar green-space configurations: highly green and contiguous areas, moderately green connected areas, sparse green fragmented areas, and low-green dispersed areas. This suggests that similar spatial categories can be identified across different urban contexts when the same metrics and spatial units are used.\nHowever, the strength of the relationships differed between the cities. Delft showed the strongest correlation between mean patch area and flood share, while Xi’an showed the strongest correlation between green percentage and flood share. Xi’an also showed a negative relationship between mean distance to green and flood share, suggesting that FWEI-derived surface water increase was closer to green space. In Delft, this relationship was positive. This difference may be caused by differences in urban form, water networks, land-cover structure, elevation, or the timing and quality of the FWEI imagery.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discussion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/discussion.html#meaning-of-the-typology-results",
+    "href": "sections/discussion.html#meaning-of-the-typology-results",
+    "title": "6  Discussion",
+    "section": "6.3 Meaning of the typology results",
+    "text": "6.3 Meaning of the typology results\nThe typology analysis showed that the highly green and contiguous typology had the highest flood-related values in both cities. This is one of the most important findings of the project. It shows that the relationship between green infrastructure and surface water is not only about how much green space is present, but also where that green space is located and how water appears in the landscape.\nIn planning terms, highly green and contiguous areas may function as water storage spaces during or after rainfall. If water is detected in these areas, it may not always indicate a negative flood outcome. It may also indicate that open spaces are retaining water that would otherwise contribute to runoff elsewhere. This connects to the wider idea that green infrastructure can provide stormwater management benefits, but that these benefits depend on spatial context and planning goals (Brom et al. 2023).\nThe typology approach also makes the results easier to interpret than the correlation analysis alone. Correlations show relationships between individual variables, but typologies show combinations of spatial characteristics. For example, Typology 2 is not only high in green percentage, but also high in patch area and contiguity. This makes it possible to discuss green-space patterns as spatial types rather than isolated metrics.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discussion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/discussion.html#limitations",
+    "href": "sections/discussion.html#limitations",
+    "title": "6  Discussion",
+    "section": "6.4 Limitations",
+    "text": "6.4 Limitations\nThere are several limitations in this project. The first limitation is that FWEI is used as a proxy for flood-related surface water change. It does not measure flood depth, water volume, or direct flood damage. The variable flood_share is based on a threshold applied to FWEI change, so it should be interpreted as an FWEI-derived surface-water increase indicator rather than a confirmed flood map.\nThe second limitation is that equivalent high-resolution pluvial flood-risk data were not available for both cities. Delft had more local flood-related data available, while Xi’an did not have the same type of dataset. Because of this, the project used FWEI for both cities to keep the comparison consistent. This improves comparability, but it also means that the analysis depends strongly on the quality and timing of the satellite imagery.\nThe third limitation is that the analysis does not include all factors that influence pluvial flooding. Flood-related surface water change is affected by rainfall intensity, drainage capacity, soil conditions, elevation, slope, sewer systems, surface materials, and local water management. This project mainly focuses on green-space configuration, so the results cannot fully explain why flooding occurs in specific locations.\nThe fourth limitation is related to the grid-based method. A 100 m by 100 m grid makes comparison easier, but it also simplifies the urban landscape. Some small-scale features may be lost or averaged within grid cells. A different grid size could produce slightly different results. Therefore, the results should be understood as scale-dependent.\nThe fifth limitation is that the K-means typologies depend on the selected input variables and the chosen number of clusters. In this project, four clusters were used because they produced interpretable green-space types. However, a different number of clusters could lead to a different typology structure.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discussion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/discussion.html#reflection-on-the-method",
+    "href": "sections/discussion.html#reflection-on-the-method",
+    "title": "6  Discussion",
+    "section": "6.5 Reflection on the method",
+    "text": "6.5 Reflection on the method\nThe method worked well for creating a comparable spatial workflow. The use of binary green rasters, 100 m grid cells, patch metrics, FWEI change, and K-means clustering allowed the same analysis to be applied to both Delft and Xi’an. This is useful for comparative spatial analysis because it avoids relying on city-specific administrative units or incompatible flood datasets.\nThe decision to focus on patch metrics was also important. Since the green rasters are binary, patch metrics are more suitable than broad class metrics for describing green-space configuration. Metrics such as patch area, contiguity, and nearest-neighbour distance provide interpretable information about the size, internal connection, and isolation of green patches.\nAt the same time, the results show that spatial metrics alone are not enough to explain flood-related processes. The positive relationships between green-space metrics and FWEI-based indicators show that interpretation must include urban context, data limitations, and remote-sensing detectability. This supports the idea that green infrastructure planning requires spatial decision support, but also careful interpretation of the indicators being used (Sarabi et al. 2022).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discussion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/discussion.html#implications-for-green-infrastructure-planning",
+    "href": "sections/discussion.html#implications-for-green-infrastructure-planning",
+    "title": "6  Discussion",
+    "section": "6.6 Implications for green infrastructure planning",
+    "text": "6.6 Implications for green infrastructure planning\nThe findings suggest that planners should be careful when interpreting green-space quantity as a simple solution to pluvial flooding. More green space is not automatically associated with lower FWEI-derived surface water change in this analysis. Instead, green spaces may also be places where water is stored, retained, or more easily detected after rainfall.\nThis does not reduce the importance of green infrastructure. Rather, it shows that green infrastructure should be evaluated based on its spatial role within the wider urban system. Large contiguous green spaces may provide storage capacity, cooling, recreation, and ecological benefits, but their relationship with flood indicators depends on topography, drainage, and surrounding built-up areas.\nFor future planning, the typology approach could be useful for identifying areas where green infrastructure has different potential roles. Highly green and contiguous areas may be important for water retention. Low-green dispersed areas may be priorities for additional greening. Sparse green fragmented areas may require different interventions, such as small-scale infiltration measures, street trees, or permeable surfaces.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discussion</span>"
+    ]
+  },
+  {
+    "objectID": "sections/discussion.html#future-research",
+    "href": "sections/discussion.html#future-research",
+    "title": "6  Discussion",
+    "section": "6.7 Future research",
+    "text": "6.7 Future research\nFuture research could improve the analysis by including additional explanatory variables. Elevation, slope, flow accumulation, soil type, impervious surface percentage, drainage infrastructure, and rainfall intensity would help explain why certain areas show more FWEI-derived surface water increase. Including these variables could make it easier to separate the effect of green-space configuration from other spatial factors.\nThe analysis could also be improved by testing different grid sizes. Comparing 50 m, 100 m, and 200 m grids would show how sensitive the results are to spatial scale. Another improvement would be to test different FWEI thresholds for the flood_share variable. This would show whether the results are stable or whether they depend strongly on the chosen threshold.\nFinally, future work could compare the FWEI-derived results with observed flood reports, local flood maps, or hydrological modelling outputs. This would help validate whether the FWEI signal corresponds to actual flood conditions.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Discussion</span>"
     ]
   },
   {
     "objectID": "sections/conclusion.html",
     "href": "sections/conclusion.html",
-    "title": "8  Conclusion",
+    "title": "7  Conclusion",
     "section": "",
-    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
+    "text": "This project investigated how green-space configuration relates to pluvial flood-related surface water change in Delft and Xi’an. The analysis was based on a common grid-based method, using 100 m by 100 m grid cells for both cities. For each grid cell, green-space metrics were calculated from binary green-space rasters and compared with FWEI-based indicators of surface water change.\nThe main research question was:\nHow does the spatial configuration of green spaces relate to pluvial flood-related surface water change in urban areas such as Delft and Xi’an?\nThe results show that green-space configuration and flood-related surface water change are spatially related, but not in a simple or direct way. In both Delft and Xi’an, higher green coverage, larger green patches, and more contiguous green areas were generally associated with higher FWEI change or higher flood share. This means that the results do not support a simple conclusion that more green space automatically leads to less flood-related surface water. Instead, the findings suggest that green spaces may often be located in areas where water is more likely to accumulate, remain visible, or be detected by remote sensing after rainfall.\nThe correlation analysis showed mostly weak to moderate relationships. In Delft, the strongest correlation was between mean patch area and flood share. In Xi’an, the strongest correlation was between green percentage and flood share. In both cities, flood share showed stronger relationships with green-space metrics than mean FWEI change. This suggests that the spatial extent of FWEI-derived surface water increase may be more clearly related to green-space patterns than the average intensity of FWEI change.\nThe typology analysis identified four recurring green-space configurations in both cities: highly green and contiguous areas, moderately green connected areas, sparse green fragmented areas, and low-green dispersed areas. The most important typology result was that the highly green and contiguous areas showed the highest flood-related values in both Delft and Xi’an. This does not mean that these areas cause flooding. A more likely interpretation is that large open green spaces can store or retain visible surface water, and that this water is more easily detected by FWEI than water in dense built-up areas.\nThe comparison between Delft and Xi’an shows that a shared spatial workflow can be applied to very different urban contexts. Despite differences in city size, urban form, climate context, and data availability, similar green-space typologies were identified in both cities. This supports the usefulness of a grid-based landscape metric approach for comparative urban analysis.\nHowever, the study also has important limitations. FWEI is not a direct flood-depth measurement, and the flood share variable is based on a threshold applied to FWEI change. The results should therefore be interpreted as flood-related surface water indicators, not as confirmed flood maps. In addition, the analysis focused mainly on green-space configuration and did not fully include other important flood-related factors such as elevation, slope, rainfall intensity, drainage capacity, soil conditions, and impervious surface percentage.\nOverall, the project shows that green-space configuration matters, but that its relationship with pluvial flood-related surface water change is context-dependent. Green infrastructure should not only be evaluated by the amount of green space present, but also by its spatial arrangement, surrounding urban conditions, and possible role in storing or redirecting water. The typology approach provides a useful way to describe these different green-space patterns and compare them across cities.\nFuture research could improve this analysis by including elevation, slope, imperviousness, drainage data, and observed flood records. It would also be useful to test different grid sizes and different FWEI thresholds to assess how sensitive the results are to methodological choices. With these improvements, the workflow could become a stronger planning-support method for identifying where green infrastructure may contribute to pluvial flood adaptation.\n\n\n\n\nBrom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Conclusion</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion</span>"
     ]
   },
   {
@@ -177,16 +407,6 @@
     "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope\nOnaolapo, and Jens-Christian Svenning. 2023. “A Decision Support\nTool for Green Infrastructure Planning in the Face of Rapid\nUrbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model\nfor Evaluating Ecosystem Service Tradeoffs and Synergies Across Three\nCoastal Megacities.” Environmental Research Letters 14\n(12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial\nFlooding in Urban Areas Across the European Continent.”\nGeographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022.\n“The Nature-Based Solutions Planning Support System: A Playground\nfor Site and Solution Prioritization.” Sustainable Cities and\nSociety 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
     "crumbs": [
       "References"
-    ]
-  },
-  {
-    "objectID": "sections/appendix.html",
-    "href": "sections/appendix.html",
-    "title": "9  Appendix",
-    "section": "",
-    "text": "Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. “A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.” Land 12 (2): 415. https://doi.org/10.3390/land12020415.\n\n\nMeerow, Sara. 2019. “A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.” Environmental Research Letters 14 (12): 125011. https://doi.org/10.1088/1748-9326/ab502c.\n\n\nProkić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. “Pluvial Flooding in Urban Areas Across the European Continent.” Geographica Pannonica 23 (4): 216–32. https://doi.org/10.5937/gp23-23508.\n\n\nSarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. “The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.” Sustainable Cities and Society 78: 103608. https://doi.org/10.1016/j.scs.2021.103608.",
-    "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Appendix</span>"
     ]
   }
 ]
