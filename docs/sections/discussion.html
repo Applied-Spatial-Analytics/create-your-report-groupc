@@ -64,6 +64,9 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-ffc4c3fc79587ee79da4865b6a08975e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -158,8 +161,8 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sections/results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  <a href="../sections/metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Metric selection and redundancy check</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,6 +189,23 @@ div.csl-indent {
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Additional outputs and unused material</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -196,13 +216,12 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#interpretation-of-the-main-findings" id="toc-interpretation-of-the-main-findings" class="nav-link active" data-scroll-target="#interpretation-of-the-main-findings"><span class="header-section-number">6.1</span> Interpretation of the main findings</a></li>
-  <li><a href="#comparison-between-delft-and-xian" id="toc-comparison-between-delft-and-xian" class="nav-link" data-scroll-target="#comparison-between-delft-and-xian"><span class="header-section-number">6.2</span> Comparison between Delft and Xi’an</a></li>
-  <li><a href="#meaning-of-the-typology-results" id="toc-meaning-of-the-typology-results" class="nav-link" data-scroll-target="#meaning-of-the-typology-results"><span class="header-section-number">6.3</span> Meaning of the typology results</a></li>
+  <li><a href="#results-and-analysis" id="toc-results-and-analysis" class="nav-link active" data-scroll-target="#results-and-analysis"><span class="header-section-number">6.1</span> Results and analysis</a></li>
+  <li><a href="#interpretation-of-delft-and-xian-typologies" id="toc-interpretation-of-delft-and-xian-typologies" class="nav-link" data-scroll-target="#interpretation-of-delft-and-xian-typologies"><span class="header-section-number">6.2</span> Interpretation of Delft and Xi’an typologies</a></li>
+  <li><a href="#nature-based-solution-directions" id="toc-nature-based-solution-directions" class="nav-link" data-scroll-target="#nature-based-solution-directions"><span class="header-section-number">6.3</span> Nature based solution directions</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations"><span class="header-section-number">6.4</span> Limitations</a></li>
-  <li><a href="#reflection-on-the-method" id="toc-reflection-on-the-method" class="nav-link" data-scroll-target="#reflection-on-the-method"><span class="header-section-number">6.5</span> Reflection on the method</a></li>
-  <li><a href="#implications-for-green-infrastructure-planning" id="toc-implications-for-green-infrastructure-planning" class="nav-link" data-scroll-target="#implications-for-green-infrastructure-planning"><span class="header-section-number">6.6</span> Implications for green infrastructure planning</a></li>
-  <li><a href="#future-research" id="toc-future-research" class="nav-link" data-scroll-target="#future-research"><span class="header-section-number">6.7</span> Future research</a></li>
+  <li><a href="#reproducibility-statement-and-ai-use" id="toc-reproducibility-statement-and-ai-use" class="nav-link" data-scroll-target="#reproducibility-statement-and-ai-use"><span class="header-section-number">6.5</span> Reproducibility statement and AI use</a></li>
+  <li><a href="#future-improvements" id="toc-future-improvements" class="nav-link" data-scroll-target="#future-improvements"><span class="header-section-number">6.6</span> Future improvements</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/discussion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/discussion.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -228,55 +247,363 @@ div.csl-indent {
 </header>
 
 
-<section id="interpretation-of-the-main-findings" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="interpretation-of-the-main-findings"><span class="header-section-number">6.1</span> Interpretation of the main findings</h2>
-<p>The aim of this project was to analyse how green-space configuration relates to pluvial flood-related surface water change in Delft and Xi’an. The results show that there is a measurable relationship between the green-space metrics and the FWEI-based indicators, but this relationship is not straightforward.</p>
-<p>In both cities, higher green coverage, larger green patches, and more contiguous green areas were generally associated with higher FWEI change or higher flood share. This is different from the simple expectation that more green space should always reduce flood-related surface water. The findings therefore need to be interpreted as spatial associations, not as direct causal effects.</p>
-<p>One possible explanation is that green spaces are often located in areas where surface water can accumulate and remain visible after rainfall. Parks, fields, open spaces, and low-lying green areas may temporarily store water. In a remote-sensing-based index such as FWEI, this can appear as increased surface water. In this sense, higher FWEI values in green areas do not necessarily mean that green spaces are performing badly. They may indicate that water is being stored or retained in open areas rather than moving immediately into built-up spaces.</p>
-<p>Another possible explanation is related to detectability. Surface water may be easier to detect in open green areas than in dense urban areas. In built-up areas, water can be hidden by buildings, shadows, narrow streets, roofs, or drainage infrastructure. This means that the FWEI signal may capture surface water more clearly in open landscapes than in compact urban fabric. Therefore, the positive relationship between green metrics and FWEI-based indicators may partly reflect how remote sensing observes water, rather than the actual hydrological effect of green space.</p>
+<p>This chapter brings together the main analytical results, their interpretation, the limitations of the workflow, and the reproducibility of the project. The separate results are not discussed as isolated outputs here, but are linked back to the research question: how green space configuration relates to pluvial flood related surface water patterns in Delft and Xi’an.</p>
+<section id="results-and-analysis" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="results-and-analysis"><span class="header-section-number">6.1</span> Results and analysis</h2>
+<p>The correlation analysis compared green space configuration metrics with FWEI derived flood indicators. The main aim was to check whether greener, more compact, or more isolated green space patterns were associated with higher or lower detected surface water values.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>City</th>
+<th>Green-space metric</th>
+<th style="text-align: right;">FWEI change mean</th>
+<th style="text-align: right;">Flood share</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Delft</td>
+<td>Green percentage</td>
+<td style="text-align: right;">0.242</td>
+<td style="text-align: right;">0.344</td>
+</tr>
+<tr class="even">
+<td>Delft</td>
+<td>Contiguity</td>
+<td style="text-align: right;">0.196</td>
+<td style="text-align: right;">0.344</td>
+</tr>
+<tr class="odd">
+<td>Delft</td>
+<td>Nearest-neighbour distance</td>
+<td style="text-align: right;">-0.087</td>
+<td style="text-align: right;">-0.083</td>
+</tr>
+<tr class="even">
+<td>Xi’an</td>
+<td>Green percentage</td>
+<td style="text-align: right;">0.158</td>
+<td style="text-align: right;">0.367</td>
+</tr>
+<tr class="odd">
+<td>Xi’an</td>
+<td>Contiguity</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.216</td>
+</tr>
+<tr class="even">
+<td>Xi’an</td>
+<td>Nearest-neighbour distance</td>
+<td style="text-align: right;">-0.039</td>
+<td style="text-align: right;">-0.054</td>
+</tr>
+</tbody>
+</table>
+<p>The strongest relationships are found with <code>flood_share</code>, not with <code>fwei_change_mean</code>. In both cities, green percentage and contiguity have positive correlations with flood share. This means that cells with more green space or more connected green patches also tend to have a larger share of detected surface water increase. The nearest neighbour distance metric has weak negative correlations, meaning that more isolated green patches are not linked to higher detected water values in the same way.</p>
+<div id="fig-correlation-overview" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlation-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../figures/results/correlation_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;6.1: Correlation between green-space metrics and FWEI-derived flood-pattern indicators."><img src="../figures/results/correlation_overview.png" class="img-fluid figure-img" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Correlation between green-space metrics and FWEI-derived flood-pattern indicators.
+</figcaption>
+</figure>
+</div>
+<p>The correlation results do not support the simple assumption that more green space automatically means less detected water. Instead, the results show that green space configuration and FWEI derived surface water increase overlap spatially in some parts of both cities.</p>
+<p>The final combined typology gives a clearer interpretation than the correlations alone. It combines green space configuration, FWEI derived flood pattern indicators, and DEM variables into one shared classification.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Main results of the final shared green+flood+DEM typology.</caption>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">City</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Cells</th>
+<th style="text-align: right;">Share</th>
+<th style="text-align: right;">Green</th>
+<th style="text-align: right;">Contiguity</th>
+<th style="text-align: right;">FWEI_change</th>
+<th style="text-align: right;">Flood_share</th>
+<th style="text-align: right;">Flood_patches</th>
+<th style="text-align: right;">Elevation</th>
+<th style="text-align: right;">Slope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 1</td>
+<td style="text-align: right;">2088</td>
+<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: right;">0.235</td>
+<td style="text-align: right;">-0.056</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">-2.58</td>
+<td style="text-align: right;">0.204</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 2</td>
+<td style="text-align: right;">5753</td>
+<td style="text-align: right;">57.5</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">0.286</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.145</td>
+<td style="text-align: right;">2.53</td>
+<td style="text-align: right;">-1.87</td>
+<td style="text-align: right;">0.256</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 3</td>
+<td style="text-align: right;">2061</td>
+<td style="text-align: right;">20.6</td>
+<td style="text-align: right;">49.5</td>
+<td style="text-align: right;">0.567</td>
+<td style="text-align: right;">0.075</td>
+<td style="text-align: right;">0.640</td>
+<td style="text-align: right;">1.85</td>
+<td style="text-align: right;">-2.11</td>
+<td style="text-align: right;">0.475</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 4</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">49.7</td>
+<td style="text-align: right;">0.647</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.168</td>
+<td style="text-align: right;">5.11</td>
+<td style="text-align: right;">-0.81</td>
+<td style="text-align: right;">1.055</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 1</td>
+<td style="text-align: right;">1432</td>
+<td style="text-align: right;">14.3</td>
+<td style="text-align: right;">24.7</td>
+<td style="text-align: right;">0.590</td>
+<td style="text-align: right;">-0.010</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">393.44</td>
+<td style="text-align: right;">0.466</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 2</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.084</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">0.091</td>
+<td style="text-align: right;">1.75</td>
+<td style="text-align: right;">398.34</td>
+<td style="text-align: right;">0.328</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 3</td>
+<td style="text-align: right;">861</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">65.1</td>
+<td style="text-align: right;">0.769</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">0.610</td>
+<td style="text-align: right;">2.05</td>
+<td style="text-align: right;">398.76</td>
+<td style="text-align: right;">0.808</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 4</td>
+<td style="text-align: right;">7300</td>
+<td style="text-align: right;">73.0</td>
+<td style="text-align: right;">25.6</td>
+<td style="text-align: right;">0.568</td>
+<td style="text-align: right;">0.022</td>
+<td style="text-align: right;">0.144</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">400.00</td>
+<td style="text-align: right;">0.565</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The main result is that Delft and Xi’an have different dominant typology structures, but the shared Type 3 class contains the strongest FWEI derived surface water values in both cities.</p>
 </section>
-<section id="comparison-between-delft-and-xian" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="comparison-between-delft-and-xian"><span class="header-section-number">6.2</span> Comparison between Delft and Xi’an</h2>
-<p>A useful outcome of the project is that the same workflow could be applied to both Delft and Xi’an. The two cities differ strongly in size, urban structure, climate context, and data availability. Despite these differences, the grid-based method produced comparable outputs for both cases. This supports the use of a shared spatial framework for cross-city green infrastructure analysis, which is important because differences in data and spatial units can make comparisons difficult <span class="citation" data-cites="meerow2019">(<a href="references.html#ref-meerow2019" role="doc-biblioref">Meerow 2019</a>)</span>.</p>
-<p>The typology results were especially useful for comparison. Both cities showed four similar green-space configurations: highly green and contiguous areas, moderately green connected areas, sparse green fragmented areas, and low-green dispersed areas. This suggests that similar spatial categories can be identified across different urban contexts when the same metrics and spatial units are used.</p>
-<p>However, the strength of the relationships differed between the cities. Delft showed the strongest correlation between mean patch area and flood share, while Xi’an showed the strongest correlation between green percentage and flood share. Xi’an also showed a negative relationship between mean distance to green and flood share, suggesting that FWEI-derived surface water increase was closer to green space. In Delft, this relationship was positive. This difference may be caused by differences in urban form, water networks, land-cover structure, elevation, or the timing and quality of the FWEI imagery.</p>
+<section id="interpretation-of-delft-and-xian-typologies" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="interpretation-of-delft-and-xian-typologies"><span class="header-section-number">6.2</span> Interpretation of Delft and Xi’an typologies</h2>
+<p>In Delft, Type 2 is the dominant combined typology. It covers about 58% of the study area and represents the main background condition. It has lower green coverage and lower detected surface water values than Type 3. Type 3 covers about 21% of the study area, but it has the highest flood share, 0.640, and the highest mean FWEI change, 0.075. This means that the strongest detected surface water pattern in Delft is concentrated in a greener and more connected type, not in the lowest green type.</p>
+<div id="fig-results-delft-final-typology" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-results-delft-final-typology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../figures/results/combined_typologies/delft_green_flood_dem_type_context_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;6.2: Final green+flood+DEM typology in Delft."><img src="../figures/results/combined_typologies/delft_green_flood_dem_type_context_overview.png" class="img-fluid figure-img" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-results-delft-final-typology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Final green+flood+DEM typology in Delft.
+</figcaption>
+</figure>
+</div>
+<p>Type 1 also covers about 21% of Delft, but it has almost no detected surface water increase. Type 4 has high green coverage and relatively many detected flood patches, but it covers less than 1% of the study area. It is therefore too small to treat as a major Delft wide pattern.</p>
+<p>In Xi’an, Type 4 is the dominant combined typology. It covers about 73% of the study area and represents the main background condition. It has moderate green coverage and moderate flood share, but it also has the highest mean number of detected flood patches. This means that much of Xi’an is classified as a widespread type with fragmented detected surface water patterns.</p>
+<div id="fig-results-xian-final-typology" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-results-xian-final-typology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../figures/results/combined_typologies/xian_green_flood_dem_type_context_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;6.3: Final green+flood+DEM typology in Xi’an."><img src="../figures/results/combined_typologies/xian_green_flood_dem_type_context_overview.png" class="img-fluid figure-img" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-results-xian-final-typology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Final green+flood+DEM typology in Xi’an.
+</figcaption>
+</figure>
+</div>
+<p>The clearest high water type in Xi’an is Type 3. It covers only about 9% of the study area, but it has the highest green percentage, highest contiguity, highest FWEI change, and highest flood share. Its mean flood share is 0.610 and its mean FWEI change is 0.065. This makes Type 3 the strongest combined green+flood+DEM type in Xi’an, even though it is not the largest type.</p>
+<p>A specific issue in Xi’an is the narrow Type 1 band along the northern edge of the typology map. This band is a grid alignment artefact from preprocessing. It is not interpreted as a real typology zone. This also means that the reported Type 1 percentage in Xi’an is overestimated. The corrected share was not recalculated, so the table values are kept as produced by the workflow, but the interpretation does not rely on this edge band.</p>
+<p>Overall, Delft has a more mixed typology structure, while Xi’an is more strongly dominated by one background type. However, both cities show that the strongest detected surface water values occur in the greener and more contiguous Type 3 class.</p>
 </section>
-<section id="meaning-of-the-typology-results" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="meaning-of-the-typology-results"><span class="header-section-number">6.3</span> Meaning of the typology results</h2>
-<p>The typology analysis showed that the highly green and contiguous typology had the highest flood-related values in both cities. This is one of the most important findings of the project. It shows that the relationship between green infrastructure and surface water is not only about how much green space is present, but also where that green space is located and how water appears in the landscape.</p>
-<p>In planning terms, highly green and contiguous areas may function as water storage spaces during or after rainfall. If water is detected in these areas, it may not always indicate a negative flood outcome. It may also indicate that open spaces are retaining water that would otherwise contribute to runoff elsewhere. This connects to the wider idea that green infrastructure can provide stormwater management benefits, but that these benefits depend on spatial context and planning goals <span class="citation" data-cites="brom2023">(<a href="references.html#ref-brom2023" role="doc-biblioref">Brom et al. 2023</a>)</span>.</p>
-<p>The typology approach also makes the results easier to interpret than the correlation analysis alone. Correlations show relationships between individual variables, but typologies show combinations of spatial characteristics. For example, Typology 2 is not only high in green percentage, but also high in patch area and contiguity. This makes it possible to discuss green-space patterns as spatial types rather than isolated metrics.</p>
+<section id="nature-based-solution-directions" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="nature-based-solution-directions"><span class="header-section-number">6.3</span> Nature based solution directions</h2>
+<p>The final typology was also used to identify which types are most relevant for nature based solution discussion. This is not a measured flood risk ranking. It is only a practical interpretation based on the available green space, FWEI derived flood, and DEM indicators.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Typology candidates for planning interpretation.</caption>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 50%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">City</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Interpretation</th>
+<th style="text-align: left;">Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 3</td>
+<td style="text-align: left;">green area with detected water, possibly storage or easier detection</td>
+<td style="text-align: left;">floodable parks, retention basins, wetland enhancement</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 2</td>
+<td style="text-align: left;">low green and relatively high detected water</td>
+<td style="text-align: left;">depaving, rain gardens, permeable surfaces</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 4</td>
+<td style="text-align: left;">green area with detected water, possibly storage or easier detection</td>
+<td style="text-align: left;">floodable parks, retention basins, wetland enhancement</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delft</td>
+<td style="text-align: left;">Type 1</td>
+<td style="text-align: left;">less problematic or unclear</td>
+<td style="text-align: left;">no clear solution from typology alone</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 3</td>
+<td style="text-align: left;">green area with detected water, possibly storage or easier detection</td>
+<td style="text-align: left;">floodable parks, retention basins, wetland enhancement</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 4</td>
+<td style="text-align: left;">many separate detected water patches</td>
+<td style="text-align: left;">bioswales, green corridors, connected pocket parks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 2</td>
+<td style="text-align: left;">less problematic or unclear</td>
+<td style="text-align: left;">no clear solution from typology alone</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Xi’an</td>
+<td style="text-align: left;">Type 1</td>
+<td style="text-align: left;">less problematic or unclear</td>
+<td style="text-align: left;">no clear solution from typology alone</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>For Delft, Type 3 is the main candidate. Since this type already has relatively high green coverage, the planning question is not simply where to add more green space. A more relevant direction is to improve the water storage function of existing green areas. Possible interventions include floodable parks, retention basins, wetland enhancement, and controlled temporary storage areas.</p>
+<p>Type 2 in Delft is also relevant because it is the dominant background type. However, its flood values are much lower than Type 3, so it is less urgent as a high water typology. If interventions were considered there, they would more likely focus on small scale improvements such as depaving, rain gardens, and permeable surfaces.</p>
+<p>For Xi’an, Type 3 is again the clearest high water green type. Type 4 is also important because it covers most of the study area and has many separate detected flood patches. This suggests a more fragmented surface water pattern across the urban area. Possible interventions could include bioswales, connected pocket parks, green corridors, rain gardens, and local infiltration measures.</p>
+<p>These suggestions should be treated as planning directions, not final design proposals. The analysis uses FWEI derived surface water change, not measured flood depth. Therefore, the typology can identify relevant spatial patterns, but it cannot determine exact engineering solutions.</p>
 </section>
 <section id="limitations" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="limitations"><span class="header-section-number">6.4</span> Limitations</h2>
-<p>There are several limitations in this project. The first limitation is that FWEI is used as a proxy for flood-related surface water change. It does not measure flood depth, water volume, or direct flood damage. The variable <code>flood_share</code> is based on a threshold applied to FWEI change, so it should be interpreted as an FWEI-derived surface-water increase indicator rather than a confirmed flood map.</p>
-<p>The second limitation is that equivalent high-resolution pluvial flood-risk data were not available for both cities. Delft had more local flood-related data available, while Xi’an did not have the same type of dataset. Because of this, the project used FWEI for both cities to keep the comparison consistent. This improves comparability, but it also means that the analysis depends strongly on the quality and timing of the satellite imagery.</p>
-<p>The third limitation is that the analysis does not include all factors that influence pluvial flooding. Flood-related surface water change is affected by rainfall intensity, drainage capacity, soil conditions, elevation, slope, sewer systems, surface materials, and local water management. This project mainly focuses on green-space configuration, so the results cannot fully explain why flooding occurs in specific locations.</p>
-<p>The fourth limitation is related to the grid-based method. A 100 m by 100 m grid makes comparison easier, but it also simplifies the urban landscape. Some small-scale features may be lost or averaged within grid cells. A different grid size could produce slightly different results. Therefore, the results should be understood as scale-dependent.</p>
-<p>The fifth limitation is that the K-means typologies depend on the selected input variables and the chosen number of clusters. In this project, four clusters were used because they produced interpretable green-space types. However, a different number of clusters could lead to a different typology structure.</p>
+<p>The main limitation is that FWEI is a proxy for flood related surface water change. It does not measure flood depth, water volume, drainage failure, or flood damage. The <code>flood_share</code> variable is also based on a threshold applied to FWEI change, so it should be interpreted as detected surface water increase rather than a confirmed flood depth map.</p>
+<p>This limitation became clear during the data search. For Delft, a local dataset for water depth during intense rainfall was available. This type of dataset would have been more directly useful for analysing pluvial flooding, because it represents water depth instead of relying on a satellite derived proxy.</p>
+<div id="fig-delft-water-depth-discussion" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-delft-water-depth-discussion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../figures/discussion/delft_water_depth_intense_rainfall.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;6.4: Example of Delft water depth during intense rainfall."><img src="../figures/discussion/delft_water_depth_intense_rainfall.png" class="img-fluid figure-img" style="width:80.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-delft-water-depth-discussion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: Example of Delft water depth during intense rainfall.
+</figcaption>
+</figure>
+</div>
+<p>A comparable water depth dataset for Xi’an was not available during the project. We also tried to contact researchers who had used similar pluvial flood or water depth data for Xi’an, in the hope that the dataset could be accessed. However, we did not receive a response. Because the Delft water depth layer could not be matched with an equivalent Xi’an layer, it was not used in the main comparative analysis.</p>
+<p>If comparable water depth maps had been available for both cities, the analysis would have been stronger. The relationship between green space configuration and pluvial flooding could then have been tested more directly, without relying mainly on FWEI as a proxy. It would also have been possible to validate whether the FWEI derived surface water patterns matched actual flood depth patterns.</p>
+<p>A second limitation is that the analysis does not include all factors that influence pluvial flooding. Surface water accumulation is also affected by other variables such as sewer capacity, drainage systems, soil type, surface materials, etc. Because these variables were not equally available for Delft and Xi’an, they could not be included in the shared typology, which means that some local causes of surface water accumulation is missing from the interpretation.</p>
+<p>A third limitation is the 100 m by 100 m grid. The grid makes comparison easier, but it also simplifies the urban landscape. Small local features such as narrow streets, small green strips, local depressions, or drainage channels can be averaged inside one grid cell. A different grid size could therefore produce somewhat different results.</p>
+<p>A fourth limitation is the K-means clustering method. The final typology depends on the selected input variables and the chosen number of clusters. Four clusters were selected because they were interpretable and manageable, but another number of clusters could produce a different typology structure.</p>
 </section>
-<section id="reflection-on-the-method" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="reflection-on-the-method"><span class="header-section-number">6.5</span> Reflection on the method</h2>
-<p>The method worked well for creating a comparable spatial workflow. The use of binary green rasters, 100 m grid cells, patch metrics, FWEI change, and K-means clustering allowed the same analysis to be applied to both Delft and Xi’an. This is useful for comparative spatial analysis because it avoids relying on city-specific administrative units or incompatible flood datasets.</p>
-<p>The decision to focus on patch metrics was also important. Since the green rasters are binary, patch metrics are more suitable than broad class metrics for describing green-space configuration. Metrics such as patch area, contiguity, and nearest-neighbour distance provide interpretable information about the size, internal connection, and isolation of green patches.</p>
-<p>At the same time, the results show that spatial metrics alone are not enough to explain flood-related processes. The positive relationships between green-space metrics and FWEI-based indicators show that interpretation must include urban context, data limitations, and remote-sensing detectability. This supports the idea that green infrastructure planning requires spatial decision support, but also careful interpretation of the indicators being used <span class="citation" data-cites="sarabi2022">(<a href="references.html#ref-sarabi2022" role="doc-biblioref">Sarabi et al. 2022</a>)</span>.</p>
+<section id="reproducibility-statement-and-ai-use" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="reproducibility-statement-and-ai-use"><span class="header-section-number">6.5</span> Reproducibility statement and AI use</h2>
+<p>The workflow is partly reproducible. After the input data are prepared, the R scripts can be used to produce the grid cell metrics, metric selection outputs, correlation tables, maps, and final typologies. The main scripts and report files are included in the GitHub repository, while the necessary larger datasets are stored in the shared SURFdrive folder.</p>
+<p>The repository is organised so that the report can be rendered with Quarto. The main outputs are stored in <code>data/results</code> and <code>figures/results</code>. The most important R scripts are used for calculating green space metrics, generating maps and plots, selecting metrics, and producing the final combined typologies. A README file describes the repository structure, the main scripts, the data folders, and the steps needed to rerun or render the analysis.</p>
+<p>The workflow is not fully automatic from the very beginning. Some preprocessing steps are necessary, including finding suitable datasets, clipping the study areas, checking coordinate reference systems, preparing input layers, and deciding which datasets were comparable between Delft and Xi’an. These manual decisions are important because they influence the final outputs.</p>
+<p>AI tools were used during the project as support for writing, structuring the report, checking R code and combining scripts, improving explanations, and debugging parts of the workflow. AI was also used to help translate technical results into clearer report text. The analysis itself was still based on the datasets, R scripts, maps, and outputs produced during the project. AI was not used as a replacement for the spatial analysis, but as a support tool during coding and phrasing.</p>
 </section>
-<section id="implications-for-green-infrastructure-planning" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="implications-for-green-infrastructure-planning"><span class="header-section-number">6.6</span> Implications for green infrastructure planning</h2>
-<p>The findings suggest that planners should be careful when interpreting green-space quantity as a simple solution to pluvial flooding. More green space is not automatically associated with lower FWEI-derived surface water change in this analysis. Instead, green spaces may also be places where water is stored, retained, or more easily detected after rainfall.</p>
-<p>This does not reduce the importance of green infrastructure. Rather, it shows that green infrastructure should be evaluated based on its spatial role within the wider urban system. Large contiguous green spaces may provide storage capacity, cooling, recreation, and ecological benefits, but their relationship with flood indicators depends on topography, drainage, and surrounding built-up areas.</p>
-<p>For future planning, the typology approach could be useful for identifying areas where green infrastructure has different potential roles. Highly green and contiguous areas may be important for water retention. Low-green dispersed areas may be priorities for additional greening. Sparse green fragmented areas may require different interventions, such as small-scale infiltration measures, street trees, or permeable surfaces.</p>
-</section>
-<section id="future-research" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="future-research"><span class="header-section-number">6.7</span> Future research</h2>
-<p>Future research could improve the analysis by including additional explanatory variables. Elevation, slope, flow accumulation, soil type, impervious surface percentage, drainage infrastructure, and rainfall intensity would help explain why certain areas show more FWEI-derived surface water increase. Including these variables could make it easier to separate the effect of green-space configuration from other spatial factors.</p>
-<p>The analysis could also be improved by testing different grid sizes. Comparing 50 m, 100 m, and 200 m grids would show how sensitive the results are to spatial scale. Another improvement would be to test different FWEI thresholds for the <code>flood_share</code> variable. This would show whether the results are stable or whether they depend strongly on the chosen threshold.</p>
-<p>Finally, future work could compare the FWEI-derived results with observed flood reports, local flood maps, or hydrological modelling outputs. This would help validate whether the FWEI signal corresponds to actual flood conditions.</p>
+<section id="future-improvements" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="future-improvements"><span class="header-section-number">6.6</span> Future improvements</h2>
+<p>Future research should first try to use actual pluvial flood depth or flood risk maps for both cities. If that dataset is present, it would reduce the dependence on FWEI as a proxy. If comparable water depth maps were available for Delft and Xi’an, the relationship between green space configuration and flooding could be tested more directly.</p>
+<p>Like earlier stated, future work could also include more variables. For example drainage infrastructure, soil type, flow accumulation, and sewer capacity could help explain why certain cells show higher detected water values. This would make it easier to separate the role of green space configuration from other flood related factors.</p>
+<p>Another useful step would be to test different grid sizes. Comparing 50 m, 100 m, and 200 m grids would show how sensitive the results are to spatial scale. Testing different FWEI thresholds would also help show whether the flood share results are stable or depend strongly on the chosen threshold.</p>
+<p>Finally, future researchers should correct the Xi’an grid alignment issue that produced the Type 1 edge artefact. This issue happened because of a communication mismatch during the group workflow. One part of the Xi’an preprocessing was prepared using an older version of the study area grid, which was positioned slightly further south. Later, when the scripts and datasets were combined into one workflow, this mismatch became visible as a narrow Type 1 band along the northern edge of the Xi’an typology map. At that stage, it was already too late to fully backtrack and reprepare all affected datasets in QGIS, because several layers and outputs had already been clipped, processed, and linked to the existing workflow. Therefore, the artefact was kept in the final output, but it was not interpreted as a meaningful spatial typology pattern. Future work should rebuild the Xi’an preprocessing from one single final grid, then rerun the metric calculation and typology construction. This would make the Xi’an typology percentages more accurate and improve the reliability of the final typology map.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-brom2023" class="csl-entry" role="listitem">
 Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. <span>“A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.”</span> <em>Land</em> 12 (2): 415. <a href="https://doi.org/10.3390/land12020415">https://doi.org/10.3390/land12020415</a>.
+</div>
+<div id="ref-farhadi2024fwei" class="csl-entry" role="listitem">
+Farhadi, Hadi, Hamid Ebadi, Abbas Kiani, and Ali Asgary. 2024. <span>“A Novel Flood/Water Extraction Index (<span>FWEI</span>) for Identifying Water and Flooded Areas Using <span>Sentinel-2</span> Visible and Near-Infrared Spectral Bands.”</span> <em>Stochastic Environmental Research and Risk Assessment</em> 38: 1873–95. <a href="https://doi.org/10.1007/s00477-024-02660-z">https://doi.org/10.1007/s00477-024-02660-z</a>.
 </div>
 <div id="ref-meerow2019" class="csl-entry" role="listitem">
 Meerow, Sara. 2019. <span>“A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.”</span> <em>Environmental Research Letters</em> 14 (12): 125011. <a href="https://doi.org/10.1088/1748-9326/ab502c">https://doi.org/10.1088/1748-9326/ab502c</a>.
@@ -704,8 +1031,40 @@ Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>�
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/discussion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/discussion.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/discussion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/discussion.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+</body></html>

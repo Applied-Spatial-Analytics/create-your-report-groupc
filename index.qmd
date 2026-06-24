@@ -4,6 +4,8 @@ The present document is the report of Group C for the course Applied Spatial Ana
 
 The repository of this report can be found [here](https://github.com/Applied-Spatial-Analytics/create-your-report-groupc).
 
-This project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.
+This project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged.
 
-Both cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.
+Because comparable pluvial flood risk maps were not available for both cities, FWEI derived surface water change is used as a proxy.
+
+Both cities are analysed using a grid based analysis approach. Green space metrics, flood related indicators, and DEM variables are calculated for each grid cell, after which the results are compared using correlation analysis, metric selection, and combined typology construction.

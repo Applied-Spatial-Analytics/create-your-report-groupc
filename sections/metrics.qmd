@@ -1,0 +1,179 @@
+# Metric selection and redundancy check
+
+This chapter explains which metrics were calculated and how the final metric set was selected. At first, a larger set of green-space, FWEI derived flood, distance to green, and DEM metrics was produced for both Delft and Xi’an. However, not all of these metrics were used in the later analysis, because some of them described almost the same spatial pattern.
+
+The aim of this chapter is therefore to show the full metric set, explain the redundancy check, and identify the metrics that were kept for the combined typology analysis.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(knitr)
+
+root <- if (dir.exists("../data")) ".." else "."
+
+read_table_safe <- function(x) {
+  if (file.exists(x)) read.csv(x) else data.frame(note = paste("File not found:", x))
+}
+```
+
+## Collected metrics
+
+The analysis used three main groups of metrics: green space, FWEI flood indicators, and DEM variables. The green space metrics describe how much green is present and how it is arranged. The flood metrics describe where surface water increase was detected and what pattern it forms. The DEM metrics describe elevation and slope, because lower or flatter areas can be more likely to hold water.
+
+The FWEI metrics are based on the Flood/Water Extraction Index. This index was developed to detect water and flooded areas using Sentinel 2 visible and near infrared bands [@farhadi2024fwei].
+
+
+| Metric group              | Metric             | Meaning                                                                 |
+| ------------------------- | ------------------ | ----------------------------------------------------------------------- |
+| Green-space metrics       | `green_percent`    | Percentage of each grid cell covered by green space.                    |
+| Green-space metrics       | `area`             | Average size of green patches.                                          |
+| Green-space metrics       | `gyrate`           | Spatial spread of green patches.                                        |
+| Green-space metrics       | `contig`           | Compactness and internal connectedness of green patches.                |
+| Green-space metrics       | `enn`              | Distance to the nearest neighbouring green patch.                       |
+| Flood metrics             | `fwei_change_mean` | Average FWEI after-minus-before change per grid cell.                   |
+| Flood metrics             | `flood_share`      | Share of each grid cell with detected surface-water increase.           |
+| Flood metrics             | `pland_flood`      | Percentage of each grid cell covered by detected flood pixels.          |
+| Flood metrics             | `np_flood`         | Number of separate detected flood patches.                              |
+| Flood metrics             | `flood_cohesion`   | Connectedness of detected flood patches.                                |
+| Flood metrics             | `flood_clumpy`     | Clustering of detected flood pixels.                                    |
+| Flood metrics             | `flood_lpi`        | Dominance of the largest detected flood patch.                          |
+| Distance-to-green metrics | `mean_dist_green`  | Average distance from detected water pixels to the nearest green pixel. |
+| Distance-to-green metrics | `min_dist_green`   | Minimum distance from detected water pixels to the nearest green pixel. |
+| DEM metrics               | `elevation_mean`   | Average elevation per grid cell.                                        |
+| DEM metrics               | `elevation_min`    | Lowest elevation value per grid cell.                                   |
+| DEM metrics               | `slope_mean`       | Average slope per grid cell.                                            |
+
+## Metric redundancy check
+
+Before selecting the final metrics, the candidate metrics were checked for redundancy. This was necessary because clustering is sensitive to the input variables. If two metrics describe almost the same pattern, including both of them would give that pattern too much influence.
+
+Pearson correlation was used to compare the candidate metrics. A correlation close to `1` or `-1` means that two metrics are strongly related. In this analysis, metric pairs with an absolute correlation above about `0.80` were treated as highly redundant.
+
+![Metric redundancy heatmap.](../figures/results/metric_selection/metric_redundancy_heatmap.png){width=100%}
+
+The redundancy check showed that several variables were strongly related. This was especially clear for flood extent metrics and elevation metrics. For example, `flood_share` and `pland_flood` had a correlation of `1.00`, meaning they were identical in practice. `elevation_mean` and `elevation_min` were also almost identical.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+high_corr <- read_table_safe(file.path(root, "data/results/metric_selection/highly_correlated_metrics.csv"))
+
+if ("correlation" %in% names(high_corr)) high_corr$correlation <- round(high_corr$correlation, 3)
+
+if ("abs_correlation" %in% names(high_corr)) high_corr$abs_correlation <- round(high_corr$abs_correlation, 3)
+
+knitr::kable(high_corr, caption = "Highly correlated metric pairs.")
+```
+
+## Redundant metrics
+
+The table below shows the final decisions for the highly correlated metric pairs. In most cases, one metric was kept and the other was removed from the final metric set.
+
+![Metric redundancy decision table.](../figures/results/metric_selection/redundant_metric_decisions_table.png){width=100%}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+redundant_decisions <- read_table_safe(file.path(root, "data/results/metric_selection/redundant_metric_decisions.csv"))
+
+knitr::kable(redundant_decisions, caption = "Metric redundancy decisions.")
+```
+
+The main decisions were as follows. `flood_share` was kept instead of `pland_flood`, because both metrics measure detected surface water extent. `flood_lpi` was removed because it was also strongly related to flood extent. `elevation_mean` was kept instead of `elevation_min`, because both showed almost the same elevation pattern. `gyrate` was removed because it strongly overlapped with other green patch metrics. `area` was also removed from the final metric set because it strongly correlated with `green_percent`.
+
+The distance to green metrics, `mean_dist_green` and `min_dist_green`, were not used in the final metric set. They are still useful for interpretation, but they describe the relationship between detected water and green space rather than the main green, flood, or topographic condition of the grid cell.
+
+## Final selected metrics
+
+After the redundancy check, the final metric set was reduced. The aim was to keep one representative metric for each important dimension of the analysis: green amount, green compactness, green isolation, FWEI derived water change, flood extent, flood fragmentation, flood clustering, elevation, and slope.
+
+| Metric group         | Final metric       | Why it was kept                                                         |
+| -------------------- | ------------------ | ----------------------------------------------------------------------- |
+| Green amount         | `green_percent`    | Represents how much green space is present in each grid cell.           |
+| Green configuration  | `contig`           | Represents the compactness and internal connectedness of green patches. |
+| Green isolation      | `enn`              | Represents how isolated green patches are from nearby green patches.    |
+| Surface-water change | `fwei_change_mean` | Represents the average FWEI-derived surface-water change.               |
+| Flood extent         | `flood_share`      | Represents the share of each cell with detected surface-water increase. |
+| Flood fragmentation  | `np_flood`         | Represents the number of separate detected flood patches.               |
+| Flood clustering     | `flood_clumpy`     | Represents whether detected water is clustered or scattered.            |
+| Topography           | `elevation_mean`   | Represents average elevation conditions.                                |
+| Topography           | `slope_mean`       | Represents average terrain steepness or flatness.                       |
+
+These selected metrics were then used as the basis for the combined typology analysis. The metric set keeps the main dimensions of the research question while avoiding double counting strongly overlapping variables.
+
+## Final metric maps
+
+The maps below show the final metrics that were kept after the redundancy check. They are shown in tabs so that the spatial patterns can be compared without making the chapter too long.
+
+::: {.panel-tabset}
+
+### Green percent
+
+`green_percent` shows the amount of green space in each grid cell.
+
+![Delft green percentage.](../figures/results/delft_green_percent_context.png){width=49%}
+![Xi’an green percentage.](../figures/results/xian_green_percent_context.png){width=49%}
+
+### Contiguity
+
+`contig` shows whether green patches are compact and internally connected.
+
+![Delft contiguity.](../figures/results/delft_contig.png){width=49%}
+![Xi’an contiguity.](../figures/results/xian_contig.png){width=49%}
+
+### Nearest-neighbour distance
+
+`enn` shows how isolated green patches are from other green patches.
+
+![Delft nearest-neighbour distance.](../figures/results/delft_enn.png){width=49%}
+![Xi’an nearest-neighbour distance.](../figures/results/xian_enn.png){width=49%}
+
+### FWEI change
+
+`fwei_change_mean` shows the average FWEI-derived surface-water change per grid cell.
+
+![Delft FWEI change.](../figures/results/delft_fwei_change_mean_context.png){width=49%}
+![Xi’an FWEI change.](../figures/results/xian_fwei_change_mean_context.png){width=49%}
+
+### Flood share
+
+`flood_share` shows the proportion of each grid cell where surface-water increase was detected.
+
+![Delft flood share.](../figures/results/delft_flood_share_context.png){width=49%}
+![Xi’an flood share.](../figures/results/xian_flood_share_context.png){width=49%}
+
+### Number of flood patches
+
+`np_flood` shows whether detected water appears as one patch or many separate patches.
+
+![Delft number of flood patches.](../figures/results/delft_np_flood.png){width=49%}
+![Xi’an number of flood patches.](../figures/results/xian_np_flood.png){width=49%}
+
+### Flood clumpiness
+
+`flood_clumpy` shows whether detected water pixels are clustered or scattered.
+
+![Delft flood clumpiness.](../figures/results/delft_flood_clumpy.png){width=49%}
+![Xi’an flood clumpiness.](../figures/results/xian_flood_clumpy.png){width=49%}
+
+### Elevation
+
+`elevation_mean` shows the average elevation per grid cell.
+
+![Delft mean elevation.](../figures/results/delft_elevation_mean_context.png){width=49%}
+![Xi’an mean elevation.](../figures/results/xian_elevation_mean_context.png){width=49%}
+
+### Slope
+
+`slope_mean` shows the average slope per grid cell.
+
+![Delft mean slope.](../figures/results/delft_slope_mean.png){width=49%}
+![Xi’an mean slope.](../figures/results/xian_slope_mean.png){width=49%}
+
+:::

@@ -9,7 +9,7 @@
 <meta name="author" content="Hassan Osman">
 <meta name="author" content="Akhil Veeranki">
 <meta name="author" content="Daniel Marx">
-<meta name="dcterms.date" content="2026-06-19">
+<meta name="dcterms.date" content="2026-06-24">
 
 <title>Green Space Configuration and Pluvial Flood Risk</title>
 <style>
@@ -161,8 +161,8 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sections/results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  <a href="./sections/metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Metric selection and redundancy check</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -189,6 +189,23 @@ div.csl-indent {
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sections/appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Additional outputs and unused material</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -249,7 +266,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 19, 2026</p>
+      <p class="date">June 24, 2026</p>
     </div>
   </div>
   
@@ -265,13 +282,17 @@ div.csl-indent {
 <h1 class="unnumbered">Introduction</h1>
 <p>The present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).</p>
 <p>The repository of this report can be found <a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc">here</a>.</p>
-<p>This project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged. For this reason, the analysis uses landscape metrics such as patch size, fragmentation, aggregation, and connectivity.</p>
-<p>Both cities are analysed using a common grid-based approach. Green-space metrics and flood-related surface water change values are calculated for each grid cell, after which the results are compared using correlation analysis and typology construction.</p>
+<p>This project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged.</p>
+<p>Because comparable pluvial flood risk maps were not available for both cities, FWEI derived surface water change is used as a proxy.</p>
+<p>Both cities are analysed using a grid based analysis approach. Green space metrics, flood related indicators, and DEM variables are calculated for each grid cell, after which the results are compared using correlation analysis, metric selection, and combined typology construction.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-brom2023" class="csl-entry" role="listitem">
 Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. <span>“A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.”</span> <em>Land</em> 12 (2): 415. <a href="https://doi.org/10.3390/land12020415">https://doi.org/10.3390/land12020415</a>.
+</div>
+<div id="ref-farhadi2024fwei" class="csl-entry" role="listitem">
+Farhadi, Hadi, Hamid Ebadi, Abbas Kiani, and Ali Asgary. 2024. <span>“A Novel Flood/Water Extraction Index (<span>FWEI</span>) for Identifying Water and Flooded Areas Using <span>Sentinel-2</span> Visible and Near-Infrared Spectral Bands.”</span> <em>Stochastic Environmental Research and Risk Assessment</em> 38: 1873–95. <a href="https://doi.org/10.1007/s00477-024-02660-z">https://doi.org/10.1007/s00477-024-02660-z</a>.
 </div>
 <div id="ref-meerow2019" class="csl-entry" role="listitem">
 Meerow, Sara. 2019. <span>“A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.”</span> <em>Environmental Research Letters</em> 14 (12): 125011. <a href="https://doi.org/10.1088/1748-9326/ab502c">https://doi.org/10.1088/1748-9326/ab502c</a>.

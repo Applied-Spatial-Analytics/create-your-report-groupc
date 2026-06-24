@@ -1,0 +1,9 @@
+correlated_metrics,correlation,decision,reason
+flood_share + pland_flood,1,"keep flood_share, remove pland_flood",both measure detected water extent
+elevation_mean + elevation_min,1,"keep elevation_mean, remove elevation_min",both describe almost the same elevation pattern
+flood_share + flood_lpi,0.979,"keep flood_share, remove flood_lpi",largest flood patch mostly follows flood extent
+pland_flood + flood_lpi,0.979,remove pland_flood and flood_lpi,both overlap strongly with flood extent
+mean_dist_green + min_dist_green,0.924,"remove both from typology, keep only for interpretation",both measure distance to green space
+gyrate + contig,0.885,"keep contig, remove gyrate",patch spread overlaps with compactness
+area + gyrate,0.873,"keep contig, remove gyrate",patch size overlaps with patch spread
+green_percent + area,0.837,"keep green_percent, remove area",green amount overlaps with patch size

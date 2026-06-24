@@ -52,7 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sections/results.html" rel="next">
+<link href="../sections/metrics.html" rel="next">
 <link href="../sections/preliminary.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -161,8 +161,8 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sections/results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  <a href="../sections/metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Metric selection and redundancy check</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -189,6 +189,23 @@ div.csl-indent {
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Additional outputs and unused material</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -199,15 +216,12 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#research-workflow" id="toc-research-workflow" class="nav-link active" data-scroll-target="#research-workflow"><span class="header-section-number">3.1</span> Research workflow</a></li>
-  <li><a href="#spatial-unit-of-analysis" id="toc-spatial-unit-of-analysis" class="nav-link" data-scroll-target="#spatial-unit-of-analysis"><span class="header-section-number">3.2</span> Spatial unit of analysis</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">3.3</span> Data preparation</a></li>
-  <li><a href="#green-space-metrics" id="toc-green-space-metrics" class="nav-link" data-scroll-target="#green-space-metrics"><span class="header-section-number">3.4</span> Green-space metrics</a></li>
-  <li><a href="#fwei-change-and-flood-related-variables" id="toc-fwei-change-and-flood-related-variables" class="nav-link" data-scroll-target="#fwei-change-and-flood-related-variables"><span class="header-section-number">3.5</span> FWEI change and flood-related variables</a></li>
-  <li><a href="#distance-from-flooded-pixels-to-green-space" id="toc-distance-from-flooded-pixels-to-green-space" class="nav-link" data-scroll-target="#distance-from-flooded-pixels-to-green-space"><span class="header-section-number">3.6</span> Distance from flooded pixels to green space</a></li>
-  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis"><span class="header-section-number">3.7</span> Correlation analysis</a></li>
-  <li><a href="#typology-construction" id="toc-typology-construction" class="nav-link" data-scroll-target="#typology-construction"><span class="header-section-number">3.8</span> Typology construction</a></li>
-  <li><a href="#software-and-reproducibility" id="toc-software-and-reproducibility" class="nav-link" data-scroll-target="#software-and-reproducibility"><span class="header-section-number">3.9</span> Software and reproducibility</a></li>
+  <li><a href="#general-workflow" id="toc-general-workflow" class="nav-link active" data-scroll-target="#general-workflow"><span class="header-section-number">3.1</span> General workflow</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">3.2</span> Data preparation</a></li>
+  <li><a href="#grid-based-spatial-unit" id="toc-grid-based-spatial-unit" class="nav-link" data-scroll-target="#grid-based-spatial-unit"><span class="header-section-number">3.3</span> Grid based spatial unit</a></li>
+  <li><a href="#metric-calculation-and-selection" id="toc-metric-calculation-and-selection" class="nav-link" data-scroll-target="#metric-calculation-and-selection"><span class="header-section-number">3.4</span> Metric calculation and selection</a></li>
+  <li><a href="#combined-typology-construction" id="toc-combined-typology-construction" class="nav-link" data-scroll-target="#combined-typology-construction"><span class="header-section-number">3.5</span> Combined typology construction</a></li>
+  <li><a href="#outputs" id="toc-outputs" class="nav-link" data-scroll-target="#outputs"><span class="header-section-number">3.6</span> Outputs</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/methods.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/methods.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -233,150 +247,27 @@ div.csl-indent {
 </header>
 
 
-<section id="research-workflow" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="research-workflow"><span class="header-section-number">3.1</span> Research workflow</h2>
-<p>The project uses a GIS and remote-sensing workflow to compare green-space configuration and flood-related surface water change in Delft and Xi’an. The workflow consists of six main steps.</p>
-<p>First, a 10 km by 10 km study area was selected for each city. Second, both study areas were divided into 100 m by 100 m grid cells. Third, binary green-space rasters were prepared for both cities and used to calculate green-space landscape metrics per grid cell. Fourth, before and after FWEI rasters were used to calculate surface water change. Fifth, the relationship between green-space metrics and FWEI-based indicators was explored using correlation analysis. Finally, K-means clustering was used to construct green-space typologies.</p>
-<!-- FIGURE TO ADD HERE:
-Create a simple workflow diagram.
-Suggested content:
-Input data → preprocessing → 100 m grid → green metrics → FWEI change → correlations → typologies → comparison.
-Suggested file:
-../figures/method_workflow.png
--->
-<div id="fig-method-workflow" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="general-workflow" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="general-workflow"><span class="header-section-number">3.1</span> General workflow</h2>
+<p>The analysis was carried out using a grid based spatial workflow. The same general method was applied to both Delft and Xi’an, so that the results could be compared between the two cities. The main steps were: preparing the input data, clipping the layers to the selected study areas, calculating metrics per grid cell, checking metric redundancy, and constructing combined typologies.</p>
+<p>The workflow was implemented mainly in R, using the packages <code>terra</code>, <code>sf</code>, <code>landscapemetrics</code>, <code>dplyr</code>, and <code>ggplot2</code>. QGIS was used for data preparation, visual checks, and the creation of study area context maps.</p>
+<div id="fig-grid-methodology" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-method-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="../figures/method_workflow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;3.1: Overview of the research workflow."><img src="../figures/method_workflow.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<div aria-describedby="fig-grid-methodology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../figures/preliminary/grid_methodology.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;3.1: Grid-based methodology used for comparing Delft and Xi’an."><img src="../figures/preliminary/grid_methodology.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-method-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Overview of the research workflow.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grid-methodology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Grid-based methodology used for comparing Delft and Xi’an.
 </figcaption>
 </figure>
 </div>
+<p>The figure above shows the basic idea of the method. A common grid is used so that different spatial datasets can be converted into comparable values per cell. This makes it possible to compare green space patterns, FWEI derived surface water change, and DEM variables using the same spatial unit.</p>
 </section>
-<section id="spatial-unit-of-analysis" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="spatial-unit-of-analysis"><span class="header-section-number">3.2</span> Spatial unit of analysis</h2>
-<p>A common grid-based method was used to make Delft and Xi’an comparable. Each study area was divided into 100 m by 100 m grid cells, resulting in 10,000 cells per city. This grid size was chosen as a compromise between spatial detail and computational feasibility. It is small enough to capture local variation in green-space configuration, but large enough to reduce noise from individual pixels.</p>
-<p>All metrics were calculated per grid cell. This means that each cell received a set of green-space variables and flood-related variables. The grid therefore acts as the common analytical unit connecting the different raster datasets.</p>
-</section>
-<section id="data-preparation" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">3.3</span> Data preparation</h2>
-<p>The main datasets used in the analysis were binary green-space rasters and FWEI rasters for Delft and Xi’an. The green-space rasters were prepared as binary maps, where green space has value 1 and non-green space has value 0. Because the original raster resolutions differed between the cities, both green rasters were aggregated to approximately 5 m resolution for the landscape metric calculation. Modal aggregation was used so that each new raster cell received the most common value from the original pixels.</p>
-<p>The FWEI data consisted of before and after rasters for both cities. These rasters were aligned with the green-space analysis grid and used to calculate surface water change. The after raster was subtracted from the before raster using the following logic:</p>
-<p><code>FWEI change = FWEI after - FWEI before</code></p>
-<p>Positive values indicate an increase in the FWEI signal after the event, which is interpreted as an increase in surface water presence. This is treated as a flood-related surface water change proxy, not as direct flood depth.</p>
-</section>
-<section id="green-space-metrics" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="green-space-metrics"><span class="header-section-number">3.4</span> Green-space metrics</h2>
-<p>Green-space configuration was measured using a combination of green coverage and patch-based landscape metrics. The decision to focus on patch metrics was made because the green rasters are binary maps with one main class of interest: green space. Patch metrics are therefore more suitable than broad class metrics because they describe the size, shape, and spatial arrangement of individual green patches.</p>
-<p>The following green-space variables were calculated for each 100 m grid cell:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 44%">
-<col style="width: 43%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Meaning</th>
-<th>Interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>green_percent</code></td>
-<td>Percentage of the grid cell covered by green pixels</td>
-<td>Total amount of green space</td>
-</tr>
-<tr class="even">
-<td><code>area</code></td>
-<td>Mean area of green patches</td>
-<td>Larger values indicate larger green patches</td>
-</tr>
-<tr class="odd">
-<td><code>gyrate</code></td>
-<td>Mean radius of gyration of green patches</td>
-<td>Higher values indicate more spatially extensive patches</td>
-</tr>
-<tr class="even">
-<td><code>contig</code></td>
-<td>Mean contiguity of green patches</td>
-<td>Higher values indicate more internally connected patches</td>
-</tr>
-<tr class="odd">
-<td><code>enn</code></td>
-<td>Mean Euclidean nearest-neighbour distance between patches</td>
-<td>Higher values indicate more isolated patches</td>
-</tr>
-</tbody>
-</table>
-<p>The metrics were calculated in R using the <code>landscapemetrics</code> package. For each grid cell, the green raster was cropped and masked to the cell boundary. The metrics were then calculated only for the green class. If a cell contained no green pixels, the green metric values were set to zero or left as missing where appropriate.</p>
-</section>
-<section id="fwei-change-and-flood-related-variables" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="fwei-change-and-flood-related-variables"><span class="header-section-number">3.5</span> FWEI change and flood-related variables</h2>
-<p>Two main FWEI-based variables were calculated per grid cell. The first was <code>fwei_change_mean</code>, which represents the mean FWEI change value within each grid cell. This variable captures the average change in surface water signal after the event.</p>
-<p>The second variable was <code>flood_share</code>. To calculate this, the FWEI change raster was converted into a binary surface-water increase mask using a threshold. Pixels with FWEI change greater than 0.05 were classified as 1, while all other pixels were classified as 0. The mean value of this binary raster was then calculated per grid cell. This means that <code>flood_share</code> represents the proportion of each grid cell classified as FWEI-derived increased surface water.</p>
-<p>This variable should be interpreted carefully. It does not represent flood depth and it does not prove that every classified pixel was flooded. Instead, it provides a consistent indicator of flood-related surface water increase for both cities.</p>
-</section>
-<section id="distance-from-flooded-pixels-to-green-space" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="distance-from-flooded-pixels-to-green-space"><span class="header-section-number">3.6</span> Distance from flooded pixels to green space</h2>
-<p>An additional variable, <code>mean_dist_green</code>, was calculated to describe the spatial relationship between FWEI-derived flooded pixels and nearby green space. First, a distance raster was created from the binary green-space raster. This raster gives the distance from each non-green pixel to the nearest green pixel. The distance raster was then masked using the FWEI-derived binary surface-water increase mask.</p>
-<p>For each grid cell, the mean distance from FWEI-derived flooded pixels to the nearest green pixel was calculated. Lower values indicate that the surface-water increase pixels are closer to green areas. Higher values indicate that the surface-water increase pixels are farther away from green areas.</p>
-</section>
-<section id="correlation-analysis" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="correlation-analysis"><span class="header-section-number">3.7</span> Correlation analysis</h2>
-<p>Pearson correlation analysis was used to explore the relationship between green-space metrics and flood-related variables. The green-space variables were compared with <code>fwei_change_mean</code> and <code>flood_share</code> for both Delft and Xi’an.</p>
-<p>The correlation analysis was used as an exploratory method. A positive correlation means that higher values of a green-space metric tend to occur in cells with higher FWEI change or flood share. A negative correlation means that higher values of a green-space metric tend to occur in cells with lower FWEI change or flood share. These correlations do not prove causality. They only show spatial association between variables.</p>
-<p>The correlation outputs were saved as a CSV file and visualised as a correlation overview plot.</p>
-<!-- FIGURE TO ADD HERE IN RESULTS, NOT METHODS:
-Suggested file:
-../figures/results/correlation_overview.png
--->
-</section>
-<section id="typology-construction" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="typology-construction"><span class="header-section-number">3.8</span> Typology construction</h2>
-<p>K-means clustering was used to construct green-space typologies. The clustering was based on the green-space metrics <code>green_percent</code>, <code>area</code>, <code>gyrate</code>, <code>contig</code>, and <code>enn</code>. These variables were standardised before clustering so that variables with larger numerical ranges did not dominate the clustering process.</p>
-<p>Four clusters were created for each city. These clusters represent recurring types of green-space configuration. The typologies were then interpreted using the mean values of the green-space metrics and flood-related indicators.</p>
-<p>The resulting typologies can be broadly interpreted as:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Typology</th>
-<th>General interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Typology 1</td>
-<td>Moderately green connected areas</td>
-</tr>
-<tr class="even">
-<td>Typology 2</td>
-<td>Highly green and contiguous areas</td>
-</tr>
-<tr class="odd">
-<td>Typology 3</td>
-<td>Sparse green fragmented areas</td>
-</tr>
-<tr class="even">
-<td>Typology 4</td>
-<td>Low green dispersed areas</td>
-</tr>
-</tbody>
-</table>
-<p>The typologies were used to compare whether different green-space configurations show different levels of FWEI-based surface water change. The typology maps and summary tables were saved for both Delft and Xi’an.</p>
-<!-- FIGURE TO ADD HERE IN TYPOLOGY OR RESULTS CHAPTER:
-Suggested files:
-../figures/results/delft_typology.png
-../figures/results/xian_typology.png
--->
-</section>
-<section id="software-and-reproducibility" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="software-and-reproducibility"><span class="header-section-number">3.9</span> Software and reproducibility</h2>
-<p>The analysis was carried out in R using a reproducible script-based workflow. The main packages used were <code>terra</code>, <code>sf</code>, <code>landscapemetrics</code>, <code>dplyr</code>, <code>ggplot2</code>, and <code>readr</code>. The scripts were stored in the <code>src</code> folder and all processed outputs were saved using relative paths.</p>
-<p>The main scripts were:</p>
+<section id="data-preparation" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">3.2</span> Data preparation</h2>
+<p>Before the analysis, all spatial layers were prepared for the two selected study areas. The main input layers were green space rasters, FWEI before and after rasters, DEM rasters, and context layers for mapping. The layers were checked, clipped to the study areas, and transformed to the correct coordinate reference systems where needed.</p>
+<p>For Delft, the projected coordinate system used in the workflow was EPSG:28992. For Xi’an, the projected coordinate system used in the workflow was EPSG:32649. Using projected coordinate systems was important because the analysis involved distances, grid cells, patch metrics, and slope calculations.</p>
+<p>The main preprocessing steps were:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
@@ -384,31 +275,108 @@ Suggested files:
 </colgroup>
 <thead>
 <tr class="header">
-<th>Script</th>
+<th>Step</th>
 <th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>01_green_metrics_delft.R</code></td>
-<td>Calculates green metrics and FWEI-based variables for Delft</td>
+<td>Study-area clipping</td>
+<td>To make all layers match the selected 10 km by 10 km areas.</td>
 </tr>
 <tr class="even">
-<td><code>02_green_metrics_xian.R</code></td>
-<td>Calculates green metrics and FWEI-based variables for Xi’an</td>
+<td>CRS alignment</td>
+<td>To make sure layers overlap correctly and can be measured in metres.</td>
 </tr>
 <tr class="odd">
-<td><code>03_make_maps_and_plots.R</code></td>
-<td>Creates maps, correlations, typologies, and summary outputs</td>
+<td>Raster alignment</td>
+<td>To make raster layers comparable before extracting grid-cell values.</td>
+</tr>
+<tr class="even">
+<td>Binary green-space preparation</td>
+<td>To separate green and non-green areas.</td>
+</tr>
+<tr class="odd">
+<td>FWEI difference calculation</td>
+<td>To estimate surface-water change between the before and after images.</td>
+</tr>
+<tr class="even">
+<td>DEM preparation</td>
+<td>To calculate elevation and slope values for each grid cell.</td>
 </tr>
 </tbody>
 </table>
-<p>The final outputs include grid-level GeoPackages, CSV tables, correlation outputs, typology maps, and figure files. This structure makes the workflow easier to rerun and makes the analysis more transparent.</p>
+</section>
+<section id="grid-based-spatial-unit" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="grid-based-spatial-unit"><span class="header-section-number">3.3</span> Grid based spatial unit</h2>
+<p>Both cities were analysed using the same 100 m by 100 m grid structure. This grid was used as the common spatial unit for the analysis. Instead of comparing whole city averages, each grid cell received its own green space, flood related, and DEM values.</p>
+<p>This approach was useful because the input layers had different resolutions and formats. Some layers were raster datasets, while others were vector layers or derived outputs. By summarising everything per grid cell, the analysis created one comparable table for Delft and one for Xi’an.</p>
+<p>Each city had 10,000 grid cells. The same grid size was used for both cities, so differences between Delft and Xi’an could be interpreted more consistently.</p>
+</section>
+<section id="metric-calculation-and-selection" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="metric-calculation-and-selection"><span class="header-section-number">3.4</span> Metric calculation and selection</h2>
+<p>After preparing the input layers, the analysis calculated green space, FWEI derived flood, and DEM variables for each 100 m grid cell. This created one combined metric table for Delft and one for Xi’an, where every grid cell had values describing green space structure, detected surface water change, and topographic context.</p>
+<p>The green space rasters were binary, with green space represented as <code>1</code> and non green space as <code>0</code>. Before calculating landscape metrics, both green space rasters were aggregated to approximately 5 m resolution. This reduced processing time while keeping enough spatial detail to describe green space patterns. For each grid cell, the green raster was cropped and masked, after which green coverage and patch based metrics were calculated.</p>
+<p>For the flood related part, FWEI before and after rasters were used. The after raster was subtracted from the before raster to estimate FWEI derived surface water change. A binary surface water increase layer was also created using a threshold of <code>0.05</code>, so that the amount and pattern of detected water could be calculated per grid cell.</p>
+<p>DEM data were added to include topographic context. For each grid cell, elevation and slope variables were calculated and joined to the same grid table as the green space and FWEI derived flood variables. This was important because surface water accumulation can also be influenced by low or flat terrain.</p>
+<p>At first, a broader set of metrics was calculated. This was useful because it allowed different aspects of green space configuration, flood pattern, and topography to be explored. However, some metrics described very similar spatial patterns. Therefore, a metric redundancy check was carried out in the next chapter. The final selected metrics were then used for correlation analysis and combined typology construction.</p>
+</section>
+<section id="combined-typology-construction" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="combined-typology-construction"><span class="header-section-number">3.5</span> Combined typology construction</h2>
+<p>K-means clustering was used to group grid cells into combined typologies. The final typology used the selected green, FWEI derived flood, and DEM metrics. Before clustering, the variables were standardised using <code>scale()</code>, so that variables with larger numerical ranges did not dominate the result.</p>
+<p>A green+flood typology was first created as an intermediate check. The final typology used green+flood+DEM variables, because topography was considered important for interpreting surface water accumulation.</p>
+<p>Four clusters were used. The elbow plot did not show one perfect cluster number, but four clusters were selected because they gave a manageable and interpretable set of spatial types. The same clustering was applied as a shared typology for Delft and Xi’an, meaning both cities were classified using the same type definitions.</p>
+</section>
+<section id="outputs" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="outputs"><span class="header-section-number">3.6</span> Outputs</h2>
+<p>The workflow produced spatial and tabular outputs for both cities. The main outputs were grid layers, metric tables, correlation tables, redundancy tables, maps, and combined typology layers.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Grid metric files</td>
+<td>Store all calculated green, flood, and DEM metrics per grid cell.</td>
+</tr>
+<tr class="even">
+<td>Metric maps</td>
+<td>Show spatial variation in each selected metric.</td>
+</tr>
+<tr class="odd">
+<td>Redundancy tables</td>
+<td>Show which metrics were removed or kept.</td>
+</tr>
+<tr class="even">
+<td>Combined typology maps</td>
+<td>Show the final green+flood+DEM typology in each city.</td>
+</tr>
+<tr class="odd">
+<td>Typology summary tables</td>
+<td>Describe the average characteristics of each type.</td>
+</tr>
+<tr class="even">
+<td>Problematic typology candidates</td>
+<td>Identify typology types for later interpretation and possible nature-based solution discussion.</td>
+</tr>
+</tbody>
+</table>
+<p>This workflow made it possible to move from separate spatial layers to comparable grid cell metrics and finally to shared typologies for Delft and Xi’an.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-brom2023" class="csl-entry" role="listitem">
 Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. <span>“A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.”</span> <em>Land</em> 12 (2): 415. <a href="https://doi.org/10.3390/land12020415">https://doi.org/10.3390/land12020415</a>.
+</div>
+<div id="ref-farhadi2024fwei" class="csl-entry" role="listitem">
+Farhadi, Hadi, Hamid Ebadi, Abbas Kiani, and Ali Asgary. 2024. <span>“A Novel Flood/Water Extraction Index (<span>FWEI</span>) for Identifying Water and Flooded Areas Using <span>Sentinel-2</span> Visible and Near-Infrared Spectral Bands.”</span> <em>Stochastic Environmental Research and Risk Assessment</em> 38: 1873–95. <a href="https://doi.org/10.1007/s00477-024-02660-z">https://doi.org/10.1007/s00477-024-02660-z</a>.
 </div>
 <div id="ref-meerow2019" class="csl-entry" role="listitem">
 Meerow, Sara. 2019. <span>“A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.”</span> <em>Environmental Research Letters</em> 14 (12): 125011. <a href="https://doi.org/10.1088/1748-9326/ab502c">https://doi.org/10.1088/1748-9326/ab502c</a>.
@@ -830,8 +798,8 @@ Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>�
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sections/results.html" class="pagination-link" aria-label="Results">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Results</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../sections/metrics.html" class="pagination-link" aria-label="Metric selection and redundancy check">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Metric selection and redundancy check</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

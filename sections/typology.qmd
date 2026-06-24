@@ -1,67 +1,99 @@
 # Typology construction
 
+This chapter explains how the combined typologies were constructed and how the four final types were defined. The main purpose of this chapter is to show how the grid cells were grouped and what the resulting typology classes represent.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(knitr)
+library(dplyr)
+
+root <- if (dir.exists("../data")) ".." else "."
+
+read_table_safe <- function(x) {
+  if (file.exists(x)) read.csv(x) else data.frame(note = paste("File not found:", x))
+}
+```
+
 ## Purpose of the typology
 
-The typology construction was used to group grid cells with similar green-space configurations. Instead of looking only at individual metrics, the typology approach combines several green-space metrics into broader spatial categories. This makes it easier to compare recurring green-space patterns across Delft and Xi’an.
+The typology construction was used to group grid cells with similar combined spatial conditions. Instead of analysing each metric separately, K means clustering was used to combine the selected metrics into four broader spatial types.
 
-K-means clustering was used to create four typologies for each city. The clustering was based on the following variables: green percentage, mean patch area, radius of gyration, contiguity, and nearest-neighbour distance. These variables describe both the amount of green space and its spatial configuration. Before clustering, the variables were standardised so that metrics with larger numerical ranges did not dominate the result.
+The earlier green only typologies were useful for understanding green space structure, but they did not combine the green, flood, and topographic dimensions of the research question. Therefore, the final typology was based on the selected non redundant green, FWEI derived flood, and DEM metrics.
 
-The four typologies were interpreted using the mean values of the green-space and flood-related variables. The labels are not created automatically by the K-means algorithm. They were assigned afterwards based on the characteristics of each group.
+The final green+flood+DEM typology used the following variables:
 
-## Delft typologies
+| Metric group               | Metrics used                                                  | Meaning                                                                              |
+| -------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Green-space configuration  | `green_percent`, `contig`, `enn`                              | Amount, compactness, and isolation of green space.                                   |
+| FWEI-derived flood pattern | `fwei_change_mean`, `flood_share`, `np_flood`, `flood_clumpy` | Magnitude, extent, fragmentation, and clustering of detected surface-water increase. |
+| DEM context                | `elevation_mean`, `slope_mean`                                | Average elevation and terrain steepness.                                             |
 
-The Delft typology map shows four distinct green-space configurations. Typology 2 represents the greenest and most contiguous cells. These cells have the highest mean green percentage, the largest mean patch area, and the highest contiguity. Typology 3 represents cells with almost no green space. Typology 4 represents low-green cells with small and more dispersed green patches. Typology 1 represents moderately green connected areas.
+A green+flood typology was first created as an intermediate check. However, the green+flood+DEM typology was selected as the final typology because it also includes topographic context. This is relevant because surface water accumulation may be influenced by elevation and slope, not only by green space configuration.
 
-<!-- FIGURE:
-Put the Delft typology map here.
-Suggested file:
-../figures/results/delft_typology.png
--->
+## Clustering method
 
-![Green-space typologies in Delft.](../figures/results/delft_typology.png){#fig-delft-typology width=100%}
+K-means clustering was used to classify the grid cells into four types. The clustering was shared across Delft and Xi’an, meaning that the two cities were classified using the same type definitions. This makes the typologies directly comparable between the two study areas.
 
-| Delft typology | Suggested interpretation          | Number of cells | Green % | Mean patch area | Contiguity |  ENN | FWEI change | Flood share |
-| -------------- | --------------------------------- | --------------: | ------: | --------------: | ---------: | ---: | ----------: | ----------: |
-| Typology 1     | Moderately green connected areas  |            2408 |    47.2 |           0.175 |      0.510 | 14.6 |       0.018 |       0.308 |
-| Typology 2     | Highly green and contiguous areas |             690 |    79.3 |           0.760 |      0.855 | 11.0 |       0.031 |       0.462 |
-| Typology 3     | Sparse green fragmented areas     |            2242 |     0.3 |           0.006 |      0.101 | 11.8 |      -0.007 |       0.225 |
-| Typology 4     | Low green dispersed areas         |            4660 |    14.2 |           0.024 |      0.212 | 19.8 |      -0.001 |       0.131 |
+Before clustering, all input variables were standardised. This was necessary because the metrics have different units and numerical ranges. Without standardisation, variables with larger values could dominate the clustering result.
 
-In Delft, Typology 2 has the highest mean FWEI change and the highest flood share. This means that the greenest and most contiguous cells also show the strongest FWEI-derived surface water increase. Typology 1 also has relatively high flood-related values, while Typology 4 has the lowest flood share. Typology 3 has almost no green space but still shows a flood share of 0.225, which suggests that surface water increase is not only associated with green areas.
+The number of clusters was set to four. The elbow plot was used as a basic check, and four clusters were selected because this produced a manageable number of interpretable spatial types.
 
-## Xi’an typologies
+![Elbow plot for the shared green+flood+DEM typology.](../figures/results/combined_typologies/green_flood_dem_elbow.png){#fig-green-flood-dem-elbow width=80%}
 
-The Xi’an typology map also shows four green-space configurations. The same general pattern appears: Typology 2 is the highly green and contiguous group, Typology 3 is the sparse green group, Typology 4 is a low-green dispersed group, and Typology 1 is a moderately green connected group.
+## Final typology overview
 
-<!-- FIGURE:
-Put the Xi’an typology map here.
-Suggested file:
-../figures/results/xian_typology.png
--->
+The final shared green+flood+DEM typology produced four types. These types were not named automatically by the K-means algorithm. They were interpreted afterwards using their average green, flood, and DEM values.
 
-![Green-space typologies in Xi’an.](../figures/results/xian_typology.png){#fig-xian-typology width=100%}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
 
-| Xi’an typology | Suggested interpretation          | Number of cells | Green % | Mean patch area | Contiguity |  ENN | FWEI change | Flood share |
-| -------------- | --------------------------------- | --------------: | ------: | --------------: | ---------: | ---: | ----------: | ----------: |
-| Typology 1     | Moderately green connected areas  |            3971 |    33.2 |           0.169 |      0.654 | 16.4 |       0.023 |       0.180 |
-| Typology 2     | Highly green and contiguous areas |            1171 |    76.3 |           0.736 |      0.877 | 12.8 |       0.031 |       0.314 |
-| Typology 3     | Sparse green fragmented areas     |            1702 |     0.5 |           0.012 |      0.253 | 14.4 |       0.018 |       0.089 |
-| Typology 4     | Low green dispersed areas         |            3156 |    17.8 |           0.058 |      0.451 | 29.5 |       0.022 |       0.147 |
+final_typology <- read_table_safe(file.path(root, "data/results/final_typology_summary.csv"))
 
-In Xi’an, Typology 2 also has the highest mean FWEI change and the highest flood share. This is similar to Delft. Typology 3, which has almost no green space, has the lowest flood share. Typology 4 has low green coverage and a relatively high nearest-neighbour distance, meaning that green patches are more dispersed and isolated.
+final_typology_small <- final_typology %>%
+  transmute(
+    City = city,
+    Type = type,
+    Cells = n_cells,
+    `Share (%)` = round(percent_cells, 1),
+    `Green (%)` = round(mean_green_percent, 1),
+    Contiguity = round(mean_contig, 3),
+    ENN = round(mean_enn, 1),
+    `FWEI change` = round(mean_fwei_change_mean, 3),
+    `Flood share` = round(mean_flood_share, 3),
+    `Flood patches` = round(mean_np_flood, 2),
+    `Flood clumpiness` = round(mean_flood_clumpy, 3),
+    Elevation = round(mean_elevation_mean, 2),
+    Slope = round(mean_slope_mean, 3)
+  )
 
-## Comparison of typologies between Delft and Xi’an
+knitr::kable(final_typology_small, caption = "Summary of the final shared green+flood+DEM typology.")
+```
 
-The typology results show that similar green-space configurations can be identified in both cities, despite the differences between Delft and Xi’an. In both cases, the clustering produced a highly green and contiguous typology, a moderately green typology, a low-green dispersed typology, and a sparse green typology.
+## Delft typology
 
-This is an important result because it suggests that the grid-based landscape metric method can identify comparable spatial patterns across different urban contexts. The actual locations of the typologies differ between the cities, but the general types are similar.
+The  green+flood+DEM typology was made for Delft to show how the shared typology classes are distributed across the study area. The map is mainly used here to show the spatial output of the clustering process.
 
-The strongest flood-related values occur in Typology 2 in both Delft and Xi’an. This typology has the highest green coverage, largest patch area, and highest contiguity. This finding should be interpreted carefully. It does not mean that highly green and contiguous areas increase flooding. Instead, it suggests that these areas are spatially associated with higher FWEI-derived surface water increase. This could be because parks, open green areas, and low-lying spaces are more likely to store visible surface water after rainfall.
+![Final green+flood+DEM typology in Delft.](../figures/results/combined_typologies/delft_green_flood_dem_type_context.png){#fig-delft-final-typology width=100%}
 
-## Typology interpretation
+The Delft map shows that several typology classes occur within the study area, rather than one single type covering the whole city. This means that the combined green, flood related, and DEM conditions vary spatially within Delft.
 
-The typology construction helps move the analysis beyond individual correlations. While the correlation analysis shows the strength and direction of relationships between variables, the typology analysis shows how combinations of green-space characteristics relate to flood-related indicators.
+## Xi’an typology
 
-The results suggest that the most flood-related surface water change is not found in the most fragmented green areas, but in the highly green and contiguous areas. This pattern appears in both cities. The lowest flood share is found in low-green or sparse-green typologies, especially in Xi’an. This may reflect the ability of remote sensing to detect water more clearly in open green areas than in dense built-up areas.
+The  green+flood+DEM typology was also made for Xi'an using the same method.
 
-Overall, the typology results show that green-space configuration and FWEI-based surface water change are related, but not in a simple protective direction. The relationship depends on the spatial context of the green areas and the way surface water is detected.
+![Final green+flood+DEM typology in Xi’an.](../figures/results/combined_typologies/xian_green_flood_dem_type_context.png){#fig-xian-final-typology width=100%}
+
+The Xi’an map shows a different typology structure from Delft, with one type covering a larger part of the study area. The narrow Type 1 band along the northern edge of the Xi’an map is a preprocessing artefact caused by a grid alignment issue. It is therefore not interpreted as a meaningful typology zone. The cause of this mismatch issue is discussed in more detail further in the discussion chapter.
+
+## Comparison of typology structure
+
+The shared typology allows Delft and Xi’an to be compared using the same four type definitions. The typology maps show that the two cities have different spatial structures. Delft has a more mixed distribution of types, while Xi’an is more strongly dominated by one type.
+
+The detailed interpretation of these differences, including which typology classes are most relevant for nature based solutions in Delft and Xi’an, is also presented in the next chapter.
+
+

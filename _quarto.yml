@@ -23,12 +23,14 @@ book:
     - sections/problem_statement.qmd
     - sections/preliminary.qmd
     - sections/methods.qmd
-    - sections/results.qmd
+    - sections/metrics.qmd
     - sections/typology.qmd
     - sections/discussion.qmd
     - sections/conclusion.qmd
     - sections/references.qmd
 
+  appendices:
+    - sections/appendix.qmd
 
 bibliography: references.bib
 biblio-title: "References"

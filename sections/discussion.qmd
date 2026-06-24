@@ -1,63 +1,134 @@
 # Discussion
 
-## Interpretation of the main findings
+This chapter brings together the main analytical results, their interpretation, the limitations of the workflow, and the reproducibility of the project. The separate results are not discussed as isolated outputs here, but are linked back to the research question: how green space configuration relates to pluvial flood related surface water patterns in Delft and Xi’an.
 
-The aim of this project was to analyse how green-space configuration relates to pluvial flood-related surface water change in Delft and Xi’an. The results show that there is a measurable relationship between the green-space metrics and the FWEI-based indicators, but this relationship is not straightforward.
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
 
-In both cities, higher green coverage, larger green patches, and more contiguous green areas were generally associated with higher FWEI change or higher flood share. This is different from the simple expectation that more green space should always reduce flood-related surface water. The findings therefore need to be interpreted as spatial associations, not as direct causal effects.
+library(knitr)
+library(dplyr)
 
-One possible explanation is that green spaces are often located in areas where surface water can accumulate and remain visible after rainfall. Parks, fields, open spaces, and low-lying green areas may temporarily store water. In a remote-sensing-based index such as FWEI, this can appear as increased surface water. In this sense, higher FWEI values in green areas do not necessarily mean that green spaces are performing badly. They may indicate that water is being stored or retained in open areas rather than moving immediately into built-up spaces.
+root <- if (dir.exists("../data")) ".." else "."
 
-Another possible explanation is related to detectability. Surface water may be easier to detect in open green areas than in dense urban areas. In built-up areas, water can be hidden by buildings, shadows, narrow streets, roofs, or drainage infrastructure. This means that the FWEI signal may capture surface water more clearly in open landscapes than in compact urban fabric. Therefore, the positive relationship between green metrics and FWEI-based indicators may partly reflect how remote sensing observes water, rather than the actual hydrological effect of green space.
+read_table_safe <- function(x) {
+  if (file.exists(x)) read.csv(x) else data.frame(note = paste("File not found:", x))
+}
+```
 
-## Comparison between Delft and Xi’an
+## Results and analysis
 
-A useful outcome of the project is that the same workflow could be applied to both Delft and Xi’an. The two cities differ strongly in size, urban structure, climate context, and data availability. Despite these differences, the grid-based method produced comparable outputs for both cases. This supports the use of a shared spatial framework for cross-city green infrastructure analysis, which is important because differences in data and spatial units can make comparisons difficult [@meerow2019].
+The correlation analysis compared green space configuration metrics with FWEI derived flood indicators. The main aim was to check whether greener, more compact, or more isolated green space patterns were associated with higher or lower detected surface water values.
 
-The typology results were especially useful for comparison. Both cities showed four similar green-space configurations: highly green and contiguous areas, moderately green connected areas, sparse green fragmented areas, and low-green dispersed areas. This suggests that similar spatial categories can be identified across different urban contexts when the same metrics and spatial units are used.
+| City  | Green-space metric         | FWEI change mean | Flood share |
+| ----- | -------------------------- | ---------------: | ----------: |
+| Delft | Green percentage           |            0.242 |       0.344 |
+| Delft | Contiguity                 |            0.196 |       0.344 |
+| Delft | Nearest-neighbour distance |           -0.087 |      -0.083 |
+| Xi’an | Green percentage           |            0.158 |       0.367 |
+| Xi’an | Contiguity                 |            0.073 |       0.216 |
+| Xi’an | Nearest-neighbour distance |           -0.039 |      -0.054 |
 
-However, the strength of the relationships differed between the cities. Delft showed the strongest correlation between mean patch area and flood share, while Xi’an showed the strongest correlation between green percentage and flood share. Xi’an also showed a negative relationship between mean distance to green and flood share, suggesting that FWEI-derived surface water increase was closer to green space. In Delft, this relationship was positive. This difference may be caused by differences in urban form, water networks, land-cover structure, elevation, or the timing and quality of the FWEI imagery.
+The strongest relationships are found with `flood_share`, not with `fwei_change_mean`. In both cities, green percentage and contiguity have positive correlations with flood share. This means that cells with more green space or more connected green patches also tend to have a larger share of detected surface water increase. The nearest neighbour distance metric has weak negative correlations, meaning that more isolated green patches are not linked to higher detected water values in the same way.
 
-## Meaning of the typology results
+![Correlation between green-space metrics and FWEI-derived flood-pattern indicators.](../figures/results/correlation_overview.png){#fig-correlation-overview width=100%}
 
-The typology analysis showed that the highly green and contiguous typology had the highest flood-related values in both cities. This is one of the most important findings of the project. It shows that the relationship between green infrastructure and surface water is not only about how much green space is present, but also where that green space is located and how water appears in the landscape.
+The correlation results do not support the simple assumption that more green space automatically means less detected water. Instead, the results show that green space configuration and FWEI derived surface water increase overlap spatially in some parts of both cities.
 
-In planning terms, highly green and contiguous areas may function as water storage spaces during or after rainfall. If water is detected in these areas, it may not always indicate a negative flood outcome. It may also indicate that open spaces are retaining water that would otherwise contribute to runoff elsewhere. This connects to the wider idea that green infrastructure can provide stormwater management benefits, but that these benefits depend on spatial context and planning goals [@brom2023].
+The final combined typology gives a clearer interpretation than the correlations alone. It combines green space configuration, FWEI derived flood pattern indicators, and DEM variables into one shared classification.
 
-The typology approach also makes the results easier to interpret than the correlation analysis alone. Correlations show relationships between individual variables, but typologies show combinations of spatial characteristics. For example, Typology 2 is not only high in green percentage, but also high in patch area and contiguity. This makes it possible to discuss green-space patterns as spatial types rather than isolated metrics.
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+final_typology <- read_table_safe(file.path(root, "data/results/final_typology_summary.csv"))
+
+final_typology_small <- data.frame(City = final_typology$city, Type = final_typology$type, Cells = final_typology$n_cells, Share = round(final_typology$percent_cells, 1), Green = round(final_typology$mean_green_percent, 1), Contiguity = round(final_typology$mean_contig, 3), FWEI_change = round(final_typology$mean_fwei_change_mean, 3), Flood_share = round(final_typology$mean_flood_share, 3), Flood_patches = round(final_typology$mean_np_flood, 2), Elevation = round(final_typology$mean_elevation_mean, 2), Slope = round(final_typology$mean_slope_mean, 3))
+
+knitr::kable(final_typology_small, caption = "Main results of the final shared green+flood+DEM typology.")
+```
+
+The main result is that Delft and Xi’an have different dominant typology structures, but the shared Type 3 class contains the strongest FWEI derived surface water values in both cities.
+
+## Interpretation of Delft and Xi’an typologies
+
+In Delft, Type 2 is the dominant combined typology. It covers about 58% of the study area and represents the main background condition. It has lower green coverage and lower detected surface water values than Type 3. Type 3 covers about 21% of the study area, but it has the highest flood share, 0.640, and the highest mean FWEI change, 0.075. This means that the strongest detected surface water pattern in Delft is concentrated in a greener and more connected type, not in the lowest green type.
+
+![Final green+flood+DEM typology in Delft.](../figures/results/combined_typologies/delft_green_flood_dem_type_context_overview.png){#fig-results-delft-final-typology width=100%}
+
+Type 1 also covers about 21% of Delft, but it has almost no detected surface water increase. Type 4 has high green coverage and relatively many detected flood patches, but it covers less than 1% of the study area. It is therefore too small to treat as a major Delft wide pattern.
+
+In Xi’an, Type 4 is the dominant combined typology. It covers about 73% of the study area and represents the main background condition. It has moderate green coverage and moderate flood share, but it also has the highest mean number of detected flood patches. This means that much of Xi’an is classified as a widespread type with fragmented detected surface water patterns.
+
+![Final green+flood+DEM typology in Xi’an.](../figures/results/combined_typologies/xian_green_flood_dem_type_context_overview.png){#fig-results-xian-final-typology width=100%}
+
+The clearest high water type in Xi’an is Type 3. It covers only about 9% of the study area, but it has the highest green percentage, highest contiguity, highest FWEI change, and highest flood share. Its mean flood share is 0.610 and its mean FWEI change is 0.065. This makes Type 3 the strongest combined green+flood+DEM type in Xi’an, even though it is not the largest type.
+
+A specific issue in Xi’an is the narrow Type 1 band along the northern edge of the typology map. This band is a grid alignment artefact from preprocessing. It is not interpreted as a real typology zone. This also means that the reported Type 1 percentage in Xi’an is overestimated. The corrected share was not recalculated, so the table values are kept as produced by the workflow, but the interpretation does not rely on this edge band.
+
+Overall, Delft has a more mixed typology structure, while Xi’an is more strongly dominated by one background type. However, both cities show that the strongest detected surface water values occur in the greener and more contiguous Type 3 class.
+
+## Nature based solution directions
+
+The final typology was also used to identify which types are most relevant for nature based solution discussion. This is not a measured flood risk ranking. It is only a practical interpretation based on the available green space, FWEI derived flood, and DEM indicators.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+problematic <- read_table_safe(file.path(root, "data/results/problematic_typology_candidates.csv"))
+
+problematic_small <- data.frame(City = problematic$city, Type = problematic$type, Interpretation = gsub("_", " ", problematic$interpretation), Solution = gsub("_", " ", problematic$possible_solution_direction))
+
+knitr::kable(problematic_small, caption = "Typology candidates for planning interpretation.")
+```
+
+For Delft, Type 3 is the main candidate. Since this type already has relatively high green coverage, the planning question is not simply where to add more green space. A more relevant direction is to improve the water storage function of existing green areas. Possible interventions include floodable parks, retention basins, wetland enhancement, and controlled temporary storage areas.
+
+Type 2 in Delft is also relevant because it is the dominant background type. However, its flood values are much lower than Type 3, so it is less urgent as a high water typology. If interventions were considered there, they would more likely focus on small scale improvements such as depaving, rain gardens, and permeable surfaces.
+
+For Xi’an, Type 3 is again the clearest high water green type. Type 4 is also important because it covers most of the study area and has many separate detected flood patches. This suggests a more fragmented surface water pattern across the urban area. Possible interventions could include bioswales, connected pocket parks, green corridors, rain gardens, and local infiltration measures.
+
+These suggestions should be treated as planning directions, not final design proposals. The analysis uses FWEI derived surface water change, not measured flood depth. Therefore, the typology can identify relevant spatial patterns, but it cannot determine exact engineering solutions.
 
 ## Limitations
 
-There are several limitations in this project. The first limitation is that FWEI is used as a proxy for flood-related surface water change. It does not measure flood depth, water volume, or direct flood damage. The variable `flood_share` is based on a threshold applied to FWEI change, so it should be interpreted as an FWEI-derived surface-water increase indicator rather than a confirmed flood map.
+The main limitation is that FWEI is a proxy for flood related surface water change. It does not measure flood depth, water volume, drainage failure, or flood damage. The `flood_share` variable is also based on a threshold applied to FWEI change, so it should be interpreted as detected surface water increase rather than a confirmed flood depth map.
 
-The second limitation is that equivalent high-resolution pluvial flood-risk data were not available for both cities. Delft had more local flood-related data available, while Xi’an did not have the same type of dataset. Because of this, the project used FWEI for both cities to keep the comparison consistent. This improves comparability, but it also means that the analysis depends strongly on the quality and timing of the satellite imagery.
+This limitation became clear during the data search. For Delft, a local dataset for water depth during intense rainfall was available. This type of dataset would have been more directly useful for analysing pluvial flooding, because it represents water depth instead of relying on a satellite derived proxy.
 
-The third limitation is that the analysis does not include all factors that influence pluvial flooding. Flood-related surface water change is affected by rainfall intensity, drainage capacity, soil conditions, elevation, slope, sewer systems, surface materials, and local water management. This project mainly focuses on green-space configuration, so the results cannot fully explain why flooding occurs in specific locations.
+![Example of Delft water depth during intense rainfall.](../figures/discussion/delft_water_depth_intense_rainfall.png){#fig-delft-water-depth-discussion width=80%}
 
-The fourth limitation is related to the grid-based method. A 100 m by 100 m grid makes comparison easier, but it also simplifies the urban landscape. Some small-scale features may be lost or averaged within grid cells. A different grid size could produce slightly different results. Therefore, the results should be understood as scale-dependent.
+A comparable water depth dataset for Xi’an was not available during the project. We also tried to contact researchers who had used similar pluvial flood or water depth data for Xi’an, in the hope that the dataset could be accessed. However, we did not receive a response. Because the Delft water depth layer could not be matched with an equivalent Xi’an layer, it was not used in the main comparative analysis.
 
-The fifth limitation is that the K-means typologies depend on the selected input variables and the chosen number of clusters. In this project, four clusters were used because they produced interpretable green-space types. However, a different number of clusters could lead to a different typology structure.
+If comparable water depth maps had been available for both cities, the analysis would have been stronger. The relationship between green space configuration and pluvial flooding could then have been tested more directly, without relying mainly on FWEI as a proxy. It would also have been possible to validate whether the FWEI derived surface water patterns matched actual flood depth patterns.
 
-## Reflection on the method
+A second limitation is that the analysis does not include all factors that influence pluvial flooding. Surface water accumulation is also affected by other variables such as sewer capacity, drainage systems, soil type, surface materials, etc. Because these variables were not equally available for Delft and Xi’an, they could not be included in the shared typology, which means that some local causes of surface water accumulation is missing from the interpretation.
 
-The method worked well for creating a comparable spatial workflow. The use of binary green rasters, 100 m grid cells, patch metrics, FWEI change, and K-means clustering allowed the same analysis to be applied to both Delft and Xi’an. This is useful for comparative spatial analysis because it avoids relying on city-specific administrative units or incompatible flood datasets.
+A third limitation is the 100 m by 100 m grid. The grid makes comparison easier, but it also simplifies the urban landscape. Small local features such as narrow streets, small green strips, local depressions, or drainage channels can be averaged inside one grid cell. A different grid size could therefore produce somewhat different results.
 
-The decision to focus on patch metrics was also important. Since the green rasters are binary, patch metrics are more suitable than broad class metrics for describing green-space configuration. Metrics such as patch area, contiguity, and nearest-neighbour distance provide interpretable information about the size, internal connection, and isolation of green patches.
+A fourth limitation is the K-means clustering method. The final typology depends on the selected input variables and the chosen number of clusters. Four clusters were selected because they were interpretable and manageable, but another number of clusters could produce a different typology structure.
 
-At the same time, the results show that spatial metrics alone are not enough to explain flood-related processes. The positive relationships between green-space metrics and FWEI-based indicators show that interpretation must include urban context, data limitations, and remote-sensing detectability. This supports the idea that green infrastructure planning requires spatial decision support, but also careful interpretation of the indicators being used [@sarabi2022].
+## Reproducibility statement and AI use
 
-## Implications for green infrastructure planning
+The workflow is partly reproducible. After the input data are prepared, the R scripts can be used to produce the grid cell metrics, metric selection outputs, correlation tables, maps, and final typologies. The main scripts and report files are included in the GitHub repository, while the necessary larger datasets are stored in the shared SURFdrive folder.
 
-The findings suggest that planners should be careful when interpreting green-space quantity as a simple solution to pluvial flooding. More green space is not automatically associated with lower FWEI-derived surface water change in this analysis. Instead, green spaces may also be places where water is stored, retained, or more easily detected after rainfall.
+The repository is organised so that the report can be rendered with Quarto. The main outputs are stored in `data/results` and `figures/results`. The most important R scripts are used for calculating green space metrics, generating maps and plots, selecting metrics, and producing the final combined typologies. A README file describes the repository structure, the main scripts, the data folders, and the steps needed to rerun or render the analysis.
 
-This does not reduce the importance of green infrastructure. Rather, it shows that green infrastructure should be evaluated based on its spatial role within the wider urban system. Large contiguous green spaces may provide storage capacity, cooling, recreation, and ecological benefits, but their relationship with flood indicators depends on topography, drainage, and surrounding built-up areas.
+The workflow is not fully automatic from the very beginning. Some preprocessing steps are necessary, including finding suitable datasets, clipping the study areas, checking coordinate reference systems, preparing input layers, and deciding which datasets were comparable between Delft and Xi’an. These manual decisions are important because they influence the final outputs.
 
-For future planning, the typology approach could be useful for identifying areas where green infrastructure has different potential roles. Highly green and contiguous areas may be important for water retention. Low-green dispersed areas may be priorities for additional greening. Sparse green fragmented areas may require different interventions, such as small-scale infiltration measures, street trees, or permeable surfaces.
+AI tools were used during the project as support for writing, structuring the report, checking R code and combining scripts, improving explanations, and debugging parts of the workflow. AI was also used to help translate technical results into clearer report text. The analysis itself was still based on the datasets, R scripts, maps, and outputs produced during the project. AI was not used as a replacement for the spatial analysis, but as a support tool during coding and phrasing.
 
-## Future research
+## Future improvements
 
-Future research could improve the analysis by including additional explanatory variables. Elevation, slope, flow accumulation, soil type, impervious surface percentage, drainage infrastructure, and rainfall intensity would help explain why certain areas show more FWEI-derived surface water increase. Including these variables could make it easier to separate the effect of green-space configuration from other spatial factors.
+Future research should first try to use actual pluvial flood depth or flood risk maps for both cities. If that dataset is present, it would reduce the dependence on FWEI as a proxy. If comparable water depth maps were available for Delft and Xi’an, the relationship between green space configuration and flooding could be tested more directly.
 
-The analysis could also be improved by testing different grid sizes. Comparing 50 m, 100 m, and 200 m grids would show how sensitive the results are to spatial scale. Another improvement would be to test different FWEI thresholds for the `flood_share` variable. This would show whether the results are stable or whether they depend strongly on the chosen threshold.
+Like earlier stated, future work could also include more variables. For example drainage infrastructure, soil type, flow accumulation, and sewer capacity could help explain why certain cells show higher detected water values. This would make it easier to separate the role of green space configuration from other flood related factors.
 
-Finally, future work could compare the FWEI-derived results with observed flood reports, local flood maps, or hydrological modelling outputs. This would help validate whether the FWEI signal corresponds to actual flood conditions.
+Another useful step would be to test different grid sizes. Comparing 50 m, 100 m, and 200 m grids would show how sensitive the results are to spatial scale. Testing different FWEI thresholds would also help show whether the flood share results are stable or depend strongly on the chosen threshold.
+
+Finally, future researchers should correct the Xi’an grid alignment issue that produced the Type 1 edge artefact. This issue happened because of a communication mismatch during the group workflow. One part of the Xi’an preprocessing was prepared using an older version of the study area grid, which was positioned slightly further south. Later, when the scripts and datasets were combined into one workflow, this mismatch became visible as a narrow Type 1 band along the northern edge of the Xi’an typology map. At that stage, it was already too late to fully backtrack and reprepare all affected datasets in QGIS, because several layers and outputs had already been clipped, processed, and linked to the existing workflow. Therefore, the artefact was kept in the final output, but it was not interpreted as a meaningful spatial typology pattern. Future work should rebuild the Xi’an preprocessing from one single final grid, then rerun the metric calculation and typology construction. This would make the Xi’an typology percentages more accurate and improve the reliability of the final typology map.
+

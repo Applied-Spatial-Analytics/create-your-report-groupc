@@ -2,76 +2,34 @@
 
 ## Study area selection
 
-The study areas were selected to allow a consistent comparison between Delft and Xi’an. Because the two cities are very different in size, it would not be meaningful to compare their full administrative boundaries directly. Delft is relatively compact, while Xi’an is a much larger metropolitan area. A full-city comparison would therefore create an imbalance in scale, data volume, and spatial heterogeneity.
+The study areas were selected to allow a more balanced comparison between Delft and Xi’an. Because the two cities are very different in size, comparing their full administrative boundaries would not be very meaningful. Delft is relatively compact, while Xi’an is much larger and more spatially extensive. A full city comparison would therefore create a strong imbalance in scale and land cover variation.
 
-To reduce this problem, both cities were analysed using a 10 km by 10 km study area. For Delft, this extent covers the city and its immediate surroundings. For Xi’an, the same-sized extent was placed over a central urban area that contains a mixture of dense built-up land, green spaces, roads, and open areas. This creates a more balanced comparison because both cases are analysed using the same spatial extent.
+To reduce this problem, both cities were analysed using a 10 km by 10 km study area. This gives both cases the same spatial extent, while still allowing the selected areas to represent different urban and environmental conditions.
 
-A 100 m by 100 m grid was then created for each city. This grid is the main spatial unit of analysis. All green-space metrics and flood-related indicators were calculated per grid cell. The grid-based approach makes it possible to compare different datasets with different raster resolutions in a common spatial framework. It also allows the results to be mapped, compared, and clustered into spatial typologies.
+::: {layout-ncol=2}
+![Study area context map for Delft.](../figures/preliminary/delft_study_area_context_map.png){#fig-delft-study-area width=100%}
 
-<!-- FIGURE TO ADD HERE:
-Add a side-by-side study area map showing Delft and Xi'an.
-Show the 10 km by 10 km study extent and the 100 m grid.
-Suggested file:
-../figures/study_area_selection_delft_vs_xi_an.png
--->
+![Study area context map for Xi’an.](../figures/preliminary/xian_study_area_context_map.png){#fig-xian-study-area width=100%}
+:::
 
-![Study area selection for Delft and Xi’an.](../figures/study_area_selection_delft_vs_xi_an.png){#fig-study-area width=100%}
+The maps above show the selected study areas in their wider urban context. They also show that the comparison is based on equally sized areas, rather than on the full administrative extent of both cities.
 
 ## Delft and Xi’an as comparison cases
 
-Delft and Xi’an were chosen because they represent contrasting urban and environmental contexts. Delft is a smaller Dutch city located in a low-lying delta landscape. It contains a dense network of canals, water bodies, streets, buildings, and urban green spaces. Because of its low elevation and highly managed water system, Delft is a relevant case for studying flood-related urban water issues.
+Delft and Xi’an represent clearly different urban contexts. Delft is a smaller Dutch city in a low lying delta setting with a dense water network and a highly managed urban landscape. Xi’an is a much larger Chinese city with a different urban structure, land cover pattern, and topographic setting.
 
-Xi’an is much larger and has a different urban structure. The selected Xi’an study area represents a dense urban environment with large built-up areas, major roads, and green spaces distributed across the city. Compared with Delft, Xi’an has a different climate context, different land-cover patterns, and a different scale of urban development. This contrast makes it useful for testing whether a shared spatial method can identify comparable green-space patterns in very different cities.
+For Delft, the 10 km by 10 km study area fully contains the city. This is useful because Delft is relatively compact, so the selected area includes both the municipality and the surrounding landscape. The municipality boundary is shown inside the study area to make clear where Delft itself is located. This also gives context for surrounding canals, green areas, urban edges, and open landscapes, which are relevant for understanding green space configuration and flood related surface water patterns.
 
-The comparison is therefore not based on the assumption that Delft and Xi’an are similar cities. Instead, the project uses them as contrasting cases. The purpose is to examine whether a common spatial workflow can be applied to both cities and whether similar green-space typologies can be identified despite their differences.
+For Xi’an, the same 10 km by 10 km study area does not cover the full city. Instead, it captures a central urban subset. This area was selected because it includes the historic city centre and city wall, but also large green and heritage spaces such as Weiyang Palace Relics Park, Hancheng Lake, and Daming Palace National Heritage Park. This makes the area useful for comparing dense urban fabric with larger green and open spaces within the same study area size.
 
-## Natural and flood-related context
+The comparison is therefore not based on the idea that Delft and Xi’an are similar cities. Instead, they are used as contrasting cases. This makes it possible to test whether the same spatial workflow can still identify meaningful green space and flood related patterns in both places.
 
-The flood-related focus of this project is pluvial flooding. Pluvial flooding is connected to intense rainfall and surface water accumulation within the urban area. This is different from coastal flooding or river flooding, which are mainly driven by sea levels, storm surges, or river discharge. A pluvial focus is useful for this project because rainfall-driven surface water accumulation can occur in both Delft and Xi’an, even though their wider geographical settings are different.
 
-For Delft, local flood-related data were available, but an equivalent high-resolution pluvial flood-risk dataset was not available for Xi’an. To keep the comparison consistent, the main flood-related indicator in the project is therefore based on FWEI. For both cities, FWEI layers before and after a rainfall or flood-related event were used. The difference between the after and before layers was calculated as an indicator of surface water change.
+## Data availability and first checks
 
-This approach does not measure flood depth directly. Instead, it provides a remote-sensing-based proxy for areas where surface water increased between the two moments. For this reason, the project uses careful wording such as “flood-related surface water change” rather than treating the FWEI output as a direct flood-depth map.
+Before the main analysis, the available green space, FWEI, and DEM layers were checked for both Delft and Xi’an. This was necessary to make sure that the same type of analysis could be applied to both study areas. The layers were clipped to the selected 10 km by 10 km extents and prepared for a common workflow.
 
-<!-- FIGURE TO ADD HERE:
-Add one figure showing FWEI change for Delft and one for Xi'an, or save these for the Results chapter.
-Suggested files after running the scripts:
-../figures/results/delft_fwei_change_mean.png
-../figures/results/xian_fwei_change_mean.png
--->
+The preliminary check showed that both cities had usable green space data, FWEI derived surface water data, and DEM data. However, directly comparable pluvial flood depth maps were not available for both cities. For this reason, FWEI derived surface water change was used as the common flood related proxy.
 
-## Built environment and land-cover context
+The detailed metric maps are shown later in the metric selection chapter. This preliminary chapter only introduces the study areas, explains the comparison between Delft and Xi’an, and gives the basic data context for the analysis.
 
-The built environment is important for this project because impervious surfaces influence how rainfall moves through cities. Dense built-up areas often contain more hard surfaces and fewer infiltration opportunities. Green spaces can interrupt this pattern by providing more permeable surfaces, but their effect may depend on how they are arranged.
-
-The analysis therefore uses binary green-space rasters for both Delft and Xi’an. In these rasters, green areas are represented as value 1 and non-green areas as value 0. The Delft green-space raster was created from local land-cover processing and was originally very high resolution. The Xi’an green-space raster was derived from a high-resolution urban green-space dataset. To make the metric calculation more computationally manageable and comparable, both green rasters were aggregated to approximately 5 m resolution before landscape metrics were calculated.
-
-Initial visual inspection showed that both cities contain a mixture of highly green cells, moderately green cells, low-green cells, and cells with almost no green space. This supported the decision to move beyond simple green coverage and include landscape metrics that describe the configuration of green patches.
-
-<!-- FIGURE TO ADD HERE:
-Add green percentage maps for both cities.
-Suggested files:
-../figures/results/delft_green_percent.png
-../figures/results/xian_green_percent.png
--->
-
-![Green coverage per 100 m grid cell in Delft.](../figures/results/delft_green_percent.png){#fig-delft-green-percent width=100%}
-
-![Green coverage per 100 m grid cell in Xi’an.](../figures/results/xian_green_percent.png){#fig-xian-green-percent width=100%}
-
-## First data exploration
-
-The first data exploration confirmed that the grid-based approach could be used for both cities. The final workflow successfully calculated green-space metrics for 10,000 grid cells in Delft and 10,000 grid cells in Xi’an. For each grid cell, the analysis calculated green coverage, patch area, radius of gyration, contiguity, nearest-neighbour distance, FWEI change, flood share, and distance from FWEI-derived flooded pixels to the nearest green pixel.
-
-The first outputs also showed that the method produces meaningful spatial variation. Some grid cells contain large and contiguous green patches, while others contain only small, fragmented, or almost absent green areas. The FWEI-based variables also vary spatially, allowing comparison between green-space configuration and flood-related surface water change.
-
-The preliminary analysis also showed that the relationship is not as simple as “more green space means less flood-related water”. In the current outputs, some greener cells also show higher FWEI change or flood share. This suggests that the results need to be interpreted carefully. Green spaces may be located in low-lying, open, or wetter areas where surface water is more visible in remote-sensing data. Therefore, the analysis should be understood as an exploration of spatial association rather than proof of direct causality.
-
-The preliminary findings support the need for a typology-based approach. Instead of only analysing individual correlations, the project groups grid cells into green-space typologies. These typologies help describe recurring spatial patterns, such as highly green contiguous areas, moderately green connected areas, low-green dispersed areas, and sparse fragmented areas. These groups can then be compared with the FWEI-based flood-related indicators.
-
-<!-- FIGURE TO ADD HERE:
-Add typology maps later in the Results or Typology chapter, not necessarily here.
-Suggested files:
-../figures/results/delft_typology.png
-../figures/results/xian_typology.png
--->

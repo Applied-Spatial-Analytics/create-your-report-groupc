@@ -1,0 +1,17 @@
+typology,metric
+green_flood,green_percent
+green_flood,contig
+green_flood,enn
+green_flood,fwei_change_mean
+green_flood,flood_share
+green_flood,np_flood
+green_flood,flood_clumpy
+green_flood_dem,green_percent
+green_flood_dem,contig
+green_flood_dem,enn
+green_flood_dem,fwei_change_mean
+green_flood_dem,flood_share
+green_flood_dem,np_flood
+green_flood_dem,flood_clumpy
+green_flood_dem,elevation_mean
+green_flood_dem,slope_mean

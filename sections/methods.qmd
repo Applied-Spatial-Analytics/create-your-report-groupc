@@ -1,113 +1,71 @@
 # Methods
 
-## Research workflow
+## General workflow
 
-The project uses a GIS and remote-sensing workflow to compare green-space configuration and flood-related surface water change in Delft and Xi’an. The workflow consists of six main steps.
+The analysis was carried out using a grid based spatial workflow. The same general method was applied to both Delft and Xi’an, so that the results could be compared between the two cities. The main steps were: preparing the input data, clipping the layers to the selected study areas, calculating metrics per grid cell, checking metric redundancy, and constructing combined typologies.
 
-First, a 10 km by 10 km study area was selected for each city. Second, both study areas were divided into 100 m by 100 m grid cells. Third, binary green-space rasters were prepared for both cities and used to calculate green-space landscape metrics per grid cell. Fourth, before and after FWEI rasters were used to calculate surface water change. Fifth, the relationship between green-space metrics and FWEI-based indicators was explored using correlation analysis. Finally, K-means clustering was used to construct green-space typologies.
+The workflow was implemented mainly in R, using the packages `terra`, `sf`, `landscapemetrics`, `dplyr`, and `ggplot2`. QGIS was used for data preparation, visual checks, and the creation of study area context maps.
 
-<!-- FIGURE TO ADD HERE:
-Create a simple workflow diagram.
-Suggested content:
-Input data → preprocessing → 100 m grid → green metrics → FWEI change → correlations → typologies → comparison.
-Suggested file:
-../figures/method_workflow.png
--->
+![Grid-based methodology used for comparing Delft and Xi’an.](../figures/preliminary/grid_methodology.png){#fig-grid-methodology width=100%}
 
-![Overview of the research workflow.](../figures/method_workflow.png){#fig-method-workflow width=100%}
-
-## Spatial unit of analysis
-
-A common grid-based method was used to make Delft and Xi’an comparable. Each study area was divided into 100 m by 100 m grid cells, resulting in 10,000 cells per city. This grid size was chosen as a compromise between spatial detail and computational feasibility. It is small enough to capture local variation in green-space configuration, but large enough to reduce noise from individual pixels.
-
-All metrics were calculated per grid cell. This means that each cell received a set of green-space variables and flood-related variables. The grid therefore acts as the common analytical unit connecting the different raster datasets.
+The figure above shows the basic idea of the method. A common grid is used so that different spatial datasets can be converted into comparable values per cell. This makes it possible to compare green space patterns, FWEI derived surface water change, and DEM variables using the same spatial unit.
 
 ## Data preparation
 
-The main datasets used in the analysis were binary green-space rasters and FWEI rasters for Delft and Xi’an. The green-space rasters were prepared as binary maps, where green space has value 1 and non-green space has value 0. Because the original raster resolutions differed between the cities, both green rasters were aggregated to approximately 5 m resolution for the landscape metric calculation. Modal aggregation was used so that each new raster cell received the most common value from the original pixels.
+Before the analysis, all spatial layers were prepared for the two selected study areas. The main input layers were green space rasters, FWEI before and after rasters, DEM rasters, and context layers for mapping. The layers were checked, clipped to the study areas, and transformed to the correct coordinate reference systems where needed.
 
-The FWEI data consisted of before and after rasters for both cities. These rasters were aligned with the green-space analysis grid and used to calculate surface water change. The after raster was subtracted from the before raster using the following logic:
+For Delft, the projected coordinate system used in the workflow was EPSG:28992. For Xi’an, the projected coordinate system used in the workflow was EPSG:32649. Using projected coordinate systems was important because the analysis involved distances, grid cells, patch metrics, and slope calculations.
 
-`FWEI change = FWEI after - FWEI before`
+The main preprocessing steps were:
 
-Positive values indicate an increase in the FWEI signal after the event, which is interpreted as an increase in surface water presence. This is treated as a flood-related surface water change proxy, not as direct flood depth.
+| Step                           | Purpose                                                               |
+| ------------------------------ | --------------------------------------------------------------------- |
+| Study-area clipping            | To make all layers match the selected 10 km by 10 km areas.           |
+| CRS alignment                  | To make sure layers overlap correctly and can be measured in metres.  |
+| Raster alignment               | To make raster layers comparable before extracting grid-cell values.  |
+| Binary green-space preparation | To separate green and non-green areas.                                |
+| FWEI difference calculation    | To estimate surface-water change between the before and after images. |
+| DEM preparation                | To calculate elevation and slope values for each grid cell.           |
 
-## Green-space metrics
+## Grid based spatial unit
 
-Green-space configuration was measured using a combination of green coverage and patch-based landscape metrics. The decision to focus on patch metrics was made because the green rasters are binary maps with one main class of interest: green space. Patch metrics are therefore more suitable than broad class metrics because they describe the size, shape, and spatial arrangement of individual green patches.
+Both cities were analysed using the same 100 m by 100 m grid structure. This grid was used as the common spatial unit for the analysis. Instead of comparing whole city averages, each grid cell received its own green space, flood related, and DEM values.
 
-The following green-space variables were calculated for each 100 m grid cell:
+This approach was useful because the input layers had different resolutions and formats. Some layers were raster datasets, while others were vector layers or derived outputs. By summarising everything per grid cell, the analysis created one comparable table for Delft and one for Xi’an.
 
-| Variable        | Meaning                                                   | Interpretation                                           |
-| --------------- | --------------------------------------------------------- | -------------------------------------------------------- |
-| `green_percent` | Percentage of the grid cell covered by green pixels       | Total amount of green space                              |
-| `area`          | Mean area of green patches                                | Larger values indicate larger green patches              |
-| `gyrate`        | Mean radius of gyration of green patches                  | Higher values indicate more spatially extensive patches  |
-| `contig`        | Mean contiguity of green patches                          | Higher values indicate more internally connected patches |
-| `enn`           | Mean Euclidean nearest-neighbour distance between patches | Higher values indicate more isolated patches             |
+Each city had 10,000 grid cells. The same grid size was used for both cities, so differences between Delft and Xi’an could be interpreted more consistently.
 
-The metrics were calculated in R using the `landscapemetrics` package. For each grid cell, the green raster was cropped and masked to the cell boundary. The metrics were then calculated only for the green class. If a cell contained no green pixels, the green metric values were set to zero or left as missing where appropriate.
+## Metric calculation and selection
 
-## FWEI change and flood-related variables
+After preparing the input layers, the analysis calculated green space, FWEI derived flood, and DEM variables for each 100 m grid cell. This created one combined metric table for Delft and one for Xi’an, where every grid cell had values describing green space structure, detected surface water change, and topographic context.
 
-Two main FWEI-based variables were calculated per grid cell. The first was `fwei_change_mean`, which represents the mean FWEI change value within each grid cell. This variable captures the average change in surface water signal after the event.
+The green space rasters were binary, with green space represented as `1` and non green space as `0`. Before calculating landscape metrics, both green space rasters were aggregated to approximately 5 m resolution. This reduced processing time while keeping enough spatial detail to describe green space patterns. For each grid cell, the green raster was cropped and masked, after which green coverage and patch based metrics were calculated.
 
-The second variable was `flood_share`. To calculate this, the FWEI change raster was converted into a binary surface-water increase mask using a threshold. Pixels with FWEI change greater than 0.05 were classified as 1, while all other pixels were classified as 0. The mean value of this binary raster was then calculated per grid cell. This means that `flood_share` represents the proportion of each grid cell classified as FWEI-derived increased surface water.
+For the flood related part, FWEI before and after rasters were used. The after raster was subtracted from the before raster to estimate FWEI derived surface water change. A binary surface water increase layer was also created using a threshold of `0.05`, so that the amount and pattern of detected water could be calculated per grid cell.
 
-This variable should be interpreted carefully. It does not represent flood depth and it does not prove that every classified pixel was flooded. Instead, it provides a consistent indicator of flood-related surface water increase for both cities.
+DEM data were added to include topographic context. For each grid cell, elevation and slope variables were calculated and joined to the same grid table as the green space and FWEI derived flood variables. This was important because surface water accumulation can also be influenced by low or flat terrain.
 
-## Distance from flooded pixels to green space
+At first, a broader set of metrics was calculated. This was useful because it allowed different aspects of green space configuration, flood pattern, and topography to be explored. However, some metrics described very similar spatial patterns. Therefore, a metric redundancy check was carried out in the next chapter. The final selected metrics were then used for correlation analysis and combined typology construction.
 
-An additional variable, `mean_dist_green`, was calculated to describe the spatial relationship between FWEI-derived flooded pixels and nearby green space. First, a distance raster was created from the binary green-space raster. This raster gives the distance from each non-green pixel to the nearest green pixel. The distance raster was then masked using the FWEI-derived binary surface-water increase mask.
+## Combined typology construction
 
-For each grid cell, the mean distance from FWEI-derived flooded pixels to the nearest green pixel was calculated. Lower values indicate that the surface-water increase pixels are closer to green areas. Higher values indicate that the surface-water increase pixels are farther away from green areas.
+K-means clustering was used to group grid cells into combined typologies. The final typology used the selected green, FWEI derived flood, and DEM metrics. Before clustering, the variables were standardised using `scale()`, so that variables with larger numerical ranges did not dominate the result.
 
-## Correlation analysis
+A green+flood typology was first created as an intermediate check. The final typology used green+flood+DEM variables, because topography was considered important for interpreting surface water accumulation.
 
-Pearson correlation analysis was used to explore the relationship between green-space metrics and flood-related variables. The green-space variables were compared with `fwei_change_mean` and `flood_share` for both Delft and Xi’an.
+Four clusters were used. The elbow plot did not show one perfect cluster number, but four clusters were selected because they gave a manageable and interpretable set of spatial types. The same clustering was applied as a shared typology for Delft and Xi’an, meaning both cities were classified using the same type definitions.
 
-The correlation analysis was used as an exploratory method. A positive correlation means that higher values of a green-space metric tend to occur in cells with higher FWEI change or flood share. A negative correlation means that higher values of a green-space metric tend to occur in cells with lower FWEI change or flood share. These correlations do not prove causality. They only show spatial association between variables.
+## Outputs
 
-The correlation outputs were saved as a CSV file and visualised as a correlation overview plot.
+The workflow produced spatial and tabular outputs for both cities. The main outputs were grid layers, metric tables, correlation tables, redundancy tables, maps, and combined typology layers.
 
-<!-- FIGURE TO ADD HERE IN RESULTS, NOT METHODS:
-Suggested file:
-../figures/results/correlation_overview.png
--->
+| Output                          | Purpose                                                                                         |
+| ------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Grid metric files               | Store all calculated green, flood, and DEM metrics per grid cell.                               |
+| Metric maps                     | Show spatial variation in each selected metric.                                                 |
+| Redundancy tables               | Show which metrics were removed or kept.                                                        |
+| Combined typology maps          | Show the final green+flood+DEM typology in each city.                                           |
+| Typology summary tables         | Describe the average characteristics of each type.                                              |
+| Problematic typology candidates | Identify typology types for later interpretation and possible nature-based solution discussion. |
 
-## Typology construction
-
-K-means clustering was used to construct green-space typologies. The clustering was based on the green-space metrics `green_percent`, `area`, `gyrate`, `contig`, and `enn`. These variables were standardised before clustering so that variables with larger numerical ranges did not dominate the clustering process.
-
-Four clusters were created for each city. These clusters represent recurring types of green-space configuration. The typologies were then interpreted using the mean values of the green-space metrics and flood-related indicators.
-
-The resulting typologies can be broadly interpreted as:
-
-| Typology   | General interpretation            |
-| ---------- | --------------------------------- |
-| Typology 1 | Moderately green connected areas  |
-| Typology 2 | Highly green and contiguous areas |
-| Typology 3 | Sparse green fragmented areas     |
-| Typology 4 | Low green dispersed areas         |
-
-The typologies were used to compare whether different green-space configurations show different levels of FWEI-based surface water change. The typology maps and summary tables were saved for both Delft and Xi’an.
-
-<!-- FIGURE TO ADD HERE IN TYPOLOGY OR RESULTS CHAPTER:
-Suggested files:
-../figures/results/delft_typology.png
-../figures/results/xian_typology.png
--->
-
-## Software and reproducibility
-
-The analysis was carried out in R using a reproducible script-based workflow. The main packages used were `terra`, `sf`, `landscapemetrics`, `dplyr`, `ggplot2`, and `readr`. The scripts were stored in the `src` folder and all processed outputs were saved using relative paths.
-
-The main scripts were:
-
-| Script                     | Purpose                                                     |
-| -------------------------- | ----------------------------------------------------------- |
-| `01_green_metrics_delft.R` | Calculates green metrics and FWEI-based variables for Delft |
-| `02_green_metrics_xian.R`  | Calculates green metrics and FWEI-based variables for Xi’an |
-| `03_make_maps_and_plots.R` | Creates maps, correlations, typologies, and summary outputs |
-
-The final outputs include grid-level GeoPackages, CSV tables, correlation outputs, typology maps, and figure files. This structure makes the workflow easier to rerun and makes the analysis more transparent.
+This workflow made it possible to move from separate spatial layers to comparable grid cell metrics and finally to shared typologies for Delft and Xi’an.
