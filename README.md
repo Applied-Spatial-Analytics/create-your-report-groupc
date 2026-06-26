@@ -1,6 +1,6 @@
-# Green Space Configuration and Pluvial Flood-Related Surface Water Change
+# Green Space Configuration and Pluvial Flooding
 
-## Comparing Delft and Xi’an using FWEI-derived flood indicators and landscape metrics
+## Comparing Delft and Xi’an using FWEI derived flood indicators and landscape metrics
 
 CC BY 4.0
 
