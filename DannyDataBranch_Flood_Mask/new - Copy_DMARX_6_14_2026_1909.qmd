@@ -1,0 +1,279 @@
+---
+title: "Green Space Landscape Metrics"
+author: "Hassan, Danny and Akhil"
+format: html
+editor: visual
+---
+
+# Step 1. Load packages and data
+
+```{r}
+library(terra)
+library(sf)
+library(landscapemetrics)
+
+green <- rast(
+  "D:/ARFW0501/newest/Data/green_binary_local_v2.tif")
+# Step 1 - change this line:
+
+grid <- st_read(
+  "D:/ARFW0501/newest/Data/grid.gpkg",
+  quiet = TRUE
+)
+
+plot(green)
+plot(st_geometry(grid), add = TRUE)
+```
+
+# Step 2. Test one grid cell
+
+```{r}
+test_cell <- vect(grid[500, ])
+
+green_test <- crop(green, test_cell)
+
+green_test <- mask(green_test, test_cell)
+
+plot(green_test)
+
+```
+
+# Step 3. Calculate landscape metrics one grid cell
+
+```{r}
+lsm_p_area(green_test)
+lsm_p_gyrate(green_test)
+lsm_p_contig(green_test)
+lsm_p_enn(green_test)
+lsm_p_PROX(green_test)
+
+```
+
+# Step 4. Calculate metrics for all grid cells
+
+```{r}
+results <- data.frame(id = grid$id)
+
+results$area <- NA
+results$gyrate <- NA
+results$contig <- NA
+results$enn <- NA
+results$prox <- NA
+
+for (i in 1:nrow(grid)) {
+
+  cell <- vect(grid[i, ])
+
+  green_cell <- crop(green, cell)
+  green_cell <- mask(green_cell, cell)
+
+  results$area[i] <- mean(lsm_p_area(green_cell)$value[lsm_p_area(green_cell)$class == 1], na.rm = TRUE)
+
+  results$gyrate[i] <- mean(lsm_p_gyrate(green_cell)$value[lsm_p_gyrate(green_cell)$class == 1], na.rm = TRUE)
+
+  results$contig[i] <- mean(lsm_p_contig(green_cell)$value[lsm_p_contig(green_cell)$class == 1], na.rm = TRUE)
+
+  results$enn[i] <- mean(lsm_p_enn(green_cell)$value[lsm_p_enn(green_cell)$class == 1], na.rm = TRUE)
+
+  results$prox[i] <- mean(lsm_p_prox(green_cell)$value[lsm_p_prox(green_cell)$class == 1], na.rm = TRUE)
+}
+
+head(results)
+```
+
+# Step 5. Join metrics to grid
+
+```{r}
+grid_metrics <- merge(
+  grid,
+  results,
+  by = "id"
+)
+```
+
+# Step 6. contitguity
+
+```{r}
+plot(grid_metrics["area"], main = "Mean Patch Area")
+
+```
+
+# Step 7. Division
+
+```{r}
+plot(grid_metrics["gyrate"], main = "Mean Radius of Gyration")
+
+```
+
+# Step 8. Aggregation index
+
+```{r}
+plot(grid_metrics["contig"], main = "Mean Contiguity Index")
+
+```
+
+# Step 9. Mesh
+
+```{r}
+plot(grid_metrics["enn"], main = "Mean Nearest-Neighbor Distance")
+
+```
+
+# Step 10. Mean patch area
+
+```{r}
+plot(grid_metrics["prox"], main = "Mean Proximity Index")
+
+```
+
+# Step 11. Load flood raster
+
+```{r}
+file.exists("D:/ARFW0501/Delft_Sentinel/Afterminusbefore_floodmask_Delft_28992.tif")
+# 1. Check file size - if near 0 bytes it's empty
+file.info("D:/ARFW0501/Delft_Sentinel/Afterminusbefore_floodmask_Delft_28992.tif")$size
+
+# 2. Try with GDAL info directly
+library(terra)
+describe("D:/ARFW0501/Delft_Sentinel/Afterminusbefore_floodmask_Delft_28992.tif")
+flood <- rast(
+  "D:/ARFW0501/Delft_Sentinel/Afterminusbefore_floodmask_Delft_28992.tif"
+)
+
+# Check it loaded correctly
+plot(flood, main = "Flood change mask (1 = newly flooded)")
+flood  # print metadata - check CRS and resolution match green
+```
+
+# Step 12. Align flood raster to green raster CRS
+
+```{r}
+# Only reproject if CRS does not match - check first
+crs(flood) == crs(green)
+
+# If FALSE, reproject:
+#flood <- project(flood, green)
+```
+
+# Step 13. Extract flood metrics per grid cell
+
+```{r}
+
+# Step 1: Snap flood to green raster grid exactly
+flood_aligned <- resample(flood, green, method = "near")
+
+# Step 2: Classify with NaN handled
+flood_binary <- classify(flood_aligned,
+  rbind(c(-Inf, 0.05, 0),
+        c(0.05,  Inf, 1)),
+  others = NA)
+
+# Compare extents
+ext(flood_binary)
+ext(grid)
+
+# Plot both to see if they overlap
+plot(flood_binary, main = "Flood Binary Mask with Grid Overlay (Delft)")
+plot(st_geometry(grid), add = TRUE)
+
+# Step 3: Confirm - should show only 0 and 1
+freq(flood_binary)
+unique(values(flood_binary))
+
+# Set up results data frame
+flood_results <- data.frame(id = grid$id)
+flood_results$pland_flood <- NA
+flood_results$np_flood    <- NA
+flood_results$cohesion    <- NA
+flood_results$clumpy      <- NA
+flood_results$division    <- NA
+flood_results$lpi         <- NA
+
+for (i in 1:nrow(grid)) {
+  tryCatch({
+    cell       <- vect(grid[i, ])
+    flood_cell <- crop(flood_binary, cell)
+    flood_cell <- mask(flood_cell, cell)
+
+    vals <- na.omit(values(flood_cell))
+    if (length(vals) == 0 || length(unique(vals)) < 2) next
+
+    pland    <- lsm_c_pland(flood_cell)
+    np       <- lsm_c_np(flood_cell)
+    coh      <- lsm_c_cohesion(flood_cell)
+    clumpy   <- lsm_c_clumpy(flood_cell)
+    division <- lsm_l_division(flood_cell)
+    lpi      <- lsm_c_lpi(flood_cell)
+
+    if (nrow(pland[pland$class == 1,]) > 0)
+      flood_results$pland_flood[i] <- pland$value[pland$class == 1]
+    if (nrow(np[np$class == 1,]) > 0)
+      flood_results$np_flood[i]    <- np$value[np$class == 1]
+    if (nrow(coh[coh$class == 1,]) > 0)
+      flood_results$cohesion[i]    <- coh$value[coh$class == 1]
+    if (nrow(clumpy[clumpy$class == 1,]) > 0)
+      flood_results$clumpy[i]      <- clumpy$value[clumpy$class == 1]
+    if (nrow(division) > 0)
+      flood_results$division[i]    <- division$value
+    if (nrow(lpi[lpi$class == 1,]) > 0)
+      flood_results$lpi[i]         <- lpi$value[lpi$class == 1]
+
+  }, error = function(e) {
+    message("Skipping cell ", i, ": ", e$message)
+  })
+}
+
+print(flood_results)
+
+# Check how many cells actually have flooding
+sum(!is.na(flood_results$pland_flood))
+
+# Join green metrics + flood metrics (grid_metrics must exist from Step 5)
+grid_full <- merge(grid_metrics, flood_results, by = "id")
+
+# Count cells with both green and flood values
+sum(!is.na(grid_full$contig) & !is.na(grid_full$pland_flood))
+sum(!is.na(grid_full$area)   & !is.na(grid_full$pland_flood))
+
+# Plots
+par(mfrow = c(2, 3))
+plot(grid_full["pland_flood"], main = "% Cell Flooded (pland)")
+plot(grid_full["np_flood"],    main = "Number of Flood Patches")
+plot(grid_full["cohesion"],    main = "Flood Patch Cohesion")
+plot(grid_full["clumpy"],      main = "Flood Clumpiness")
+plot(grid_full["division"],    main = "Landscape Division")
+plot(grid_full["lpi"],         main = "Largest Flood Patch Index")
+par(mfrow = c(1, 1))
+
+# Save outputs
+st_write(grid_full, 
+         "D:/ARFW0501/Delft_Sentinel/grid_full_metrics.gpkg",
+         delete_if_exists = TRUE)
+
+writeRaster(flood_binary,
+            "D:/ARFW0501/Delft_Sentinel/flood_binary_delft.tif",
+            overwrite = TRUE)
+```
+
+# Step 14. Join flood metrics to green metrics
+
+```{}
+```
+
+# Step 15. Correlate green configuration vs flood extent
+
+```{r}
+cor.test(grid_full$contig,  grid_full$pland_flood, use = "complete.obs")
+cor.test(grid_full$enn,     grid_full$pland_flood, use = "complete.obs")
+cor.test(grid_full$prox,    grid_full$pland_flood, use = "complete.obs")
+cor.test(grid_full$area,    grid_full$pland_flood, use = "complete.obs")
+```
+
+# Step 16. Plot: green contiguity vs flood extent
+
+```{r}
+plot(grid_full$contig, grid_full$pland_flood,
+     xlab = "Mean Green Contiguity",
+     ylab = "% Cell Flooded",
+     main = "Green contiguity vs flood extent per cell (Delft)")
+```

@@ -1,0 +1,9 @@
+# Introduction {.unnumbered}
+
+The present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).
+
+The repository of this report can be found [here](https://github.com/Applied-Spatial-Analytics/create-your-report-groupc).
+
+This project investigates the relationship between green space configuration and pluvial flood related surface water change in Delft and Xi’an. Because comparable pluvial flood risk maps were not available for both cities, the Flood/Water Extraction Index (FWEI) was used as a shared proxy for detected surface water change [@farhadi2024fwei].
+
+The report compares two different urban contexts using the same spatial workflow. The main aim is to explore whether the amount and configuration of green space are associated with higher or lower detected surface water patterns.

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Methods – Green Space Configuration and Pluvial Flooding</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sections/metrics.html" rel="next">
+<link href="../sections/preliminary.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ffc4c3fc79587ee79da4865b6a08975e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sections/methods.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Methods</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Green Space Configuration and Pluvial Flooding</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/problem_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/preliminary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preliminary maps and research</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/methods.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Metric selection and redundancy check</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/typology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Typology construction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Discussion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/reproducibility_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Reproducibility statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/ai_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">AI statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Additional outputs and unused material</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#general-workflow" id="toc-general-workflow" class="nav-link active" data-scroll-target="#general-workflow"><span class="header-section-number">3.1</span> General workflow</a></li>
+  <li><a href="#flood-water-extraction-index-fwei" id="toc-flood-water-extraction-index-fwei" class="nav-link" data-scroll-target="#flood-water-extraction-index-fwei"><span class="header-section-number">3.2</span> Flood water extraction index (FWEI)</a></li>
+  <li><a href="#green-binary-dataset" id="toc-green-binary-dataset" class="nav-link" data-scroll-target="#green-binary-dataset"><span class="header-section-number">3.3</span> Green binary dataset</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">3.4</span> Data preparation</a></li>
+  <li><a href="#grid-based-spatial-unit" id="toc-grid-based-spatial-unit" class="nav-link" data-scroll-target="#grid-based-spatial-unit"><span class="header-section-number">3.5</span> Grid based spatial unit</a></li>
+  <li><a href="#metric-calculation-and-selection" id="toc-metric-calculation-and-selection" class="nav-link" data-scroll-target="#metric-calculation-and-selection"><span class="header-section-number">3.6</span> Metric calculation and selection</a></li>
+  <li><a href="#pearson-correlation-analysis" id="toc-pearson-correlation-analysis" class="nav-link" data-scroll-target="#pearson-correlation-analysis"><span class="header-section-number">3.7</span> Pearson correlation analysis</a></li>
+  <li><a href="#combined-typology-construction" id="toc-combined-typology-construction" class="nav-link" data-scroll-target="#combined-typology-construction"><span class="header-section-number">3.8</span> Combined typology construction</a></li>
+  <li><a href="#outputs" id="toc-outputs" class="nav-link" data-scroll-target="#outputs"><span class="header-section-number">3.9</span> Outputs</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/methods.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/methods.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Methods</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="general-workflow" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="general-workflow"><span class="header-section-number">3.1</span> General workflow</h2>
+<p>The analysis was carried out using a grid based spatial workflow. The same general method was applied to both Delft and Xi’an, so that the results could be compared between the two cities. The main steps were: preparing the input data, clipping the layers to the selected study areas, calculating metrics per grid cell, checking metric redundancy, and constructing combined typologies.</p>
+<p>The workflow was implemented mainly in R, using the packages <code>terra</code>, <code>sf</code>, <code>landscapemetrics</code>, <code>dplyr</code>, and <code>ggplot2</code>. QGIS was used for initial data preparation, FWEI calculation, flood mask creation, study area clipping of change rasters, and map production. The complete FWEI and flood mask workflow is described in detail in the preceding chapter.</p>
+<div id="fig-grid-methodology" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grid-methodology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../figures/preliminary/grid_methodology.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;3.1: Grid-based methodology used for comparing Delft and Xi’an."><img src="../figures/preliminary/grid_methodology.png" class="img-fluid figure-img" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grid-methodology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Grid-based methodology used for comparing Delft and Xi’an.
+</figcaption>
+</figure>
+</div>
+<p>The workflow converts the input layers into comparable grid cell metrics, which are then used for metric selection, correlation analysis, and combined typology construction.</p>
+</section>
+<section id="flood-water-extraction-index-fwei" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="flood-water-extraction-index-fwei"><span class="header-section-number">3.2</span> Flood water extraction index (FWEI)</h2>
+<p>The main flood related input used in this project was the Flood/Water Extraction Index, or FWEI. FWEI is a spectral index developed to identify water and flooded areas from Sentinel 2 visible and near infrared bands <span class="citation" data-cites="farhadi2024fwei">(<a href="references.html#ref-farhadi2024fwei" role="doc-biblioref">Farhadi et al. 2024</a>)</span>. It uses four Sentinel 2 bands at 10 m spatial resolution: blue, green, red, and near infrared.</p>
+<p>The FWEI formula is:</p>
+<p><span class="math display">\[
+FWEI = \frac{MeanVisible - B08}{MeanVisible + B08}
+\]</span></p>
+<p>where:</p>
+<p><span class="math display">\[
+MeanVisible = \frac{B02 + B03 + B04}{3}
+\]</span></p>
+<p>In this formula, B02 is the blue band, B03 is the green band, B04 is the red band, and B08 is the near infrared band. Water surfaces usually reflect strongly in the visible bands and absorb near infrared radiation. Because of this, open water and flooded surfaces tend to produce higher FWEI values, while dry surfaces and vegetation tend to produce lower values.</p>
+<p>For Xi’an, the two Sentinel 2 acquisition dates, 22 July 2023 before the event and 16 August 2023 after the event, bracket the documented flood of 11 August 2023. For Delft, the acquisition dates of 14 June 2023 and 7 September 2023 represent a non event period. The same FWEI and flood mask workflow was applied to both image pairs, so that a surface water change signal could be produced for each city.</p>
+<p>In this project, FWEI was used in two ways. First, the before and after FWEI rasters were used to calculate a continuous FWEI change raster:</p>
+<p><span class="math display">\[
+FWEI_{change} = FWEI_{after} - FWEI_{before}
+\]</span></p>
+<p>This continuous raster was used to calculate fwei_change_mean for each grid cell. This metric represents the average FWEI derived surface water change inside the cell.</p>
+<p>Second, the same FWEI change raster was converted into a binary surface water increase layer. A threshold of 0.05 was used. Pixels with an FWEI change above this threshold were classified as detected surface water increase, while pixels below the threshold were classified as no detected surface water increase.</p>
+<p>This binary flood mask was then used to calculate flood_share and the flood pattern metrics. Therefore, the analysis did not only use the continuous FWEI value. It used both the continuous FWEI change raster and the thresholded binary flood mask. Below</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../figures/preliminary/delft_floodmask_change.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Delft FWEI flood mask change."><img src="../figures/preliminary/delft_floodmask_change.png" class="img-fluid figure-img" style="width:100.0%" alt="Delft FWEI flood mask change."></a></p>
+<figcaption>Delft FWEI flood mask change.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../figures/preliminary/xian_floodmask_change.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Xi’an FWEI flood mask change."><img src="../figures/preliminary/xian_floodmask_change.png" class="img-fluid figure-img" style="width:100.0%" alt="Xi’an FWEI flood mask change."></a></p>
+<figcaption>Xi’an FWEI flood mask change.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="green-binary-dataset" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="green-binary-dataset"><span class="header-section-number">3.3</span> Green binary dataset</h2>
+<p>Green space was represented with binary green space rasters. In these rasters, green areas were given the value 1, while all non green areas were given the value 0. This binary format allowed the green space layer to be analysed as categorical raster data when calculating the patch based landscape metrics in R.</p>
+<p>At the beginning of the project, more general land cover and satellite based datasets were explored for the green space layer, including ESA WorldCover 2021 v200 and the China Land Cover Dataset 2022 for Xi’an. However, these datasets were not detailed enough for the final analysis. Since the project focused on the spatial structure of green space, including fragmentation, configuration, and patch patterns, a more detailed green space input was needed.</p>
+<p>For Delft, the final green space layer was based on a local dataset from the Klimaatatlas. This dataset was processed in QGIS and converted into a binary raster, so that green space and non green space could be clearly separated. For Xi’an, the final green space layer came from the Urban green space (UGS) 1m dataset, which provides detailed urban green space data for several large Chinese cities at around 1 m resolution <span class="citation" data-cites="shi2023ugs">(<a href="references.html#ref-shi2023ugs" role="doc-biblioref">Shi et al. 2023</a>)</span>. This layer was also converted into a binary raster before it was used for the landscape metric analysis in R. The binary green space rasters, cropped to the Delft and Xi’an study areas, are shown below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../figures/preliminary/green_binary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Binary green space rasters cropped to the Delft and Xi’an study areas."><img src="../figures/preliminary/green_binary.png" class="img-fluid figure-img" style="width:100.0%" alt="Binary green space rasters cropped to the Delft and Xi’an study areas."></a></p>
+<figcaption>Binary green space rasters cropped to the Delft and Xi’an study areas.</figcaption>
+</figure>
+</div>
+</section>
+<section id="data-preparation" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">3.4</span> Data preparation</h2>
+<p>Before the analysis, all spatial layers were prepared for the two selected study areas. The main input layers were green space rasters, pre event and post event FWEI rasters, the clipped flood change rasters, DEM rasters, and context layers for mapping. The layers were checked, clipped to the study areas, and transformed to the correct coordinate reference systems where needed.</p>
+<p>For Delft, the projected coordinate system used in the workflow was EPSG:28992. For Xi’an, the projected coordinate system used in the workflow was EPSG:32649. Using projected coordinate systems was important because the analysis involved distances, grid cells, patch metrics, and slope calculations.</p>
+<p>The main preprocessing steps were:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study-area clipping</td>
+<td>To make all layers match the selected 10 km by 10 km areas.</td>
+</tr>
+<tr class="even">
+<td>CRS alignment</td>
+<td>To make sure layers overlap correctly and can be measured in metres.</td>
+</tr>
+<tr class="odd">
+<td>Raster alignment</td>
+<td>To make raster layers comparable before extracting grid-cell values.</td>
+</tr>
+<tr class="even">
+<td>Binary green-space preparation</td>
+<td>To separate green and non-green areas.</td>
+</tr>
+<tr class="odd">
+<td>FWEI difference calculation</td>
+<td>To estimate surface water change between the before and after images.</td>
+</tr>
+<tr class="even">
+<td>DEM preparation</td>
+<td>To calculate elevation and slope values for each grid cell.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="grid-based-spatial-unit" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="grid-based-spatial-unit"><span class="header-section-number">3.5</span> Grid based spatial unit</h2>
+<p>Both cities were analysed using a 100 m by 100 m grid, resulting in 10,000 grid cells per study area. The grid was used as the common spatial unit for summarising green space, FWEI derived flood, and DEM variables. This allowed raster and vector inputs with different resolutions to be converted into comparable metric tables for Delft and Xi’an.</p>
+</section>
+<section id="metric-calculation-and-selection" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="metric-calculation-and-selection"><span class="header-section-number">3.6</span> Metric calculation and selection</h2>
+<p>After preparing the input layers, green-space, FWEI-derived flood, and Digital Elevation Model (DEM) variables were calculated for each grid cell. This produced one metric table for Delft and one for Xi’an.</p>
+<p>The green-space rasters were binary, with green space coded as <code>1</code> and non-green space as <code>0</code>. They were aggregated to approximately 5 m resolution to reduce processing time. For each grid cell, green coverage and patch-based landscape metrics were calculated.</p>
+<p>For the flood-related metrics, the continuous FWEI change raster was used to calculate mean surface-water change per cell. The same raster was also converted into a binary flood mask using a threshold of <code>0.05</code>. This mask was used to calculate <code>flood_share</code> and flood-pattern metrics.</p>
+<p>DEM data were used to calculate elevation and slope per grid cell. A broader set of metrics was first produced, after which redundant metrics were removed. The final metric selection is explained in the next chapter.</p>
+</section>
+<section id="pearson-correlation-analysis" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="pearson-correlation-analysis"><span class="header-section-number">3.7</span> Pearson correlation analysis</h2>
+<p>Pearson correlation analysis was used to test the relationship between selected green space metrics and FWEI derived flood indicators. Pearson’s correlation coefficient, or <code>r</code>, measures the direction and strength of a linear relationship between two variables. Values range from -1 to +1. Positive values indicate that both variables tend to increase together, while negative values indicate that one variable tends to decrease as the other increases.</p>
+<p>In this project, the strength of the correlation values was interpreted as follows:</p>
+<ul>
+<li><code>|r| &lt; 0.10</code>: negligible relationship</li>
+<li><code>|r| = 0.10 to 0.29</code>: weak relationship</li>
+<li><code>|r| = 0.30 to 0.49</code>: moderate relationship</li>
+<li><code>|r| &gt;= 0.50</code>: strong relationship</li>
+</ul>
+<p>Statistical significance was assessed using <code>p &lt; 0.05</code>. However, significance was interpreted separately from practical strength, because a statistically significant result can still represent a weak relationship.</p>
+</section>
+<section id="combined-typology-construction" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="combined-typology-construction"><span class="header-section-number">3.8</span> Combined typology construction</h2>
+<p>K-means clustering was used to group grid cells into combined typologies. The final typology used the selected green, FWEI derived flood, and DEM metrics. Before clustering, the variables were standardised using <code>scale()</code>, so that variables with larger numerical ranges did not dominate the result.</p>
+<p>A green+flood typology was first created as an intermediate check. The final typology used green+flood+DEM variables, because topography was considered important for interpreting surface water accumulation.</p>
+<p>Four clusters were used. The elbow plot did not show one perfect cluster number, but four clusters were selected because they gave a manageable and interpretable set of spatial types. The same clustering was applied as a shared typology for Delft and Xi’an, meaning both cities were classified using the same type definitions.</p>
+</section>
+<section id="outputs" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="outputs"><span class="header-section-number">3.9</span> Outputs</h2>
+<p>The workflow produced spatial and tabular outputs for both cities. The main outputs were grid layers, metric tables, correlation tables, redundancy tables, maps, and combined typology layers.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Grid metric files</td>
+<td>Store all calculated green, flood, and DEM metrics per grid cell.</td>
+</tr>
+<tr class="even">
+<td>Metric maps</td>
+<td>Show spatial variation in each selected metric.</td>
+</tr>
+<tr class="odd">
+<td>Redundancy tables</td>
+<td>Show which metrics were removed or kept.</td>
+</tr>
+<tr class="even">
+<td>Combined typology maps</td>
+<td>Show the final green+flood+DEM typology in each city.</td>
+</tr>
+<tr class="odd">
+<td>Typology summary tables</td>
+<td>Describe the average characteristics of each type.</td>
+</tr>
+</tbody>
+</table>
+<p>This workflow made it possible to move from separate spatial layers to comparable grid cell metrics and finally to shared typologies for Delft and Xi’an.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-brom2023" class="csl-entry" role="listitem">
+Brom, Peta, Kristine Engemann, Christina Breed, Maya Pasgaard, Titilope Onaolapo, and Jens-Christian Svenning. 2023. <span>“A Decision Support Tool for Green Infrastructure Planning in the Face of Rapid Urbanization.”</span> <em>Land</em> 12 (2): 415. <a href="https://doi.org/10.3390/land12020415">https://doi.org/10.3390/land12020415</a>.
+</div>
+<div id="ref-farhadi2024fwei" class="csl-entry" role="listitem">
+Farhadi, Hadi, Hamid Ebadi, Abbas Kiani, and Ali Asgary. 2024. <span>“A Novel Flood/Water Extraction Index (<span>FWEI</span>) for Identifying Water and Flooded Areas Using <span>Sentinel-2</span> Visible and Near-Infrared Spectral Bands.”</span> <em>Stochastic Environmental Research and Risk Assessment</em> 38: 1873–95. <a href="https://doi.org/10.1007/s00477-024-02660-z">https://doi.org/10.1007/s00477-024-02660-z</a>.
+</div>
+<div id="ref-meerow2019" class="csl-entry" role="listitem">
+Meerow, Sara. 2019. <span>“A Green Infrastructure Spatial Planning Model for Evaluating Ecosystem Service Tradeoffs and Synergies Across Three Coastal Megacities.”</span> <em>Environmental Research Letters</em> 14 (12): 125011. <a href="https://doi.org/10.1088/1748-9326/ab502c">https://doi.org/10.1088/1748-9326/ab502c</a>.
+</div>
+<div id="ref-prokic2019" class="csl-entry" role="listitem">
+Prokić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. <span>“Pluvial Flooding in Urban Areas Across the European Continent.”</span> <em>Geographica Pannonica</em> 23 (4): 216–32. <a href="https://doi.org/10.5937/gp23-23508">https://doi.org/10.5937/gp23-23508</a>.
+</div>
+<div id="ref-sarabi2022" class="csl-entry" role="listitem">
+Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>“The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.”</span> <em>Sustainable Cities and Society</em> 78: 103608. <a href="https://doi.org/10.1016/j.scs.2021.103608">https://doi.org/10.1016/j.scs.2021.103608</a>.
+</div>
+<div id="ref-shi2023ugs" class="csl-entry" role="listitem">
+Shi, Qian, Mengxi Liu, Andrea Marinoni, and Xiaoping Liu. 2023. <span>“<span>UGS-1m</span>: Fine-Grained Urban Green Space Mapping of 31 Major Cities in China Based on the Deep Learning Framework.”</span> <em>Earth System Science Data</em> 15: 555–77. <a href="https://doi.org/10.5194/essd-15-555-2023">https://doi.org/10.5194/essd-15-555-2023</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sections/preliminary.html" class="pagination-link" aria-label="Preliminary maps and research">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preliminary maps and research</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sections/metrics.html" class="pagination-link" aria-label="Metric selection and redundancy check">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Metric selection and redundancy check</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/methods.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/methods.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

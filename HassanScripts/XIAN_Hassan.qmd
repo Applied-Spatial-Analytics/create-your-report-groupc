@@ -1,0 +1,297 @@
+---
+title: "Green Space Landscape Metrics"
+author: "Hassan, Danny and Akhil"
+format: html
+editor: visual
+---
+
+# Step 1. Load packages and data
+
+```{r}
+library(terra)
+library(sf)
+library(landscapemetrics)
+
+green <- rast(
+  "D:/Documents/TU Delft/GEOMATICS/spatial/week 5/Data/qgis/xian/UGS-1m/reprojected_green_cropped_xian_binary.tif"
+)
+
+grid <- st_read(
+  "D:/Documents/TU Delft/GEOMATICS/spatial/week 5/Data/qgis/grid_10000x10000_xian.gpkg",
+  quiet = TRUE
+)
+
+plot(green)
+plot(st_geometry(grid), add = TRUE)
+```
+
+# Step 2. Test one grid cell
+
+```{r}
+test_cell <- vect(grid[500, ])
+
+green_test <- crop(green, test_cell)
+
+green_test <- mask(green_test, test_cell)
+
+plot(green_test)
+
+```
+
+# Step 3. Calculate landscape metrics one grid cell
+
+- **Largest Patch Index (LPI):** Measures how much of the landscape is occupied by the largest green patch.
+
+<!-- -->
+
+- **Division Index:** Measures how fragmented the green space is, with higher values indicating greater fragmentation.
+
+<!-- -->
+
+- **Aggregation Index (AI):** Measures how clustered and connected green patches are across the landscape.
+
+<!-- -->
+
+- **Effective Mesh Size (MESH):** Measures the degree of landscape connectivity by estimating the size of connected green areas.
+
+<!-- -->
+
+- **Mean Patch Area (AREA_MN):** Measures the average size of green patches within the grid cell.
+
+<!-- -->
+
+- **Patch Area (AREA):** Measures the size of each individual green patch.
+
+<!-- -->
+
+- **Radius of Gyration (GYRATE):** Measures how far a patch extends from its centre, indicating its spatial reach.
+
+<!-- -->
+
+- **Contiguity Index (CONTIG):** Measures how internally connected and continuous a patch is.
+
+<!-- -->
+
+- **Euclidean Nearest Neighbour Distance (ENN):** Measures the distance to the nearest neighbouring green patch, indicating patch isolation.
+
+```{r}
+lsm_c_lpi(green_test)
+lsm_c_division(green_test)
+lsm_c_ai(green_test)
+lsm_c_mesh(green_test)
+lsm_c_area_mn(green_test)
+
+lsm_p_area(green_test)
+lsm_p_gyrate(green_test)
+lsm_p_contig(green_test)
+lsm_p_enn(green_test)
+
+```
+
+# Step 4.1 Calculate metrics for all grid cells
+
+```{r}
+
+results_class <- data.frame(id = grid$id)
+
+results_class$lpi <- NA
+results_class$division <- NA
+results_class$ai <- NA
+results_class$mesh <- NA
+results_class$area_mn <- NA
+
+for (i in 1:nrow(grid)) {
+
+  cell <- vect(grid[i, ])
+
+  green_cell <- crop(green, cell)
+  green_cell <- mask(green_cell, cell)
+
+  results_class$lpi[i] <- lsm_c_lpi(green_cell)$value[1]
+  results_class$division[i] <- lsm_c_division(green_cell)$value[1]
+  results_class$ai[i] <- lsm_c_ai(green_cell)$value[1]
+  results_class$mesh[i] <- lsm_c_mesh(green_cell)$value[1]
+  results_class$area_mn[i] <- lsm_c_area_mn(green_cell)$value[1]
+}
+
+head(results_class)
+```
+
+# Step 4.2 Calculate metrics for all grid cells
+
+```{r}
+results_patch <- data.frame(id = grid$id)
+
+results_patch$area <- NA
+
+for (i in 1:nrow(grid)) {
+
+  cell <- vect(grid[i, ])
+  green_cell <- crop(green, cell)
+  green_cell <- mask(green_cell, cell)
+
+  area <- lsm_p_area(green_cell)
+
+  results_patch$area[i] <- mean(area$value[area$class == 1], na.rm = TRUE)
+}
+
+head(results_patch)
+```
+
+# Step 4.3 radius of gyration
+
+```{r}
+results_patch$gyrate <- NA
+
+for (i in 1:nrow(grid)) {
+
+  cell <- vect(grid[i, ])
+  green_cell <- crop(green, cell)
+  green_cell <- mask(green_cell, cell)
+
+  gyrate <- lsm_p_gyrate(green_cell)
+
+  results_patch$gyrate[i] <- mean(gyrate$value[gyrate$class == 1], na.rm = TRUE)
+}
+
+head(results_patch)
+```
+
+# Step 4.4 contiguity index
+
+```{r}
+results_patch$contig <- NA
+
+for (i in 1:nrow(grid)) {
+
+  cell <- vect(grid[i, ])
+  green_cell <- crop(green, cell)
+  green_cell <- mask(green_cell, cell)
+
+  contig <- lsm_p_contig(green_cell)
+
+  results_patch$contig[i] <- mean(contig$value[contig$class == 1], na.rm = TRUE)
+}
+
+head(results_patch)
+```
+
+# Step 4.5 nearest neighbor distance
+
+```{r}
+results_patch$enn <- NA
+
+for (i in 1:nrow(grid)) {
+
+  cell <- vect(grid[i, ])
+  green_cell <- crop(green, cell)
+  green_cell <- mask(green_cell, cell)
+
+  enn <- lsm_p_enn(green_cell)
+
+  results_patch$enn[i] <- mean(enn$value[enn$class == 1], na.rm = TRUE)
+}
+
+head(results_patch)
+```
+
+# Step 5.1 Combine class and patch metrics
+
+```{r}
+results <- merge(
+  results_class,
+  results_patch,
+  by = "id"
+)
+
+head(results)
+```
+
+# Step 5.2 Join metrics to grid
+
+```{r}
+grid_metrics <- merge(
+  grid,
+  results,
+  by = "id"
+)
+```
+
+# Step 5.3 Load/calculate FWEI change
+
+```{r}
+fwei_before <- rast(
+  "D:/Documents/TU Delft/GEOMATICS/spatial/week 5/Data/qgis/wetransfer_fwei_7_22_2023_xian-tif_2026-06-10_1523/CLIPPED_FWEI_7_22_2023_Xian.tif"
+)
+
+fwei_after <- rast(
+  "D:/Documents/TU Delft/GEOMATICS/spatial/week 5/Data/qgis/wetransfer_fwei_7_22_2023_xian-tif_2026-06-10_1523/CLIPPED_FWEI_8_16_2023_Xian.tif"
+)
+
+fwei_change <- fwei_after - fwei_before
+
+plot(fwei_change, main = "FWEI Change Xian")
+```
+
+# 
+
+# Step 5.4 extract FWEI to grid
+
+```{r}
+fwei_mean <- terra::extract(
+  fwei_change,
+  vect(grid),
+  fun = mean,
+  na.rm = TRUE
+)
+
+names(fwei_mean)[2] <- "fwei_change_mean"
+
+head(fwei_mean)
+```
+
+# 
+
+# Step 5.5 Join FWEI to metrics
+
+```{r}
+grid_metrics$fwei_change_mean <- fwei_mean$fwei_change_mean
+
+head(grid_metrics)
+```
+
+# 
+
+# Step 6. plotting
+
+```{r}
+plot(grid_metrics["lpi"], main = "Largest Patch Index")
+plot(grid_metrics["division"], main = "Division Index")
+plot(grid_metrics["ai"], main = "Aggregation Index")
+plot(grid_metrics["mesh"], main = "Effective Mesh Size")
+plot(grid_metrics["area_mn"], main = "Mean Patch Area")
+plot(grid_metrics["area"], main = "Patch Area")
+
+```
+
+# 
+
+# Step 7 corelation
+
+| Metric   | Correlation |
+|----------|-------------|
+| LPI      | -0.106      |
+| Division | +0.099      |
+| AI       | -0.081      |
+| Mesh     | -0.099      |
+| Area_MN  | -0.089      |
+| Area     | +0.111      |
+
+```{r}
+cor(grid_metrics$lpi, grid_metrics$fwei_change_mean, use = "complete.obs")
+cor(grid_metrics$division, grid_metrics$fwei_change_mean, use = "complete.obs")
+cor(grid_metrics$ai, grid_metrics$fwei_change_mean, use = "complete.obs")
+cor(grid_metrics$mesh, grid_metrics$fwei_change_mean, use = "complete.obs")
+cor(grid_metrics$area_mn, grid_metrics$fwei_change_mean, use = "complete.obs")
+cor(grid_metrics$area, grid_metrics$fwei_change_mean, use = "complete.obs")
+```

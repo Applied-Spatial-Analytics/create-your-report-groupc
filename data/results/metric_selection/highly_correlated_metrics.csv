@@ -1,0 +1,9 @@
+"metric_1","metric_2","correlation","abs_correlation"
+"flood_share","pland_flood",1,1
+"elevation_mean","elevation_min",0.999997703237385,0.999997703237385
+"flood_share","flood_lpi",0.978664537518624,0.978664537518624
+"pland_flood","flood_lpi",0.978664537518624,0.978664537518624
+"mean_dist_green","min_dist_green",0.923545499569555,0.923545499569555
+"gyrate","contig",0.885123579071385,0.885123579071385
+"area","gyrate",0.873293138359039,0.873293138359039
+"green_percent","area",0.837402503588678,0.837402503588678

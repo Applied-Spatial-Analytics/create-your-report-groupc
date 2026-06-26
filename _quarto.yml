@@ -1,0 +1,46 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  author:
+    - name: "Hassan Osman"
+      affiliation: "MSc Geomatics"
+    - name: "Akhil Veeranki"
+      affiliation: "MSc Geomatics"
+    - name: "Daniel Marx"
+      affiliation: "MSc Geomatics"
+
+  repo-url: https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git
+  repo-actions: [edit, source, issue]
+
+  title: "Green Space Configuration and Pluvial Flooding"
+  subtitle: "A comparative spatial analysis of Delft and Xi’an"
+  date: today
+
+  chapters:
+    - index.qmd
+    - sections/problem_statement.qmd
+    - sections/preliminary.qmd
+    - sections/methods.qmd
+    - sections/metrics.qmd
+    - sections/typology.qmd
+    - sections/discussion.qmd
+    - sections/conclusion.qmd
+    - sections/reproducibility_statement.qmd
+    - sections/ai_statement.qmd
+    - sections/references.qmd
+
+  appendices:
+    - sections/appendix.qmd
+
+bibliography: references.bib
+biblio-title: "References"
+nocite: |
+  @*
+
+format:
+  html:
+    toc: true
+    lightbox: true
+    theme: flatly

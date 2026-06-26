@@ -1,0 +1,16 @@
+metric,decision,reason
+green_percent,kept,green amount
+area,kept,green patch size
+gyrate,removed,"similar to patch size/spread, so area is kept instead"
+contig,kept,green compactness/connectivity
+enn,kept,green patch isolation
+fwei_change_mean,kept,average FWEI surface-water change
+flood_share,kept,amount of detected surface-water increase
+pland_flood,removed,"similar to flood_share, so flood_share is kept instead"
+np_flood,kept,number of separate flood patches
+flood_cohesion,removed,"similar to other flood-pattern metrics, so not used in final typology"
+flood_clumpy,kept,clustering of detected water
+flood_lpi,removed,"similar to flood extent/dominance, so flood_share is kept instead"
+elevation_mean,kept,average elevation
+elevation_min,removed,"similar to elevation_mean, so elevation_mean is kept instead"
+slope_mean,kept,average slope

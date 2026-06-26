@@ -1,0 +1,36 @@
+# Problem statement
+
+## Background
+
+Pluvial flooding is a relevant issue in urban areas. It occurs when intense rainfall creates overland flow or surface ponding before water can enter drainage systems, canals, rivers, or other water bodies [@prokic2019]. In cities, impervious surfaces such as roads, roofs, and pavements can reduce infiltration and increase the amount of water remaining on the surface.
+
+Green infrastructure is often discussed as one way to reduce urban flooding. Green spaces can absorb, store, and slow down rainwater, which may reduce pressure on drainage systems. Stormwater management and flood mitigation are therefore important ecosystem services in green infrastructure planning [@meerow2019]. However, the amount of green space alone is not enough to understand its possible role. The spatial configuration of green space also matters.
+
+For example, one large connected park may function differently from many small isolated green patches. Green spaces can differ in size, compactness, connectivity, and fragmentation. These spatial properties may influence how green areas relate to runoff, storage, and surface water accumulation. Previous work also shows that spatial distribution and connectivity are important in green infrastructure planning [@brom2023].
+
+This project focuses on both the quantity and spatial configuration of green space, and examines how these relate to satellite detected surface water change in two contrasting urban and climatic settings. Xi’an, China, experienced a severe pluvial flood event on 11 August 2023 after extreme rainfall. Delft, the Netherlands, was used as a non event comparison case using dates where major pluvial flooding was not expected in the study area.
+
+## Research gap
+
+Studies linking green infrastructure to flood risk reduction are well established in the literature [@sarabi2022], but cross city comparisons remain difficult. Cities differ in size, climate, data availability, spatial resolution, and land cover structure. Delft and Xi’an are very different in scale and context, so comparing their full administrative areas directly would not be meaningful.
+
+A second challenge was that directly comparable pluvial flood datasets did not exist for both cities. For this reason, the project uses the Flood Water Extraction Index (FWEI) as a shared method for detecting surface water change from Sentinel 2 satellite imagery [@farhadi2024fwei]. For Xi’an, the FWEI before and after comparison captures the surface water change caused by the 11 August 2023 flood event. For Delft, the same method applied to two non event dates serves as a control case, expected to show minimal surface water change. This design, with one city affected by a real flood event and one control case, strengthens the ability to interpret what the FWEI derived signals represent.
+
+## Working assumption
+
+The main assumption is that green space configuration influences how pluvial surface water appears across the urban landscape. More connected and compact green areas are expected to relate differently to surface water than fragmented or isolated green patches.
+
+The project also assumes that this relationship is affected by topography. Therefore, elevation and slope are included in the final typology.
+
+## Research question
+
+How does the spatial configuration of green spaces influence pluvial flooding in urban areas such as Delft and Xi’an?
+
+## Sub questions
+
+1. How can green space configuration and flood related surface water patterns be measured and compared between Delft and Xi’an?
+
+2. What spatial patterns can be identified when green space, flood related, and topographic indicators are combined?
+
+3. How do the identified patterns differ between Delft and Xi’an, and what do they suggest for urban flood related planning?
+

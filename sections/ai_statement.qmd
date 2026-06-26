@@ -1,0 +1,24 @@
+# AI statement
+
+Artificial intelligence tools were used at several stages of this project to support the analysis, data processing, and writing workflow. Their use is disclosed here in the interest of transparency and academic integrity.
+
+## R and Spatial Analysis
+
+Claude (Anthropic) and ChatGPT (OpenAI) were used to support the development and debugging of R scripts throughout the project. This included refining code for raster processing with the terra package, landscape metric extraction using landscapemetrics, grid-based spatial aggregation, k-means clustering and elbow plot generation, Pearson correlation analysis and result formatting, and the production of tiled ggplot2 visualisations for typology maps and metric comparisons. The analysis logic, variable selection, and interpretation of results were carried out by the project team. The AI generated code was reviewed, tested, and adapted before use.
+
+## QGIS and Satellite Imagery Workflow
+
+Claude and ChatGPT were used to plan and document the FWEI-based flood detection and flood mask workflow in QGIS, including the sequence of steps for band loading, Raster Calculator operations, sieving, before/after flood mask comparison, and study-area clipping. The actual QGIS operations were performed by the project team.
+
+## Report Writing
+
+Claude (Anthropic) and ChatGPT (OpenAI) were used to support report writing, including improving sentence clarity, restructuring paragraphs, ensuring consistent terminology. All substantive findings, interpretations, and analytical decisions were made by the project team. The final text was reviewed and edited by the authors.
+
+## Tools Used
+
+• Claude (Anthropic) — R scripting support, QGIS workflow documentation, report writing
+• ChatGPT (OpenAI) — R scripting, QGIS workflow, report writing support
+• QGIS 3.x — FWEI calculation, flood mask sieving, raster clipping, study area mapping
+• R 4.5 with terra, sf, landscapemetrics, dplyr, ggplot2, patchwork — spatial analysis and visualisation
+
+The use of AI tools did not replace the analytical judgement, methodological decisions, or spatial data work carried out by the project team. 

@@ -1,0 +1,11 @@
+metric,decision,reason
+green_percent,kept,green amount
+area,kept,green patch size
+contig,kept,green compactness/connectivity
+enn,kept,green patch isolation
+fwei_change_mean,kept,average FWEI surface-water change
+flood_share,kept,amount of detected surface-water increase
+np_flood,kept,number of separate flood patches
+flood_clumpy,kept,clustering of detected water
+elevation_mean,kept,average elevation
+slope_mean,kept,average slope
