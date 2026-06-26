@@ -1,4 +1,4 @@
-# reproducibility statement 
+# Reproducibility statement 
 
 This analysis was designed to be reproducible. All data, scripts, and intermediate outputs are archived so that the complete workflow can be repeated by any researcher with access to the project repository.
 
