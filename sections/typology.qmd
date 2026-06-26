@@ -1,6 +1,6 @@
 # Typology construction
 
-This chapter explains how the combined typologies were constructed and how the four final types were defined. The main purpose of this chapter is to show how the grid cells were grouped and what the resulting typology classes represent.
+This chapter explains how the combined typologies were constructed and how the four final types were defined.
 
 ```{r}
 #| echo: false
@@ -74,13 +74,20 @@ final_typology_small <- final_typology %>%
 knitr::kable(final_typology_small, caption = "Summary of the final shared green+flood+DEM typology.")
 ```
 
+| Type | Suggested name | Main character |
+|---|---|---|
+| Type 1 | Low-water / low-flood background | Low detected surface-water increase and limited flood-pattern activity. |
+| Type 2 | Moderate urban background | Moderate green coverage and moderate flood-related values. |
+| Type 3 | Green high-water type | High green coverage, high contiguity, and the strongest detected surface-water values. |
+| Type 4 | Fragmented flood-patch type | Many detected flood patches, with more fragmented surface-water patterns. |
+
 ## Delft typology
 
 The  green+flood+DEM typology was made for Delft to show how the shared typology classes are distributed across the study area. The map is mainly used here to show the spatial output of the clustering process.
 
 ![Final green+flood+DEM typology in Delft.](../figures/results/combined_typologies/delft_green_flood_dem_type_context.png){#fig-delft-final-typology width=100%}
 
-The Delft map shows that several typology classes occur within the study area, rather than one single type covering the whole city. This means that the combined green, flood related, and DEM conditions vary spatially within Delft.
+The Delft typology map shows a spatially mixed pattern. The large Type 2 background covers most of the built-up core. Type 3, the type with the highest green coverage and highest flood share, appears in parks, water adjacent open land, and lower lying green zones. Type 1 is concentrated in denser built up areas. Type 4 is scattered and rare.
 
 ## Xi’an typology
 

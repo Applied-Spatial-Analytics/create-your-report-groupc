@@ -27,6 +27,8 @@ book:
     - sections/typology.qmd
     - sections/discussion.qmd
     - sections/conclusion.qmd
+    - sections/reproducibility_statement.qmd
+    - sections/ai_statement.qmd
     - sections/references.qmd
 
   appendices:

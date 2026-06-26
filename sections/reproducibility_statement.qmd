@@ -1,0 +1,46 @@
+# reproducibility statement 
+
+This analysis was designed to be reproducible. All data, scripts, and intermediate outputs are archived so that the complete workflow can be repeated by any researcher with access to the project repository.
+
+## Software
+• R 4.5.3 — terra, sf, landscapemetrics, dplyr, ggplot2, patchwork
+• QGIS 3.x (open source) — FWEI calculation, flood mask sieving, raster clipping, study area mapping
+
+## FWEI Flood Mapping Workflow
+
+The steps below are included here to make the flood mapping workflow transparent and reproducible. Because the FWEI layers were produced through several processing steps in QGIS before being used in R, the final maps alone do not show how the raw Sentinel 2 images were converted into flood change rasters and binary flood masks. Listing the workflow makes it clear how the flood related input was created, what assumptions were made, and how the same method was applied to both Delft and Xi’an.
+
+1. Sentinel 2 Level 2A imagery was downloaded from the Copernicus Browser for Xi’an, using 22 July 2023 and 16 August 2023, and for Delft, using 14 June 2023 and 7 September 2023. Cloud free acquisitions were selected where possible.
+
+2. The Sentinel 2 SAFE folders were extracted, and the 10 m resolution bands B02, B03, B04, and B08 were located.
+
+3. The bands B02, B03, B04, and B08 were loaded into QGIS as raster layers.
+
+4. The visible band mean was calculated in the QGIS Raster Calculator:
+
+   $$
+   MeanVisible = \frac{B02 + B03 + B04}{3}
+   $$
+
+5. FWEI was calculated using the Raster Calculator:
+
+   $$
+   FWEI = \frac{MeanVisible - B08}{MeanVisible + B08}
+   $$
+
+6. The FWEI raster was inspected using Singleband Pseudocolor symbology to check the distribution of water and non water areas.
+
+7. A binary water mask was created using the threshold `FWEI > 0`, where water pixels were given the value 1 and non water pixels were given the value 0.
+
+8. Isolated noisy pixels were removed using the GDAL Sieve tool in QGIS.
+
+9. Steps 3 to 8 were repeated for all four acquisition dates, producing four binary flood masks.
+
+10. For Xi’an, the pre event flood mask was subtracted from the post event flood mask to identify newly inundated pixels. The result was clipped to the Xi’an study area.
+
+11. For Delft, the same before and after comparison was applied as a non event control case. The result was clipped to the Delft study area.
+
+12. The clipped change rasters were loaded into R. A threshold of 0.05 was applied to create the final binary flood mask, which was then used to calculate flood related landscape metrics per grid cell.
+
+
+

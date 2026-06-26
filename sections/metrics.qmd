@@ -2,8 +2,6 @@
 
 This chapter explains which metrics were calculated and how the final metric set was selected. At first, a larger set of green-space, FWEI derived flood, distance to green, and DEM metrics was produced for both Delft and Xi’an. However, not all of these metrics were used in the later analysis, because some of them described almost the same spatial pattern.
 
-The aim of this chapter is therefore to show the full metric set, explain the redundancy check, and identify the metrics that were kept for the combined typology analysis.
-
 ```{r}
 #| echo: false
 #| message: false
@@ -22,7 +20,7 @@ read_table_safe <- function(x) {
 
 The analysis used three main groups of metrics: green space, FWEI flood indicators, and DEM variables. The green space metrics describe how much green is present and how it is arranged. The flood metrics describe where surface water increase was detected and what pattern it forms. The DEM metrics describe elevation and slope, because lower or flatter areas can be more likely to hold water.
 
-The FWEI metrics are based on the Flood/Water Extraction Index. This index was developed to detect water and flooded areas using Sentinel 2 visible and near infrared bands [@farhadi2024fwei].
+The flood metrics in this chapter were derived from the binary flood change mask, the clipped FWEI change raster thresholded at 0.05 in R. Each metric describes the amount or spatial structure of newly detected surface water per 100 m grid cell, tracing back to the FWEI based satellite detection described in the FWEI chapter.
 
 
 | Metric group              | Metric             | Meaning                                                                 |

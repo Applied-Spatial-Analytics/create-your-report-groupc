@@ -185,6 +185,18 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../sections/reproducibility_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">reproducibility statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/ai_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">AI statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../sections/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -218,7 +230,6 @@ div.csl-indent {
   <ul>
   <li><a href="#study-area-selection" id="toc-study-area-selection" class="nav-link active" data-scroll-target="#study-area-selection"><span class="header-section-number">2.1</span> Study area selection</a></li>
   <li><a href="#delft-and-xian-as-comparison-cases" id="toc-delft-and-xian-as-comparison-cases" class="nav-link" data-scroll-target="#delft-and-xian-as-comparison-cases"><span class="header-section-number">2.2</span> Delft and Xi’an as comparison cases</a></li>
-  <li><a href="#data-availability-and-first-checks" id="toc-data-availability-and-first-checks" class="nav-link" data-scroll-target="#data-availability-and-first-checks"><span class="header-section-number">2.3</span> Data availability and first checks</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/preliminary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/preliminary.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -246,8 +257,8 @@ div.csl-indent {
 
 <section id="study-area-selection" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="study-area-selection"><span class="header-section-number">2.1</span> Study area selection</h2>
-<p>The study areas were selected to allow a more balanced comparison between Delft and Xi’an. Because the two cities are very different in size, comparing their full administrative boundaries would not be very meaningful. Delft is relatively compact, while Xi’an is much larger and more spatially extensive. A full city comparison would therefore create a strong imbalance in scale and land cover variation.</p>
-<p>To reduce this problem, both cities were analysed using a 10 km by 10 km study area. This gives both cases the same spatial extent, while still allowing the selected areas to represent different urban and environmental conditions.</p>
+<p>The study areas were selected to make the comparison between Delft and Xi’an more balanced. Because the full cities are very different in size, both cases were analysed using the same 10 km by 10 km study-area extent. This allowed the project to compare two contrasting urban contexts without relying on full administrative boundaries.</p>
+<p>For Delft, the selected area includes the city itself and parts of the surrounding urban and rural landscape. For Xi’an, the selected area focuses on a central urban section that includes dense urban fabric, green patches, and major open spaces. The aim was not to make the two cities identical, but to apply the same spatial logic to two different urban settings.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -284,12 +295,6 @@ Figure&nbsp;2.2: Study area context map for Xi’an.
 <p>For Delft, the 10 km by 10 km study area fully contains the city. This is useful because Delft is relatively compact, so the selected area includes both the municipality and the surrounding landscape. The municipality boundary is shown inside the study area to make clear where Delft itself is located. This also gives context for surrounding canals, green areas, urban edges, and open landscapes, which are relevant for understanding green space configuration and flood related surface water patterns.</p>
 <p>For Xi’an, the same 10 km by 10 km study area does not cover the full city. Instead, it captures a central urban subset. This area was selected because it includes the historic city centre and city wall, but also large green and heritage spaces such as Weiyang Palace Relics Park, Hancheng Lake, and Daming Palace National Heritage Park. This makes the area useful for comparing dense urban fabric with larger green and open spaces within the same study area size.</p>
 <p>The comparison is therefore not based on the idea that Delft and Xi’an are similar cities. Instead, they are used as contrasting cases. This makes it possible to test whether the same spatial workflow can still identify meaningful green space and flood related patterns in both places.</p>
-</section>
-<section id="data-availability-and-first-checks" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="data-availability-and-first-checks"><span class="header-section-number">2.3</span> Data availability and first checks</h2>
-<p>Before the main analysis, the available green space, FWEI, and DEM layers were checked for both Delft and Xi’an. This was necessary to make sure that the same type of analysis could be applied to both study areas. The layers were clipped to the selected 10 km by 10 km extents and prepared for a common workflow.</p>
-<p>The preliminary check showed that both cities had usable green space data, FWEI derived surface water data, and DEM data. However, directly comparable pluvial flood depth maps were not available for both cities. For this reason, FWEI derived surface water change was used as the common flood related proxy.</p>
-<p>The detailed metric maps are shown later in the metric selection chapter. This preliminary chapter only introduces the study areas, explains the comparison between Delft and Xi’an, and gives the basic data context for the analysis.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -307,6 +312,9 @@ Prokić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. <span>“Pluvial Flo
 </div>
 <div id="ref-sarabi2022" class="csl-entry" role="listitem">
 Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>“The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.”</span> <em>Sustainable Cities and Society</em> 78: 103608. <a href="https://doi.org/10.1016/j.scs.2021.103608">https://doi.org/10.1016/j.scs.2021.103608</a>.
+</div>
+<div id="ref-shi2023ugs" class="csl-entry" role="listitem">
+Shi, Qian, Mengxi Liu, Andrea Marinoni, and Xiaoping Liu. 2023. <span>“<span>UGS-1m</span>: Fine-Grained Urban Green Space Mapping of 31 Major Cities in China Based on the Deep Learning Framework.”</span> <em>Earth System Science Data</em> 15: 555–77. <a href="https://doi.org/10.5194/essd-15-555-2023">https://doi.org/10.5194/essd-15-555-2023</a>.
 </div>
 </div>
 </section>

@@ -184,6 +184,18 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../sections/reproducibility_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">reproducibility statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/ai_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">AI statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../sections/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -217,7 +229,13 @@ div.csl-indent {
   <ul>
   <li><a href="#green-only-typologies" id="toc-green-only-typologies" class="nav-link active" data-scroll-target="#green-only-typologies"><span class="header-section-number">A.1</span> Green only typologies</a></li>
   <li><a href="#additional-metric-maps" id="toc-additional-metric-maps" class="nav-link" data-scroll-target="#additional-metric-maps"><span class="header-section-number">A.2</span> Additional metric maps</a></li>
-  <li><a href="#intermediate-greenflood-typology" id="toc-intermediate-greenflood-typology" class="nav-link" data-scroll-target="#intermediate-greenflood-typology"><span class="header-section-number">A.3</span> Intermediate green+flood typology</a></li>
+  <li><a href="#intermediate-greenflood-typology" id="toc-intermediate-greenflood-typology" class="nav-link" data-scroll-target="#intermediate-greenflood-typology"><span class="header-section-number">A.3</span> Intermediate green+flood typology</a>
+  <ul class="collapse">
+  <li><a href="#correlation-matrix-delft" id="toc-correlation-matrix-delft" class="nav-link" data-scroll-target="#correlation-matrix-delft"><span class="header-section-number">A.3.1</span> Correlation matrix: Delft</a></li>
+  <li><a href="#correlation-matrix-xian" id="toc-correlation-matrix-xian" class="nav-link" data-scroll-target="#correlation-matrix-xian"><span class="header-section-number">A.3.2</span> Correlation matrix: Xi’an</a></li>
+  <li><a href="#full-pairwise-results-with-p-values-delft" id="toc-full-pairwise-results-with-p-values-delft" class="nav-link" data-scroll-target="#full-pairwise-results-with-p-values-delft"><span class="header-section-number">A.3.3</span> Full pairwise results with p values: Delft</a></li>
+  <li><a href="#full-pairwise-results-with-p-values-xian" id="toc-full-pairwise-results-with-p-values-xian" class="nav-link" data-scroll-target="#full-pairwise-results-with-p-values-xian"><span class="header-section-number">A.3.4</span> Full pairwise results with p values: Xi’an</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/appendix.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/appendix.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -276,12 +294,392 @@ div.csl-indent {
 <figcaption>Intermediate Delft green+flood typology.</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../figures/results/combined_typologies/xian_green_flood_type_context_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Intermediate Xi’an green+flood typology."><img src="../figures/results/combined_typologies/xian_green_flood_type_context_overview.png" class="img-fluid figure-img" style="width:100.0%" alt="Intermediate Xi’an green+flood typology."></a></p>
-<figcaption>Intermediate Xi’an green+flood typology.</figcaption>
-</figure>
-</div>
+<p><img src="../figures/results/combined_typologies/xian_green_flood_type_context_overview.png" class="img-fluid" style="width:100.0%" alt="Intermediate Xi’an green+flood typology."> ## Full Pearson correlation results</p>
+<p>The tables below present the complete pairwise Pearson correlation results between green-space configuration metrics and flood landscape metrics for Delft and Xi’an. All flood metrics were derived from the binary flood mask produced by the FWEI and flood-mask workflow. Green cells indicate statistically significant results at <code>p &lt; 0.05</code>. The correlation matrix tables show <code>r</code> values only; full pairwise results including exact <code>p</code> values are shown below.</p>
+<section id="correlation-matrix-delft" class="level3" data-number="A.3.1">
+<h3 data-number="A.3.1" class="anchored" data-anchor-id="correlation-matrix-delft"><span class="header-section-number">A.3.1</span> Correlation matrix: Delft</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Green metric</th>
+<th style="text-align: right;">pland_flood</th>
+<th style="text-align: right;">np_flood</th>
+<th style="text-align: right;">cohesion</th>
+<th style="text-align: right;">clumpy</th>
+<th style="text-align: right;">division</th>
+<th style="text-align: right;">lpi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>area</td>
+<td style="text-align: right;">-0.009</td>
+<td style="text-align: right;">-0.105</td>
+<td style="text-align: right;">-0.059</td>
+<td style="text-align: right;">+0.093</td>
+<td style="text-align: right;">+0.001</td>
+<td style="text-align: right;">+0.007</td>
+</tr>
+<tr class="even">
+<td>gyrate</td>
+<td style="text-align: right;">+0.094*</td>
+<td style="text-align: right;">-0.124</td>
+<td style="text-align: right;">-0.052</td>
+<td style="text-align: right;">+0.094</td>
+<td style="text-align: right;">-0.094</td>
+<td style="text-align: right;">+0.112*</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td style="text-align: right;">+0.090</td>
+<td style="text-align: right;">-0.200*</td>
+<td style="text-align: right;">-0.074</td>
+<td style="text-align: right;">+0.182</td>
+<td style="text-align: right;">+0.082</td>
+<td style="text-align: right;">+0.119</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td style="text-align: right;">+0.044</td>
+<td style="text-align: right;">-0.145</td>
+<td style="text-align: right;">+0.156</td>
+<td style="text-align: right;">+0.022</td>
+<td style="text-align: right;">+0.025</td>
+<td style="text-align: right;">+0.064</td>
+</tr>
+</tbody>
+</table>
+<p>Significant pairs (<code>p &lt; 0.05</code>): gyrate vs <code>pland_flood</code> (<code>r = +0.197</code>, <code>p = 0.049</code>), contig vs <code>np_flood</code> (<code>r = -0.200</code>, <code>p = 0.046</code>), gyrate vs <code>lpi</code> (<code>r = +0.211</code>, <code>p = 0.036</code>). Asterisks mark significant values in the matrix above.</p>
+</section>
+<section id="correlation-matrix-xian" class="level3" data-number="A.3.2">
+<h3 data-number="A.3.2" class="anchored" data-anchor-id="correlation-matrix-xian"><span class="header-section-number">A.3.2</span> Correlation matrix: Xi’an</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Green metric</th>
+<th style="text-align: right;">pland_flood</th>
+<th style="text-align: right;">np_flood</th>
+<th style="text-align: right;">cohesion</th>
+<th style="text-align: right;">clumpy</th>
+<th style="text-align: right;">division</th>
+<th style="text-align: right;">lpi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>area</td>
+<td style="text-align: right;">+0.132*</td>
+<td style="text-align: right;">+0.069</td>
+<td style="text-align: right;">+0.002</td>
+<td style="text-align: right;">-0.145</td>
+<td style="text-align: right;">+0.058</td>
+<td style="text-align: right;">+0.139*</td>
+</tr>
+<tr class="even">
+<td>gyrate</td>
+<td style="text-align: right;">+0.160*</td>
+<td style="text-align: right;">+0.101</td>
+<td style="text-align: right;">-0.032</td>
+<td style="text-align: right;">-0.225</td>
+<td style="text-align: right;">+0.012</td>
+<td style="text-align: right;">+0.162*</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td style="text-align: right;">+0.183*</td>
+<td style="text-align: right;">+0.118</td>
+<td style="text-align: right;">+0.038</td>
+<td style="text-align: right;">-0.163</td>
+<td style="text-align: right;">+0.179*</td>
+<td style="text-align: right;">+0.188*</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td style="text-align: right;">+0.152</td>
+<td style="text-align: right;">-0.092</td>
+<td style="text-align: right;">+0.130</td>
+<td style="text-align: right;">+0.091</td>
+<td style="text-align: right;">+0.168</td>
+<td style="text-align: right;">+0.136</td>
+</tr>
+</tbody>
+</table>
+<p>Significant pairs (<code>p &lt; 0.05</code>): contig vs <code>pland_flood</code> (<code>r = +0.183</code>, <code>p = 0.0004</code>), area vs <code>pland_flood</code> (<code>r = +0.132</code>, <code>p = 0.011</code>), gyrate vs <code>pland_flood</code> (<code>r = +0.160</code>, <code>p = 0.002</code>), area vs <code>lpi</code> (<code>r = +0.139</code>, <code>p = 0.007</code>), contig vs <code>lpi</code> (<code>r = +0.188</code>, <code>p = 0.0003</code>), gyrate vs <code>lpi</code> (<code>r = +0.162</code>, <code>p = 0.002</code>), contig vs division (<code>r = +0.179</code>, <code>p = 0.0005</code>). Asterisks mark significant values in the matrix above.</p>
+</section>
+<section id="full-pairwise-results-with-p-values-delft" class="level3" data-number="A.3.3">
+<h3 data-number="A.3.3" class="anchored" data-anchor-id="full-pairwise-results-with-p-values-delft"><span class="header-section-number">A.3.3</span> Full pairwise results with p values: Delft</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Green metric</th>
+<th>Flood metric</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">p</th>
+<th>Significant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>contig</td>
+<td>pland_flood</td>
+<td style="text-align: right;">+0.154</td>
+<td style="text-align: right;">0.127</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>area</td>
+<td>pland_flood</td>
+<td style="text-align: right;">-0.032</td>
+<td style="text-align: right;">0.753</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>gyrate</td>
+<td>pland_flood</td>
+<td style="text-align: right;">+0.197</td>
+<td style="text-align: right;">0.049</td>
+<td>* Yes</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td>pland_flood</td>
+<td style="text-align: right;">+0.044</td>
+<td style="text-align: right;">0.703</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td>np_flood</td>
+<td style="text-align: right;">-0.200</td>
+<td style="text-align: right;">0.046</td>
+<td>* Yes</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td>np_flood</td>
+<td style="text-align: right;">-0.145</td>
+<td style="text-align: right;">0.209</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>area</td>
+<td>np_flood</td>
+<td style="text-align: right;">-0.156</td>
+<td style="text-align: right;">0.120</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>contig</td>
+<td>cohesion</td>
+<td style="text-align: right;">+0.054</td>
+<td style="text-align: right;">0.596</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>area</td>
+<td>cohesion</td>
+<td style="text-align: right;">+0.007</td>
+<td style="text-align: right;">0.946</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td>cohesion</td>
+<td style="text-align: right;">+0.156</td>
+<td style="text-align: right;">0.174</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td>clumpy</td>
+<td style="text-align: right;">+0.005</td>
+<td style="text-align: right;">0.959</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>area</td>
+<td>lpi</td>
+<td style="text-align: right;">+0.041</td>
+<td style="text-align: right;">0.684</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td>lpi</td>
+<td style="text-align: right;">+0.172</td>
+<td style="text-align: right;">0.088</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>gyrate</td>
+<td>lpi</td>
+<td style="text-align: right;">+0.211</td>
+<td style="text-align: right;">0.036</td>
+<td>* Yes</td>
+</tr>
+<tr class="odd">
+<td>enn</td>
+<td>division</td>
+<td style="text-align: right;">+0.025</td>
+<td style="text-align: right;">0.830</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>contig</td>
+<td>division</td>
+<td style="text-align: right;">+0.135</td>
+<td style="text-align: right;">0.180</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="full-pairwise-results-with-p-values-xian" class="level3" data-number="A.3.4">
+<h3 data-number="A.3.4" class="anchored" data-anchor-id="full-pairwise-results-with-p-values-xian"><span class="header-section-number">A.3.4</span> Full pairwise results with p values: Xi’an</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Green metric</th>
+<th>Flood metric</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">p</th>
+<th>Significant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>contig</td>
+<td>pland_flood</td>
+<td style="text-align: right;">+0.183</td>
+<td style="text-align: right;">0.0004</td>
+<td>* Yes</td>
+</tr>
+<tr class="even">
+<td>area</td>
+<td>pland_flood</td>
+<td style="text-align: right;">+0.132</td>
+<td style="text-align: right;">0.011</td>
+<td>* Yes</td>
+</tr>
+<tr class="odd">
+<td>gyrate</td>
+<td>pland_flood</td>
+<td style="text-align: right;">+0.160</td>
+<td style="text-align: right;">0.002</td>
+<td>* Yes</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td>pland_flood</td>
+<td style="text-align: right;">+0.152</td>
+<td style="text-align: right;">0.120</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td>np_flood</td>
+<td style="text-align: right;">+0.021</td>
+<td style="text-align: right;">0.686</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td>np_flood</td>
+<td style="text-align: right;">-0.073</td>
+<td style="text-align: right;">0.460</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>area</td>
+<td>np_flood</td>
+<td style="text-align: right;">-0.011</td>
+<td style="text-align: right;">0.837</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>contig</td>
+<td>cohesion</td>
+<td style="text-align: right;">+0.053</td>
+<td style="text-align: right;">0.303</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>area</td>
+<td>cohesion</td>
+<td style="text-align: right;">+0.034</td>
+<td style="text-align: right;">0.510</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>enn</td>
+<td>cohesion</td>
+<td style="text-align: right;">+0.167</td>
+<td style="text-align: right;">0.087</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td>clumpy</td>
+<td style="text-align: right;">+0.066</td>
+<td style="text-align: right;">0.229</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>area</td>
+<td>lpi</td>
+<td style="text-align: right;">+0.139</td>
+<td style="text-align: right;">0.007</td>
+<td>* Yes</td>
+</tr>
+<tr class="odd">
+<td>contig</td>
+<td>lpi</td>
+<td style="text-align: right;">+0.188</td>
+<td style="text-align: right;">0.0003</td>
+<td>* Yes</td>
+</tr>
+<tr class="even">
+<td>gyrate</td>
+<td>lpi</td>
+<td style="text-align: right;">+0.162</td>
+<td style="text-align: right;">0.002</td>
+<td>* Yes</td>
+</tr>
+<tr class="odd">
+<td>enn</td>
+<td>division</td>
+<td style="text-align: right;">+0.168</td>
+<td style="text-align: right;">0.085</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>contig</td>
+<td>division</td>
+<td style="text-align: right;">+0.179</td>
+<td style="text-align: right;">0.0005</td>
+<td>* Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Xi’an has more statistically significant results than Delft. This is mainly because Xi’an has a larger number of cells with both green and flood data, which gives greater statistical power. However, the green-flood relationships are still weak. Most significant correlations in Xi’an are positive, meaning that greener or more compact green-space areas often overlap with detected surface-water patterns rather than clearly reducing them.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -300,7 +698,11 @@ Prokić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. <span>“Pluvial Flo
 <div id="ref-sarabi2022" class="csl-entry" role="listitem">
 Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>“The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.”</span> <em>Sustainable Cities and Society</em> 78: 103608. <a href="https://doi.org/10.1016/j.scs.2021.103608">https://doi.org/10.1016/j.scs.2021.103608</a>.
 </div>
+<div id="ref-shi2023ugs" class="csl-entry" role="listitem">
+Shi, Qian, Mengxi Liu, Andrea Marinoni, and Xiaoping Liu. 2023. <span>“<span>UGS-1m</span>: Fine-Grained Urban Green Space Mapping of 31 Major Cities in China Based on the Deep Learning Framework.”</span> <em>Earth System Science Data</em> 15: 555–77. <a href="https://doi.org/10.5194/essd-15-555-2023">https://doi.org/10.5194/essd-15-555-2023</a>.
 </div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->

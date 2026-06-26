@@ -1,0 +1,6 @@
+metric,decision,reason
+gyrate,removed,"similar to patch size/spread, so area is kept instead"
+pland_flood,removed,"similar to flood_share, so flood_share is kept instead"
+flood_cohesion,removed,"similar to other flood-pattern metrics, so not used in final typology"
+flood_lpi,removed,"similar to flood extent/dominance, so flood_share is kept instead"
+elevation_min,removed,"similar to elevation_mean, so elevation_mean is kept instead"

@@ -1,0 +1,1195 @@
+---
+title: "Green Space Landscape Metrics & Flood Typology"
+author: "Hassan, Danny and Akhil"
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+# Base path for all files – change this one line if your drive changes
+base <- "D:/ARFW0501"
+p <- function(...) file.path(base, ...)
+```
+
+------------------------------------------------------------------------
+
+# ── DELFT ──────────────────────────────────────────────────────────────────
+
+# Step 1. Load packages and data (Delft)
+
+```{r}
+library(terra)
+library(sf)
+library(landscapemetrics)
+
+green_delft <- rast(p("delft_green_binary_compressed_new.tif"))
+grid_delft  <- st_read(p("grid_10000x10000_delft.gpkg"), quiet = TRUE)
+
+plot(green_delft, main = "Green binary raster - Delft")
+plot(st_geometry(grid_delft), add = TRUE)
+```
+
+# Step 2. Test one grid cell (Delft)
+
+```{r}
+# Step 2. Test one grid cell (Delft)
+
+# Check pixel size vs grid cell size
+cat("Green raster resolution (m):", res(green_delft), "\n")
+cat("Green extent:", as.vector(ext(green_delft)), "\n")
+cat("Grid extent:", as.vector(ext(vect(grid_delft))), "\n")
+cat("Number of grid cells:", nrow(grid_delft), "\n")
+
+# Get centroids of all grid cells
+centroids_delft <- centroids(vect(grid_delft))
+
+# Extract green value at each centroid
+green_at_centroids <- extract(green_delft, centroids_delft)
+head(green_at_centroids)
+cat("Unique values at centroids:", unique(green_at_centroids[, 2]), "\n")
+
+# Find a centroid that falls on a green pixel (value == 1)
+green_cells <- which(green_at_centroids[, 2] == 1)
+cat("Cells with green at centroid:", length(green_cells), "\n")
+
+# Use the first green cell to test
+test_cell_delft  <- vect(grid_delft[green_cells[1], ])
+
+cat("Test cell extent:", as.vector(ext(test_cell_delft)), "\n")
+
+# Crop with a buffer to ensure we catch pixels overlapping the cell edge
+green_test_delft <- crop(green_delft, ext(test_cell_delft) + 500)
+green_test_delft <- mask(green_test_delft, test_cell_delft)
+plot(green_test_delft, main = "Test cell - Delft")
+```
+
+# Step 3. Calculate landscape metrics for one cell (Delft)
+
+```{r}
+lsm_p_area(green_test_delft)
+lsm_p_gyrate(green_test_delft)
+lsm_p_contig(green_test_delft)
+lsm_p_enn(green_test_delft)
+# lsm_p_prox(green_test_delft)
+```
+
+# Step 4. Calculate green metrics for all grid cells (Delft)
+
+```{r}
+# Step 4. Calculate green metrics for all grid cells (Delft)
+
+green_delft_5m <- aggregate(green_delft, fact = 20, fun = "modal")
+cat("Resampled resolution:", res(green_delft_5m), "m\n")
+
+grid_delft_v    <- vect(grid_delft)
+overlapping_idx <- which(is.related(grid_delft_v,
+                                     as.polygons(ext(green_delft_5m)),
+                                     "intersects"))
+cat("Cells to process:", length(overlapping_idx), "out of", nrow(grid_delft), "\n")
+
+results_delft        <- data.frame(id = grid_delft$id)
+results_delft$area   <- NA
+results_delft$gyrate <- NA
+results_delft$contig <- NA
+results_delft$enn    <- NA
+# results_delft$prox <- NA
+
+total  <- length(overlapping_idx)
+report <- max(1, round(total / 20))
+
+for (idx in seq_along(overlapping_idx)) {
+  i <- overlapping_idx[idx]
+  if (idx %% report == 0)
+    cat(sprintf("Progress: %d / %d (%.0f%%)\n", idx, total, idx/total*100))
+
+  tryCatch({
+    cell       <- grid_delft_v[i, ]
+    green_cell <- crop(green_delft_5m, cell)
+    green_cell <- mask(green_cell, cell)
+
+    vals <- na.omit(values(green_cell))
+    if (length(vals) == 0 || !1 %in% vals) next
+
+    results_delft$area[i]   <- mean(
+      lsm_p_area(green_cell)$value[lsm_p_area(green_cell)$class == 1], na.rm = TRUE)
+    results_delft$gyrate[i] <- mean(
+      lsm_p_gyrate(green_cell)$value[lsm_p_gyrate(green_cell)$class == 1], na.rm = TRUE)
+    results_delft$contig[i] <- mean(
+      lsm_p_contig(green_cell)$value[lsm_p_contig(green_cell)$class == 1], na.rm = TRUE)
+    results_delft$enn[i]    <- mean(
+      lsm_p_enn(green_cell)$value[lsm_p_enn(green_cell)$class == 1], na.rm = TRUE)
+    # results_delft$prox[i] <- mean(
+    #   lsm_p_prox(green_cell)$value[lsm_p_prox(green_cell)$class == 1], na.rm = TRUE)
+
+  }, error = function(e) NULL)
+}
+
+cat("Done! Cells with values:", sum(!is.na(results_delft$area)), "\n")
+head(results_delft[!is.na(results_delft$area), ])
+```
+
+# Step 5. Join green metrics to grid (Delft)
+
+```{r}
+grid_metrics_delft <- merge(grid_delft, results_delft, by = "id")
+```
+
+# Step 6. Plot: Mean Patch Area (Delft)
+
+```{r}
+plot(grid_metrics_delft["area"], main = "Mean Patch Area - Delft")
+```
+
+# Step 7. Plot: Mean Radius of Gyration (Delft)
+
+```{r}
+plot(grid_metrics_delft["gyrate"], main = "Mean Radius of Gyration - Delft")
+```
+
+# Step 8. Plot: Mean Contiguity Index (Delft)
+
+```{r}
+plot(grid_metrics_delft["contig"], main = "Mean Contiguity Index - Delft")
+```
+
+# Step 9. Plot: Mean Nearest-Neighbor Distance (Delft)
+
+```{r}
+plot(grid_metrics_delft["enn"], main = "Mean Nearest-Neighbor Distance - Delft")
+```
+
+# Step 10. Prox skipped (Delft)
+
+```{r}
+# plot(grid_metrics_delft["prox"], main = "Mean Proximity Index - Delft")
+message("Step 10 skipped: prox commented out.")
+```
+
+# Step 11. Load flood raster (Delft)
+
+```{r}
+flood_path_delft <- p("Delft_Sentinel/Afterminusbefore_floodmask_Delft_28992.tif")
+
+file.exists(flood_path_delft)
+file.info(flood_path_delft)$size
+describe(flood_path_delft)
+
+flood_delft <- rast(flood_path_delft)
+plot(flood_delft, main = "Flood change mask - Delft")
+flood_delft
+```
+
+# Step 12. Align flood raster CRS to green raster (Delft)
+
+```{r}
+cat("CRS match Delft flood vs green:", crs(flood_delft) == crs(green_delft), "\n")
+# Uncomment if CRS does NOT match:
+# flood_delft <- project(flood_delft, green_delft)
+```
+
+# Step 13. Extract flood metrics per grid cell (Delft)
+
+```{r}
+# Step 13. Extract flood metrics per grid cell (Delft)
+
+# Resample flood to green raster grid
+flood_aligned_delft <- resample(flood_delft, green_delft_5m, method = "near")
+
+flood_binary_delft <- classify(
+  flood_aligned_delft,
+  rbind(c(-Inf, 0.05, 0),
+        c(0.05,  Inf, 1)),
+  others = NA)
+
+cat("Flood binary extent:\n"); print(ext(flood_binary_delft))
+cat("Grid extent:\n");         print(ext(grid_delft))
+
+plot(flood_binary_delft, main = "Flood Binary Mask with Grid - Delft")
+plot(st_geometry(grid_delft), add = TRUE)
+
+# Use freq() instead of unique(values()) - memory safe
+freq(flood_binary_delft)
+
+# Only process overlapping cells
+grid_delft_v        <- vect(grid_delft)
+overlapping_delft   <- which(is.related(grid_delft_v,
+                                         as.polygons(ext(flood_binary_delft)),
+                                         "intersects"))
+cat("Delft flood cells to process:", length(overlapping_delft), "\n")
+
+flood_results_delft             <- data.frame(id = grid_delft$id)
+flood_results_delft$pland_flood <- NA
+flood_results_delft$np_flood    <- NA
+flood_results_delft$cohesion    <- NA
+flood_results_delft$clumpy      <- NA
+flood_results_delft$division    <- NA
+flood_results_delft$lpi         <- NA
+
+total  <- length(overlapping_delft)
+report <- max(1, round(total / 20))
+
+for (idx in seq_along(overlapping_delft)) {
+  i <- overlapping_delft[idx]
+  if (idx %% report == 0)
+    cat(sprintf("Delft flood progress: %d / %d (%.0f%%)\n", idx, total, idx/total*100))
+
+  tryCatch({
+    cell       <- grid_delft_v[i, ]
+    flood_cell <- crop(flood_binary_delft, cell)
+    flood_cell <- mask(flood_cell, cell)
+
+    vals <- na.omit(values(flood_cell))
+    if (length(vals) == 0 || length(unique(vals)) < 2) next
+
+    pland    <- lsm_c_pland(flood_cell)
+    np       <- lsm_c_np(flood_cell)
+    coh      <- lsm_c_cohesion(flood_cell)
+    clumpy_r <- lsm_c_clumpy(flood_cell)
+    division <- lsm_l_division(flood_cell)
+    lpi      <- lsm_c_lpi(flood_cell)
+
+    if (nrow(pland[pland$class == 1, ])        > 0)
+      flood_results_delft$pland_flood[i] <- pland$value[pland$class == 1]
+    if (nrow(np[np$class == 1, ])              > 0)
+      flood_results_delft$np_flood[i]    <- np$value[np$class == 1]
+    if (nrow(coh[coh$class == 1, ])            > 0)
+      flood_results_delft$cohesion[i]    <- coh$value[coh$class == 1]
+    if (nrow(clumpy_r[clumpy_r$class == 1, ]) > 0)
+      flood_results_delft$clumpy[i]      <- clumpy_r$value[clumpy_r$class == 1]
+    if (nrow(division)                         > 0)
+      flood_results_delft$division[i]    <- division$value
+    if (nrow(lpi[lpi$class == 1, ])            > 0)
+      flood_results_delft$lpi[i]         <- lpi$value[lpi$class == 1]
+
+  }, error = function(e) NULL)
+}
+
+cat("Cells with flood data (Delft):", sum(!is.na(flood_results_delft$pland_flood)), "\n")
+
+grid_full_delft <- merge(grid_metrics_delft, flood_results_delft, by = "id")
+
+cat("Cells with both contig AND flood (Delft):",
+    sum(!is.na(grid_full_delft$contig) & !is.na(grid_full_delft$pland_flood)), "\n")
+
+par(mfrow = c(2, 3))
+plot(grid_full_delft["pland_flood"], main = "% Cell Flooded - Delft")
+plot(grid_full_delft["np_flood"],    main = "N Flood Patches - Delft")
+plot(grid_full_delft["cohesion"],    main = "Flood Cohesion - Delft")
+plot(grid_full_delft["clumpy"],      main = "Flood Clumpiness - Delft")
+plot(grid_full_delft["division"],    main = "Landscape Division - Delft")
+plot(grid_full_delft["lpi"],         main = "Largest Flood Patch - Delft")
+par(mfrow = c(1, 1))
+
+st_write(grid_full_delft,
+         p("Delft_Sentinel/grid_full_metrics_delft.gpkg"),
+         append = FALSE)
+
+writeRaster(flood_binary_delft,
+            p("Delft_Sentinel/flood_binary_delft.tif"),
+            overwrite = TRUE)
+```
+
+# Step 14. (Merge done in Step 13 - Delft)
+
+```{r}
+message("Step 14 Delft: merge complete. Rows: ", nrow(grid_full_delft))
+```
+
+# Step 15. Correlate green configuration vs flood extent (Delft)
+
+```{r}
+# Step 15. Correlate green configuration vs flood metrics (Delft)
+library(dplyr)
+
+# ── Helper: print correlation cleanly ─────────────────────────────────────
+cor_print <- function(x, y, xname, yname, data) {
+  result <- cor.test(data[[x]], data[[y]], use = "complete.obs")
+  cat(sprintf("%-20s vs %-15s | r = %+.3f | p = %.4f %s\n",
+              xname, yname,
+              result$estimate,
+              result$p.value,
+              ifelse(result$p.value < 0.05, "*", "")))
+}
+
+cat("=== GREEN CONFIGURATION vs FLOOD EXTENT (pland_flood) ===\n")
+# Does more compact/larger green = less flooding?
+cor_print("contig", "pland_flood", "contig",  "pland_flood", grid_full_delft)
+cor_print("area",   "pland_flood", "area",    "pland_flood", grid_full_delft)
+cor_print("gyrate", "pland_flood", "gyrate",  "pland_flood", grid_full_delft)
+cor_print("enn",    "pland_flood", "enn",     "pland_flood", grid_full_delft)
+
+cat("\n=== GREEN CONFIGURATION vs FLOOD FRAGMENTATION (np_flood) ===\n")
+# Does green fragmentation predict flood fragmentation?
+cor_print("contig", "np_flood", "contig", "np_flood", grid_full_delft)
+cor_print("enn",    "np_flood", "enn",    "np_flood", grid_full_delft)
+cor_print("area",   "np_flood", "area",   "np_flood", grid_full_delft)
+
+cat("\n=== GREEN CONFIGURATION vs FLOOD CONNECTIVITY (cohesion + clumpy) ===\n")
+# Does green compactness predict whether flooding is connected or scattered?
+cor_print("contig", "cohesion", "contig", "cohesion", grid_full_delft)
+cor_print("contig", "clumpy",   "contig", "clumpy",   grid_full_delft)
+cor_print("area",   "cohesion", "area",   "cohesion", grid_full_delft)
+cor_print("enn",    "cohesion", "enn",    "cohesion", grid_full_delft)
+
+cat("\n=== GREEN CONFIGURATION vs DOMINANT FLOOD PATCH (lpi) ===\n")
+# Does green patch size predict whether flooding concentrates in one large body?
+cor_print("area",   "lpi", "area",   "lpi", grid_full_delft)
+cor_print("contig", "lpi", "contig", "lpi", grid_full_delft)
+cor_print("gyrate", "lpi", "gyrate", "lpi", grid_full_delft)
+
+cat("\n=== GREEN ISOLATION vs FLOOD DIVISION ===\n")
+# The most spatial structure pairing: fragmented green <-> fragmented flood?
+cor_print("enn",    "division", "enn",    "division", grid_full_delft)
+cor_print("contig", "division", "contig", "division", grid_full_delft)
+
+cat("\n* = significant at p < 0.05\n")
+
+# Summary correlation matrix
+cat("\n=== FULL CORRELATION MATRIX ===\n")
+green_vars <- c("area", "gyrate", "contig", "enn")
+flood_vars <- c("pland_flood", "np_flood", "cohesion", "clumpy", "division", "lpi")
+
+cor_matrix <- grid_full_delft %>%
+  st_drop_geometry() %>%
+  select(all_of(c(green_vars, flood_vars))) %>%
+  cor(use = "complete.obs")
+
+print(round(cor_matrix[green_vars, flood_vars], 3))
+library(dplyr)
+
+# ── Helper: print correlation cleanly ─────────────────────────────────────
+cor_print <- function(x, y, xname, yname, data) {
+  result <- cor.test(data[[x]], data[[y]], use = "complete.obs")
+  cat(sprintf("%-20s vs %-15s | r = %+.3f | p = %.4f %s\n",
+              xname, yname,
+              result$estimate,
+              result$p.value,
+              ifelse(result$p.value < 0.05, "*", "")))
+}
+
+cat("=== GREEN CONFIGURATION vs FLOOD EXTENT (pland_flood) ===\n")
+# Does more compact/larger green = less flooding?
+cor_print("contig", "pland_flood", "contig",  "pland_flood", grid_full_delft)
+cor_print("area",   "pland_flood", "area",    "pland_flood", grid_full_delft)
+cor_print("gyrate", "pland_flood", "gyrate",  "pland_flood", grid_full_delft)
+cor_print("enn",    "pland_flood", "enn",     "pland_flood", grid_full_delft)
+
+cat("\n=== GREEN CONFIGURATION vs FLOOD FRAGMENTATION (np_flood) ===\n")
+# Does green fragmentation predict flood fragmentation?
+cor_print("contig", "np_flood", "contig", "np_flood", grid_full_delft)
+cor_print("enn",    "np_flood", "enn",    "np_flood", grid_full_delft)
+cor_print("area",   "np_flood", "area",   "np_flood", grid_full_delft)
+
+cat("\n=== GREEN CONFIGURATION vs FLOOD CONNECTIVITY (cohesion + clumpy) ===\n")
+# Does green compactness predict whether flooding is connected or scattered?
+cor_print("contig", "cohesion", "contig", "cohesion", grid_full_delft)
+cor_print("contig", "clumpy",   "contig", "clumpy",   grid_full_delft)
+cor_print("area",   "cohesion", "area",   "cohesion", grid_full_delft)
+cor_print("enn",    "cohesion", "enn",    "cohesion", grid_full_delft)
+
+cat("\n=== GREEN CONFIGURATION vs DOMINANT FLOOD PATCH (lpi) ===\n")
+# Does green patch size predict whether flooding concentrates in one large body?
+cor_print("area",   "lpi", "area",   "lpi", grid_full_delft)
+cor_print("contig", "lpi", "contig", "lpi", grid_full_delft)
+cor_print("gyrate", "lpi", "gyrate", "lpi", grid_full_delft)
+
+cat("\n=== GREEN ISOLATION vs FLOOD DIVISION ===\n")
+# The most spatial structure pairing: fragmented green <-> fragmented flood?
+cor_print("enn",    "division", "enn",    "division", grid_full_delft)
+cor_print("contig", "division", "contig", "division", grid_full_delft)
+
+cat("\n* = significant at p < 0.05\n")
+
+# Summary correlation matrix
+cat("\n=== FULL CORRELATION MATRIX ===\n")
+green_vars <- c("area", "gyrate", "contig", "enn")
+flood_vars <- c("pland_flood", "np_flood", "cohesion", "clumpy", "division", "lpi")
+
+cor_matrix <- grid_full_delft %>%
+  st_drop_geometry() %>%
+  select(all_of(c(green_vars, flood_vars))) %>%
+  cor(use = "complete.obs")
+
+print(round(cor_matrix[green_vars, flood_vars], 3))
+
+# Step 16. Plot: green contiguity vs flood extent (Delft)
+
+```{r}
+plot(grid_full_delft$contig, grid_full_delft$pland_flood,
+     xlab = "Mean Green Contiguity",
+     ylab = "% Cell Flooded",
+     main = "Green contiguity vs flood extent - Delft")
+```
+
+------------------------------------------------------------------------
+
+# ── XI'AN ──────────────────────────────────────────────────────────────────
+
+# NOTE: Xi'an green binary raster not yet available.
+
+# Lines referencing green_xian are commented out.
+
+# All flood steps run immediately from the Xi'an flood mask.
+
+# Step 1X. Load packages and data (Xi'an)
+
+```{r}
+green_xian <- rast(p("reprojected_green_cropped_xian_binary_compressed.tif"))
+
+grid_xian <- st_read(p("grid_10000x10000_xian.gpkg"), quiet = TRUE)
+
+ plot(green_xian, main = "Green binary raster - Xi'an")
+# plot(st_geometry(grid_xian), add = TRUE)
+plot(st_geometry(grid_xian), main = "Grid - Xi'an")
+```
+
+
+
+# Step 3X. Landscape metrics for one cell (Xi'an)
+
+```{r}
+lsm_p_area(green_test_xian)
+lsm_p_gyrate(green_test_xian)
+lsm_p_contig(green_test_xian)
+lsm_p_enn(green_test_xian)
+#lsm_p_prox(green_test_xian)
+
+```
+
+# Step 4X. Calculate green metrics for all cells (Xi'an)
+
+```{r}
+
+# Aggregate to 5m first - same as Delft
+green_xian_5m <- aggregate(green_xian, fact = 20, fun = "modal")
+cat("Resampled resolution:", res(green_xian_5m), "m\n")
+
+# Only iterate over cells that actually overlap the green raster
+grid_xian_v     <- vect(grid_xian)
+overlapping_xian <- which(is.related(grid_xian_v,
+                                      as.polygons(ext(green_xian_5m)),
+                                      "intersects"))
+cat("Cells to process:", length(overlapping_xian), "out of", nrow(grid_xian), "\n")
+
+results_xian        <- data.frame(id = grid_xian$id)
+results_xian$area   <- NA
+results_xian$gyrate <- NA
+results_xian$contig <- NA
+results_xian$enn    <- NA
+# results_xian$prox <- NA
+
+total_x  <- length(overlapping_xian)
+report_x <- max(1, round(total_x / 20))
+
+for (idx in seq_along(overlapping_xian)) {
+  i <- overlapping_xian[idx]
+  if (idx %% report_x == 0)
+    cat(sprintf("Xi'an progress: %d / %d (%.0f%%)\n", idx, total_x, idx/total_x*100))
+
+  tryCatch({
+    cell       <- grid_xian_v[i, ]
+    green_cell <- crop(green_xian_5m, cell)
+    green_cell <- mask(green_cell, cell)
+
+    vals <- na.omit(values(green_cell))
+    if (length(vals) == 0 || !1 %in% vals) next
+
+    results_xian$area[i]   <- mean(
+      lsm_p_area(green_cell)$value[lsm_p_area(green_cell)$class == 1], na.rm = TRUE)
+    results_xian$gyrate[i] <- mean(
+      lsm_p_gyrate(green_cell)$value[lsm_p_gyrate(green_cell)$class == 1], na.rm = TRUE)
+    results_xian$contig[i] <- mean(
+      lsm_p_contig(green_cell)$value[lsm_p_contig(green_cell)$class == 1], na.rm = TRUE)
+    results_xian$enn[i]    <- mean(
+      lsm_p_enn(green_cell)$value[lsm_p_enn(green_cell)$class == 1], na.rm = TRUE)
+    # results_xian$prox[i] <- mean(
+    #   lsm_p_prox(green_cell)$value[lsm_p_prox(green_cell)$class == 1], na.rm = TRUE)
+
+  }, error = function(e) NULL)  # silently skip non-overlapping cells
+}
+
+cat("Done! Cells with values:", sum(!is.na(results_xian$area)), "\n")
+head(results_xian[!is.na(results_xian$area), ])
+```
+
+# Step 5X. Join green metrics to grid (Xi'an)
+
+```{r}
+grid_metrics_xian <- merge(grid_xian, results_xian, by = "id")
+cat("grid_metrics_xian rows:", nrow(grid_metrics_xian), "\n")
+cat("Columns:", names(grid_metrics_xian), "\n")
+```
+
+# Step 6X. Plot: Mean Patch Area (Xi'an)
+
+```{r}
+plot(grid_metrics_xian["area"], main = "Mean Patch Area - Xi'an")
+```
+
+# Step 7X. Plot: Mean Radius of Gyration (Xi'an)
+
+```{r}
+plot(grid_metrics_xian["gyrate"], main = "Mean Radius of Gyration - Xi'an")
+```
+
+# Step 8X. Plot: Mean Contiguity Index (Xi'an)
+
+```{r}
+plot(grid_metrics_xian["contig"], main = "Mean Contiguity Index - Xi'an")
+```
+
+# Step 9X. Plot: Mean Nearest-Neighbor Distance (Xi'an)
+
+```{r}
+plot(grid_metrics_xian["enn"], main = "Mean Nearest-Neighbor Distance - Xi'an")
+```
+
+# Step 10X. Prox skipped (Xi'an)
+
+```{r}
+# plot(grid_metrics_xian["prox"], main = "Mean Proximity Index - Xi'an")
+message("Step 10X skipped: prox commented out.")
+```
+
+# Step 11X. Load flood raster (Xi'an)
+
+```{r}
+#flood_path_xian <- p("Xi'an_Sentinel/After_minus_before_FloodMask_Xian_sieved.tif")
+
+#file.exists(flood_path_xian)
+#file.info(flood_path_xian)$size
+#describe(flood_path_xian)
+
+#flood_xian <- rast(flood_path_xian)
+#plot(flood_xian, main = "Flood change mask - Xi'an")
+#flood_xian
+
+flood_path_xian <- p("Xi'an_Sentinel/After_minus_before_FloodMask_Xian_sieved.tif")
+
+cat("File exists:", file.exists(flood_path_xian), "\n")
+cat("File size (MB):", round(file.info(flood_path_xian)$size / 1e6, 1), "\n")
+
+flood_xian_raw <- rast(flood_path_xian)
+cat("Resolution:", res(flood_xian_raw), "m\n")
+cat("Full size:", ncell(flood_xian_raw), "cells\n")
+cat("Full extent:\n"); print(ext(flood_xian_raw))
+
+flood_xian <- crop(flood_xian_raw, ext(vect(grid_xian)))
+rm(flood_xian_raw)
+gc()
+
+cat("Cropped size:", ncell(flood_xian), "cells\n")
+cat("Cropped extent:\n"); print(ext(flood_xian))
+
+plot(flood_xian, main = "Flood change mask - Xi'an (cropped to grid)")
+plot(st_geometry(grid_xian), add = TRUE)
+flood_xian
+```
+
+```{# Step 11X. Load flood raster (Xi'an) - cropped to grid extent}
+{r}
+
+
+flood_path_xian <- p("Xi'an_Sentinel/After_minus_before_FloodMask_Xian_sieved.tif")
+
+cat("File exists:", file.exists(flood_path_xian), "\n")
+cat("File size (MB):", round(file.info(flood_path_xian)$size / 1e6, 1), "\n")
+
+flood_xian_raw <- rast(flood_path_xian)
+cat("Resolution:", res(flood_xian_raw), "m\n")
+cat("Full size:", ncell(flood_xian_raw), "cells\n")
+cat("Full extent:\n"); print(ext(flood_xian_raw))
+
+flood_xian <- crop(flood_xian_raw, ext(vect(grid_xian)))
+rm(flood_xian_raw)
+gc()
+
+cat("Cropped size:", ncell(flood_xian), "cells\n")
+cat("Cropped extent:\n"); print(ext(flood_xian))
+
+plot(flood_xian, main = "Flood change mask - Xi'an (cropped to grid)")
+plot(st_geometry(grid_xian), add = TRUE)
+flood_xian
+```
+
+# Step 12X. Align flood raster CRS to grid CRS (Xi'an)
+
+```{r}
+grid_crs_xian <- crs(vect(grid_xian))
+
+cat("Flood CRS (Xi'an):\n"); print(crs(flood_xian))
+cat("Grid CRS (Xi'an):\n");  print(grid_crs_xian)
+
+if (crs(flood_xian) != grid_crs_xian) {
+  message("Reprojecting Xi'an flood raster to match grid CRS...")
+  flood_xian <- project(flood_xian, grid_crs_xian)
+} else {
+  message("Xi'an flood and grid CRS already match.")
+}
+```
+
+# Step 13X. Extract flood metrics per grid cell (Xi'an)
+
+```{r}
+
+# Resample flood raster to coarser resolution to avoid memory issues
+# Xi'an flood raster is very large - aggregate to 10m or match green resolution
+cat("Xi'an flood raster resolution:", res(flood_xian), "\n")
+cat("Xi'an flood raster size:", ncell(flood_xian), "cells\n")
+
+# Aggregate to 10m if resolution is finer (avoids 11.9GB allocation)
+if (res(flood_xian)[1] < 10) {
+  fact_xian   <- ceiling(10 / res(flood_xian)[1])
+  cat("Aggregating Xi'an flood raster by factor", fact_xian, "...\n")
+  flood_xian  <- aggregate(flood_xian, fact = fact_xian, fun = "max")
+  cat("New resolution:", res(flood_xian), "\n")
+}
+
+flood_binary_xian <- classify(
+  flood_xian,
+  rbind(c(-Inf, 0.05, 0),
+        c(0.05,  Inf, 1)),
+  others = NA)
+
+cat("Flood binary extent (Xi'an):\n"); print(ext(flood_binary_xian))
+cat("Grid extent (Xi'an):\n");         print(ext(grid_xian))
+
+plot(flood_binary_xian, main = "Flood Binary Mask with Grid - Xi'an")
+plot(st_geometry(grid_xian), add = TRUE)
+
+# Use freq() instead of unique(values()) - memory safe
+freq(flood_binary_xian)
+
+# Make sure grid_metrics_xian exists (from Step 5X)
+if (!exists("grid_metrics_xian")) {
+  grid_metrics_xian <- grid_xian
+  message("grid_metrics_xian was missing - set to bare grid")
+}
+
+# Pre-filter overlapping cells only
+grid_xian_v     <- vect(grid_xian)
+overlapping_xian <- which(is.related(grid_xian_v,
+                                      as.polygons(ext(flood_binary_xian)),
+                                      "intersects"))
+cat("Xi'an cells to process:", length(overlapping_xian), "\n")
+
+flood_results_xian             <- data.frame(id = grid_xian$id)
+flood_results_xian$pland_flood <- NA
+flood_results_xian$np_flood    <- NA
+flood_results_xian$cohesion    <- NA
+flood_results_xian$clumpy      <- NA
+flood_results_xian$division    <- NA
+flood_results_xian$lpi         <- NA
+
+total_xian  <- length(overlapping_xian)
+report_xian <- max(1, round(total_xian / 20))
+
+for (idx in seq_along(overlapping_xian)) {
+  i <- overlapping_xian[idx]
+
+  if (idx %% report_xian == 0)
+    cat(sprintf("Xi'an flood progress: %d / %d (%.0f%%)\n",
+                idx, total_xian, idx/total_xian*100))
+
+  tryCatch({
+    cell       <- grid_xian_v[i, ]
+    flood_cell <- crop(flood_binary_xian, cell)
+    flood_cell <- mask(flood_cell, cell)
+
+    vals <- na.omit(values(flood_cell))
+    if (length(vals) == 0 || length(unique(vals)) < 2) next
+
+    pland    <- lsm_c_pland(flood_cell)
+    np       <- lsm_c_np(flood_cell)
+    coh      <- lsm_c_cohesion(flood_cell)
+    clumpy_r <- lsm_c_clumpy(flood_cell)
+    division <- lsm_l_division(flood_cell)
+    lpi      <- lsm_c_lpi(flood_cell)
+
+    if (nrow(pland[pland$class == 1, ])        > 0)
+      flood_results_xian$pland_flood[i] <- pland$value[pland$class == 1]
+    if (nrow(np[np$class == 1, ])              > 0)
+      flood_results_xian$np_flood[i]    <- np$value[np$class == 1]
+    if (nrow(coh[coh$class == 1, ])            > 0)
+      flood_results_xian$cohesion[i]    <- coh$value[coh$class == 1]
+    if (nrow(clumpy_r[clumpy_r$class == 1, ]) > 0)
+      flood_results_xian$clumpy[i]      <- clumpy_r$value[clumpy_r$class == 1]
+    if (nrow(division)                         > 0)
+      flood_results_xian$division[i]    <- division$value
+    if (nrow(lpi[lpi$class == 1, ])            > 0)
+      flood_results_xian$lpi[i]         <- lpi$value[lpi$class == 1]
+
+  }, error = function(e) NULL)
+}
+
+cat("Cells with flood data (Xi'an):", sum(!is.na(flood_results_xian$pland_flood)), "\n")
+
+grid_full_xian <- merge(grid_metrics_xian, flood_results_xian, by = "id")
+
+par(mfrow = c(2, 3))
+plot(grid_full_xian["pland_flood"], main = "% Cell Flooded - Xi'an")
+plot(grid_full_xian["np_flood"],    main = "N Flood Patches - Xi'an")
+plot(grid_full_xian["cohesion"],    main = "Flood Cohesion - Xi'an")
+plot(grid_full_xian["clumpy"],      main = "Flood Clumpiness - Xi'an")
+plot(grid_full_xian["division"],    main = "Landscape Division - Xi'an")
+plot(grid_full_xian["lpi"],         main = "Largest Flood Patch - Xi'an")
+par(mfrow = c(1, 1))
+
+st_write(grid_full_xian,
+         p("Xi'an_Sentinel/grid_full_metrics_xian.gpkg"),
+         delete_if_exists = TRUE)
+
+writeRaster(flood_binary_xian,
+            p("Xi'an_Sentinel/flood_binary_xian.tif"),
+            overwrite = TRUE)
+```
+
+# Step 14X. (Merge done in Step 13X - Xi'an)
+
+```{r}
+message("Step 14X Xi'an: merge complete. Rows: ", nrow(grid_full_xian))
+```
+
+
+# Step 15X. Correlate green configuration vs flood metrics (Xi'an)
+
+```{r}
+
+library(dplyr)
+
+cor_print <- function(x, y, xname, yname, data) {
+  result <- cor.test(data[[x]], data[[y]], use = "complete.obs")
+  cat(sprintf("%-20s vs %-15s | r = %+.3f | p = %.4f %s\n",
+              xname, yname,
+              result$estimate,
+              result$p.value,
+              ifelse(result$p.value < 0.05, "*", "")))
+}
+
+cat("=== GREEN CONFIGURATION vs FLOOD EXTENT (pland_flood) ===\n")
+cor_print("contig", "pland_flood", "contig", "pland_flood", grid_full_xian)
+cor_print("area",   "pland_flood", "area",   "pland_flood", grid_full_xian)
+cor_print("gyrate", "pland_flood", "gyrate", "pland_flood", grid_full_xian)
+cor_print("enn",    "pland_flood", "enn",    "pland_flood", grid_full_xian)
+
+cat("\n=== GREEN CONFIGURATION vs FLOOD FRAGMENTATION (np_flood) ===\n")
+cor_print("contig", "np_flood", "contig", "np_flood", grid_full_xian)
+cor_print("enn",    "np_flood", "enn",    "np_flood", grid_full_xian)
+cor_print("area",   "np_flood", "area",   "np_flood", grid_full_xian)
+
+cat("\n=== GREEN CONFIGURATION vs FLOOD CONNECTIVITY (cohesion + clumpy) ===\n")
+cor_print("contig", "cohesion", "contig", "cohesion", grid_full_xian)
+cor_print("contig", "clumpy",   "contig", "clumpy",   grid_full_xian)
+cor_print("area",   "cohesion", "area",   "cohesion", grid_full_xian)
+cor_print("enn",    "cohesion", "enn",    "cohesion", grid_full_xian)
+
+cat("\n=== GREEN CONFIGURATION vs DOMINANT FLOOD PATCH (lpi) ===\n")
+cor_print("area",   "lpi", "area",   "lpi", grid_full_xian)
+cor_print("contig", "lpi", "contig", "lpi", grid_full_xian)
+cor_print("gyrate", "lpi", "gyrate", "lpi", grid_full_xian)
+
+cat("\n=== GREEN ISOLATION vs FLOOD DIVISION ===\n")
+cor_print("enn",    "division", "enn",    "division", grid_full_xian)
+cor_print("contig", "division", "contig", "division", grid_full_xian)
+
+cat("\n* = significant at p < 0.05\n")
+
+cat("\n=== FULL CORRELATION MATRIX ===\n")
+green_vars <- c("area", "gyrate", "contig", "enn")
+flood_vars <- c("pland_flood", "np_flood", "cohesion", "clumpy", "division", "lpi")
+
+cor_matrix_xian <- grid_full_xian %>%
+  st_drop_geometry() %>%
+  select(all_of(c(green_vars, flood_vars))) %>%
+  cor(use = "complete.obs")
+
+print(round(cor_matrix_xian[green_vars, flood_vars], 3))
+
+```
+
+# Step 16X. Plot: green contiguity vs flood extent (Xi'an)
+
+```{r}
+ plot(grid_full_xian$contig, grid_full_xian$pland_flood,
+      xlab = "Mean Green Contiguity",
+      ylab = "% Cell Flooded",
+      main = "Green contiguity vs flood extent - Xi'an")
+message("Step 16X: skipped - Xi'an green not available yet.")
+```
+
+------------------------------------------------------------------------
+
+# ── STEPS 17-19: DISTANCE METRIC, CLUSTERING & TILED MAPS ─────────────────
+
+
+
+# Step 17. Distance from flooded cells to nearest green patch (Delft + Xi'an)
+```{r}
+# ── Delft ────────────────────────────────────────────────────────────────
+green_target_delft <- green_delft
+green_target_delft[green_target_delft != 1] <- NA
+
+dist_to_green_delft <- distance(green_target_delft)
+dist_to_green_delft_5m <- resample(dist_to_green_delft, flood_binary_delft, method = "bilinear")
+flood_dist_delft <- mask(dist_to_green_delft_5m, flood_binary_delft, maskvalues = c(0, NA))
+
+plot(flood_dist_delft, main = "Distance from flooded cells to nearest green - Delft")
+
+grid_full_delft$mean_dist_green <- NA
+grid_full_delft$min_dist_green  <- NA
+
+for (i in 1:nrow(grid_delft)) {
+  tryCatch({
+    cell    <- vect(grid_delft[i, ])
+    fd_cell <- crop(flood_dist_delft, cell)
+    fd_cell <- mask(fd_cell, cell)
+    vals    <- na.omit(values(fd_cell))
+    if (length(vals) == 0) next
+    grid_full_delft$mean_dist_green[i] <- mean(vals)
+    grid_full_delft$min_dist_green[i]  <- min(vals)
+  }, error = function(e) NULL)
+}
+
+cat("Delft cells with dist_green values:", sum(!is.na(grid_full_delft$mean_dist_green)), "\n")
+
+# ── Xi'an ────────────────────────────────────────────────────────────────
+green_target_xian <- green_xian
+green_target_xian[green_target_xian != 1] <- NA
+
+dist_to_green_xian <- distance(green_target_xian)
+dist_to_green_xian_5m <- resample(dist_to_green_xian, flood_binary_xian, method = "bilinear")
+flood_dist_xian <- mask(dist_to_green_xian_5m, flood_binary_xian, maskvalues = c(0, NA))
+
+plot(flood_dist_xian, main = "Distance from flooded cells to nearest green - Xi'an")
+
+grid_full_xian$mean_dist_green <- NA
+grid_full_xian$min_dist_green  <- NA
+
+for (i in 1:nrow(grid_xian)) {
+  tryCatch({
+    cell    <- vect(grid_xian[i, ])
+    fd_cell <- crop(flood_dist_xian, cell)
+    fd_cell <- mask(fd_cell, cell)
+    vals    <- na.omit(values(fd_cell))
+    if (length(vals) == 0) next
+    grid_full_xian$mean_dist_green[i] <- mean(vals)
+    grid_full_xian$min_dist_green[i]  <- min(vals)
+  }, error = function(e) NULL)
+}
+
+cat("Xi'an cells with dist_green values:", sum(!is.na(grid_full_xian$mean_dist_green)), "\n")
+head(grid_full_xian[!is.na(grid_full_xian$mean_dist_green),
+                     c("id", "mean_dist_green", "min_dist_green")])
+```
+
+
+# Step 18. K-means clustering into typologies (Delft + Xi'an)
+```{r}
+library(dplyr)
+
+# ── Delft ────────────────────────────────────────────────────────────────
+vars_delft <- grid_full_delft %>%
+  st_drop_geometry() %>%
+  select(area, gyrate, contig, enn,
+         pland_flood, np_flood, cohesion, clumpy, division, lpi,
+         mean_dist_green, min_dist_green)
+
+vars_delft[is.na(vars_delft)] <- 0
+vars_scaled_delft <- scale(vars_delft)
+
+wss_delft <- sapply(2:8, function(k)
+  kmeans(vars_scaled_delft, k, nstart = 25)$tot.withinss)
+plot(2:8, wss_delft, type = "b",
+     xlab = "Number of clusters (k)", ylab = "Within-cluster SS",
+     main = "Elbow method - Delft")
+
+set.seed(123)
+k_delft  <- 4
+km_delft <- kmeans(vars_scaled_delft, centers = k_delft, nstart = 25)
+
+grid_full_delft$typology <- factor(km_delft$cluster,
+                                    labels = paste0("Typology ", 1:k_delft))
+cat("Typology counts - Delft:\n"); print(table(grid_full_delft$typology))
+
+st_write(grid_full_delft,
+         p("Delft_Sentinel/grid_full_typology_delft.gpkg"),
+         append = FALSE)
+
+# ── Xi'an ────────────────────────────────────────────────────────────────
+vars_xian <- grid_full_xian %>%
+  st_drop_geometry() %>%
+  select(area, gyrate, contig, enn,
+         pland_flood, np_flood, cohesion, clumpy, division, lpi,
+         mean_dist_green, min_dist_green)
+
+vars_xian[is.na(vars_xian)] <- 0
+vars_scaled_xian <- scale(vars_xian)
+
+wss_xian <- sapply(2:8, function(k)
+  kmeans(vars_scaled_xian, k, nstart = 25)$tot.withinss)
+plot(2:8, wss_xian, type = "b",
+     xlab = "Number of clusters (k)", ylab = "Within-cluster SS",
+     main = "Elbow method - Xi'an")
+
+set.seed(123)
+k_xian  <- 4
+km_xian <- kmeans(vars_scaled_xian, centers = k_xian, nstart = 25)
+
+grid_full_xian$typology <- factor(km_xian$cluster,
+                                   labels = paste0("Typology ", 1:k_xian))
+cat("Typology counts - Xi'an:\n"); print(table(grid_full_xian$typology))
+
+st_write(grid_full_xian,
+         p("Xi'an_Sentinel/grid_full_typology_xian.gpkg"),
+         append = FALSE)
+```
+
+
+
+# Step 19. Tiled spatial pattern maps - all metrics, both cities (slide 38 style)
+```{r}
+library(ggplot2)
+library(patchwork)
+library(dplyr)
+
+delft_map      <- st_read(p("Delft_Sentinel/grid_full_typology_delft.gpkg"), quiet = TRUE)
+delft_map$city <- "Delft"
+
+# Use the typology file (post-clustering), not the pre-clustering metrics file
+xian_map       <- st_read(p("Xi'an_Sentinel/grid_full_typology_xian.gpkg"), quiet = TRUE)
+xian_map$city  <- "Xi'an"
+
+typology_colors <- c(
+  "Typology 1" = "#5B9BA8",
+  "Typology 2" = "#8E8FC2",
+  "Typology 3" = "#B4647A",
+  "Typology 4" = "#F2C9C9"
+)
+
+map_theme <- theme_void() +
+  theme(
+    plot.title      = element_text(hjust = 1, face = "bold", size = 9),
+    legend.position = "right",
+    legend.key.size = unit(0.3, "cm"),
+    legend.text     = element_text(size = 6),
+    legend.title    = element_text(size = 7)
+  )
+
+make_panel <- function(data, metric, city_name, shared_limits) {
+  ggplot(data) +
+    geom_sf(aes(fill = .data[[metric]]), color = NA) +
+    scale_fill_viridis_c(option = "magma", na.value = "grey90",
+                          name = metric, limits = shared_limits) +
+    labs(title = paste0(city_name, "\n", metric)) +
+    map_theme
+}
+
+make_donut <- function(data, city_name) {
+  d <- data %>%
+    st_drop_geometry() %>%
+    filter(!is.na(typology)) %>%
+    count(typology) %>%
+    mutate(pct = n / sum(n) * 100)
+
+  ggplot(d, aes(x = 2, y = pct, fill = typology)) +
+    geom_col(width = 1, color = "white") +
+    coord_polar(theta = "y") +
+    xlim(0.5, 2.5) +
+    scale_fill_manual(values = typology_colors, drop = FALSE) +
+    geom_text(aes(label = paste0(round(pct), "%")),
+              position = position_stack(vjust = 0.5), size = 3) +
+    labs(title = city_name) +
+    theme_void() +
+    theme(legend.position = "none",
+          plot.title = element_text(hjust = 0.5, face = "bold"))
+}
+
+# Typology maps - both cities now active
+typology_map_delft <- ggplot(delft_map) +
+  geom_sf(aes(fill = typology), color = NA) +
+  scale_fill_manual(values = typology_colors, na.value = "grey90", drop = FALSE) +
+  labs(title = "Delft\nTypology") +
+  map_theme
+
+typology_map_xian <- ggplot(xian_map) +
+  geom_sf(aes(fill = typology), color = NA) +
+  scale_fill_manual(values = typology_colors, na.value = "grey90", drop = FALSE) +
+  labs(title = "Xi'an\nTypology") +
+  map_theme
+
+donut_delft <- make_donut(delft_map, "Delft")
+donut_xian  <- make_donut(xian_map, "Xi'an")
+
+# Metrics to tile
+green_metrics <- c("area", "gyrate", "contig", "enn")
+flood_metrics <- c("pland_flood", "np_flood", "cohesion", "clumpy", "division", "lpi")
+dist_metrics  <- c("mean_dist_green", "min_dist_green")
+all_metrics   <- c(green_metrics, flood_metrics, dist_metrics)
+
+panels <- list()
+for (m in all_metrics) {
+  delft_vals <- if (m %in% names(delft_map)) delft_map[[m]] else numeric(0)
+  xian_vals  <- if (m %in% names(xian_map))  xian_map[[m]]  else numeric(0)
+  rng        <- range(c(delft_vals, xian_vals), na.rm = TRUE)
+  if (any(is.infinite(rng))) rng <- c(0, 1)
+
+  panels[[paste0(m, "_delft")]] <- make_panel(delft_map, m, "Delft", rng)
+  panels[[paste0(m, "_xian")]]  <- make_panel(xian_map, m, "Xi'an", rng)
+}
+
+metric_grid <- wrap_plots(panels, ncol = 2)
+
+# Combined typology overview: both cities' maps + donuts
+typology_overview <- (typology_map_delft | donut_delft) / (typology_map_xian | donut_xian) +
+  plot_annotation(title = "Typology spatial pattern - Delft & Xi'an",
+                  theme = theme(plot.title = element_text(face = "bold", size = 11)))
+
+typology_overview
+metric_grid
+
+ggsave(p("typology_overview_both_cities.png"),
+       typology_overview, width = 10, height = 9, dpi = 300)
+
+ggsave(p("typology_metrics_tiled.png"),
+       metric_grid,
+       width = 10, height = 4 * length(all_metrics), dpi = 300,
+       limitsize = FALSE)
+
+message("Step 19 complete. Plots saved to D:/ARFW0501/")
+```
+
+# Step 20. Typology interpretation table
+```{r}
+interpret_typologies <- function(grid_data, city_name) {
+  grid_data %>%
+    st_drop_geometry() %>%
+    group_by(typology) %>%
+    summarise(
+      n_cells           = n(),
+      mean_area         = mean(area, na.rm = TRUE),
+      mean_contig       = mean(contig, na.rm = TRUE),
+      mean_enn          = mean(enn, na.rm = TRUE),
+      mean_pland_flood  = mean(pland_flood, na.rm = TRUE),
+      mean_np_flood     = mean(np_flood, na.rm = TRUE),
+      mean_dist_green   = mean(mean_dist_green, na.rm = TRUE)
+    ) %>%
+    mutate(city = city_name)
+}
+
+typ_table_delft <- interpret_typologies(grid_full_delft, "Delft")
+typ_table_xian  <- interpret_typologies(grid_full_xian, "Xi'an")
+
+typology_summary <- bind_rows(typ_table_delft, typ_table_xian)
+print(typology_summary, n = Inf)
+```
+
+# Step 21. Flood-prone DEM metrics for Xi'an
+```{r}
+dem_path_xian <- p("fab_flood_prone.tif")
+file.exists(dem_path_xian)
+file.info(dem_path_xian)$size
+
+dem_xian_raw <- rast(dem_path_xian)
+cat("DEM resolution:", res(dem_xian_raw), "\n")
+cat("DEM extent:\n"); print(ext(dem_xian_raw))
+cat("DEM CRS:\n"); print(crs(dem_xian_raw, describe = TRUE)$code)
+
+# Reproject grid if needed, then crop DEM to grid extent
+grid_xian_v <- vect(grid_xian)
+if (!identical(crs(dem_xian_raw), crs(grid_xian_v))) {
+  message("Reprojecting DEM to match grid CRS...")
+  dem_xian_raw <- project(dem_xian_raw, crs(grid_xian_v))
+}
+
+dem_xian <- crop(dem_xian_raw, ext(grid_xian_v))
+rm(dem_xian_raw); gc()
+
+cat("Cropped DEM size:", ncell(dem_xian), "cells\n")
+plot(dem_xian, main = "Flood-prone DEM - Xi'an (cropped to grid)")
+plot(st_geometry(grid_xian), add = TRUE)
+
+# Classify DEM into binary flood-prone mask using same threshold logic as flood mask
+dem_binary_xian <- classify(
+  dem_xian,
+  rbind(c(-Inf, 0.05, 0),
+        c(0.05,  Inf, 1)),
+  others = NA)
+
+freq(dem_binary_xian)
+
+# Same landscape metrics as the flood mask steps, applied to DEM flood-prone areas
+dem_results_xian             <- data.frame(id = grid_xian$id)
+dem_results_xian$pland_demfp <- NA
+dem_results_xian$np_demfp    <- NA
+dem_results_xian$cohesion_demfp <- NA
+dem_results_xian$clumpy_demfp   <- NA
+dem_results_xian$division_demfp <- NA
+dem_results_xian$lpi_demfp      <- NA
+
+overlapping_dem <- which(is.related(grid_xian_v,
+                                     as.polygons(ext(dem_binary_xian)),
+                                     "intersects"))
+cat("Xi'an DEM cells to process:", length(overlapping_dem), "\n")
+
+total_d  <- length(overlapping_dem)
+report_d <- max(1, round(total_d / 20))
+
+for (idx in seq_along(overlapping_dem)) {
+  i <- overlapping_dem[idx]
+  if (idx %% report_d == 0)
+    cat(sprintf("DEM progress: %d / %d (%.0f%%)\n", idx, total_d, idx/total_d*100))
+
+  tryCatch({
+    cell     <- grid_xian_v[i, ]
+    dem_cell <- crop(dem_binary_xian, cell)
+    dem_cell <- mask(dem_cell, cell)
+
+    vals <- na.omit(values(dem_cell))
+    if (length(vals) == 0 || length(unique(vals)) < 2) next
+
+    pland    <- lsm_c_pland(dem_cell)
+    np       <- lsm_c_np(dem_cell)
+    coh      <- lsm_c_cohesion(dem_cell)
+    clumpy_r <- lsm_c_clumpy(dem_cell)
+    division <- lsm_l_division(dem_cell)
+    lpi      <- lsm_c_lpi(dem_cell)
+
+    if (nrow(pland[pland$class == 1, ])        > 0)
+      dem_results_xian$pland_demfp[i]    <- pland$value[pland$class == 1]
+    if (nrow(np[np$class == 1, ])              > 0)
+      dem_results_xian$np_demfp[i]       <- np$value[np$class == 1]
+    if (nrow(coh[coh$class == 1, ])            > 0)
+      dem_results_xian$cohesion_demfp[i] <- coh$value[coh$class == 1]
+    if (nrow(clumpy_r[clumpy_r$class == 1, ]) > 0)
+      dem_results_xian$clumpy_demfp[i]   <- clumpy_r$value[clumpy_r$class == 1]
+    if (nrow(division)                         > 0)
+      dem_results_xian$division_demfp[i] <- division$value
+    if (nrow(lpi[lpi$class == 1, ])            > 0)
+      dem_results_xian$lpi_demfp[i]      <- lpi$value[lpi$class == 1]
+
+  }, error = function(e) NULL)
+}
+
+cat("Cells with DEM flood-prone data:", sum(!is.na(dem_results_xian$pland_demfp)), "\n")
+
+grid_full_xian <- merge(grid_full_xian, dem_results_xian, by = "id")
+
+par(mfrow = c(2, 3))
+plot(grid_full_xian["pland_demfp"],    main = "% Flood-Prone (DEM) - Xi'an")
+plot(grid_full_xian["np_demfp"],       main = "N Flood-Prone Patches - Xi'an")
+plot(grid_full_xian["cohesion_demfp"], main = "Flood-Prone Cohesion - Xi'an")
+plot(grid_full_xian["clumpy_demfp"],   main = "Flood-Prone Clumpiness - Xi'an")
+plot(grid_full_xian["division_demfp"], main = "Flood-Prone Division - Xi'an")
+plot(grid_full_xian["lpi_demfp"],      main = "Largest Flood-Prone Patch - Xi'an")
+par(mfrow = c(1, 1))
+
+st_write(grid_full_xian,
+         p("Xi'an_Sentinel/grid_full_typology_xian.gpkg"),
+         delete_if_exists = TRUE)
+
+writeRaster(dem_binary_xian,
+            p("Xi'an_Sentinel/dem_flood_prone_binary_xian.tif"),
+            overwrite = TRUE)
+            
+
+```

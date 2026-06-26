@@ -116,7 +116,7 @@ load_city_context <- function(city_name, target_crs) {
     folder <- "data/context/delft"
 
     context <- list(
-      buildings = read_context_layer(file.path(folder, "delft_buildings.gpkg"), target_crs),
+      buildings = NULL,
       primary_roads = read_context_layer(file.path(folder, "delft_primary_roads.gpkg"), target_crs),
       secondary_roads = read_context_layer(file.path(folder, "delft_secondary_roads.gpkg"), target_crs),
       tertiary_roads = read_context_layer(file.path(folder, "delft_tertiary_roads.gpkg"), target_crs),
@@ -133,7 +133,7 @@ load_city_context <- function(city_name, target_crs) {
     folder <- "data/context/xian"
 
     context <- list(
-      buildings = read_context_layer(file.path(folder, "xian_buildings.gpkg"), target_crs),
+      buildings = NULL,
       primary_roads = read_context_layer(file.path(folder, "xian_primary_roads.gpkg"), target_crs),
       secondary_roads = read_context_layer(file.path(folder, "xian_secondary_roads.gpkg"), target_crs),
       tertiary_roads = read_context_layer(file.path(folder, "xian_tertiary_roads.gpkg"), target_crs),

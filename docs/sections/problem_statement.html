@@ -182,6 +182,18 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../sections/reproducibility_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">reproducibility statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/ai_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">AI statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../sections/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -215,10 +227,9 @@ div.csl-indent {
   <ul>
   <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">1.1</span> Background</a></li>
   <li><a href="#research-gap" id="toc-research-gap" class="nav-link" data-scroll-target="#research-gap"><span class="header-section-number">1.2</span> Research gap</a></li>
-  <li><a href="#aim" id="toc-aim" class="nav-link" data-scroll-target="#aim"><span class="header-section-number">1.3</span> Aim</a></li>
-  <li><a href="#working-assumption" id="toc-working-assumption" class="nav-link" data-scroll-target="#working-assumption"><span class="header-section-number">1.4</span> Working assumption</a></li>
-  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question"><span class="header-section-number">1.5</span> Research question</a></li>
-  <li><a href="#sub-questions" id="toc-sub-questions" class="nav-link" data-scroll-target="#sub-questions"><span class="header-section-number">1.6</span> Sub questions</a></li>
+  <li><a href="#working-assumption" id="toc-working-assumption" class="nav-link" data-scroll-target="#working-assumption"><span class="header-section-number">1.3</span> Working assumption</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question"><span class="header-section-number">1.4</span> Research question</a></li>
+  <li><a href="#sub-questions" id="toc-sub-questions" class="nav-link" data-scroll-target="#sub-questions"><span class="header-section-number">1.5</span> Sub questions</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/edit/main/sections/problem_statement.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/blob/main/sections/problem_statement.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -249,30 +260,24 @@ div.csl-indent {
 <p>Pluvial flooding is a relevant issue in urban areas. It occurs when intense rainfall creates overland flow or surface ponding before water can enter drainage systems, canals, rivers, or other water bodies <span class="citation" data-cites="prokic2019">(<a href="references.html#ref-prokic2019" role="doc-biblioref">Prokić et al. 2019</a>)</span>. In cities, impervious surfaces such as roads, roofs, and pavements can reduce infiltration and increase the amount of water remaining on the surface.</p>
 <p>Green infrastructure is often discussed as one way to reduce urban flooding. Green spaces can absorb, store, and slow down rainwater, which may reduce pressure on drainage systems. Stormwater management and flood mitigation are therefore important ecosystem services in green infrastructure planning <span class="citation" data-cites="meerow2019">(<a href="references.html#ref-meerow2019" role="doc-biblioref">Meerow 2019</a>)</span>. However, the amount of green space alone is not enough to understand its possible role. The spatial configuration of green space also matters.</p>
 <p>For example, one large connected park may function differently from many small isolated green patches. Green spaces can differ in size, compactness, connectivity, and fragmentation. These spatial properties may influence how green areas relate to runoff, storage, and surface water accumulation. Previous work also shows that spatial distribution and connectivity are important in green infrastructure planning <span class="citation" data-cites="brom2023">(<a href="references.html#ref-brom2023" role="doc-biblioref">Brom et al. 2023</a>)</span>.</p>
-<p>This project therefore focuses on both the amount and configuration of green space. The analysis uses green space metrics, FWEI derived flood indicators, DEM variables, and combined typologies to compare Delft and Xi’an.</p>
+<p>This project focuses on both the quantity and spatial configuration of green space, and examines how these relate to satellite detected surface water change in two contrasting urban and climatic settings. Xi’an, China, experienced a severe pluvial flood event on 11 August 2023 after extreme rainfall. Delft, the Netherlands, was used as a non event comparison case using dates where major pluvial flooding was not expected in the study area.</p>
 </section>
 <section id="research-gap" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="research-gap"><span class="header-section-number">1.2</span> Research gap</h2>
-<p>Many studies discuss green infrastructure and nature based solutions in relation to stormwater management and flood risk <span class="citation" data-cites="sarabi2022">(<a href="references.html#ref-sarabi2022" role="doc-biblioref">Sarabi et al. 2022</a>)</span>. However, comparing this relationship between different cities is difficult because cities differ in size, climate, data availability, spatial resolution, and land cover structure.</p>
-<p>Delft and Xi’an provide two different urban contexts. Delft is a smaller Dutch city in a low lying landscape with a dense water network. Xi’an is a much larger Chinese city with a different urban structure and spatial scale. To make comparison possible, this project uses equal sized study areas and a shared grid based method.</p>
-<p>A second challenge is that directly comparable pluvial flood risk datasets were not available for both cities. Therefore, the analysis uses the Flood/Water Extraction Index (FWEI) as a common proxy for flood related surface water change. FWEI was developed to identify water and flooded areas from Sentinel 2 visible and near infrared bands <span class="citation" data-cites="farhadi2024fwei">(<a href="references.html#ref-farhadi2024fwei" role="doc-biblioref">Farhadi et al. 2024</a>)</span>.</p>
+<p>Studies linking green infrastructure to flood risk reduction are well established in the literature <span class="citation" data-cites="sarabi2022">(<a href="references.html#ref-sarabi2022" role="doc-biblioref">Sarabi et al. 2022</a>)</span>, but cross city comparisons remain difficult. Cities differ in size, climate, data availability, spatial resolution, and land cover structure. Delft and Xi’an are very different in scale and context, so comparing their full administrative areas directly would not be meaningful.</p>
+<p>A second challenge was that directly comparable pluvial flood datasets did not exist for both cities. For this reason, the project uses the Flood Water Extraction Index (FWEI) as a shared method for detecting surface water change from Sentinel 2 satellite imagery <span class="citation" data-cites="farhadi2024fwei">(<a href="references.html#ref-farhadi2024fwei" role="doc-biblioref">Farhadi et al. 2024</a>)</span>. For Xi’an, the FWEI before and after comparison captures the surface water change caused by the 11 August 2023 flood event. For Delft, the same method applied to two non event dates serves as a control case, expected to show minimal surface water change. This design, with one city affected by a real flood event and one control case, strengthens the ability to interpret what the FWEI derived signals represent.</p>
 </section>
-<section id="aim" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="aim"><span class="header-section-number">1.3</span> Aim</h2>
-<p>The aim of this project is to analyse how the spatial configuration of green spaces influences pluvial flood related surface water patterns in Delft and Xi’an. The project uses a shared grid based approach, green space rasters, FWEI derived flood indicators, DEM variables, correlation analysis, metric selection, and combined typology construction.</p>
-<p>The goal is not to prove a direct causal relationship between green space and flooding. Instead, the project explores whether certain combined spatial conditions are associated with higher or lower detected surface water change.</p>
-</section>
-<section id="working-assumption" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="working-assumption"><span class="header-section-number">1.4</span> Working assumption</h2>
+<section id="working-assumption" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="working-assumption"><span class="header-section-number">1.3</span> Working assumption</h2>
 <p>The main assumption is that green space configuration influences how pluvial surface water appears across the urban landscape. More connected and compact green areas are expected to relate differently to surface water than fragmented or isolated green patches.</p>
 <p>The project also assumes that this relationship is affected by topography. Therefore, elevation and slope are included in the final typology.</p>
 </section>
-<section id="research-question" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="research-question"><span class="header-section-number">1.5</span> Research question</h2>
+<section id="research-question" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="research-question"><span class="header-section-number">1.4</span> Research question</h2>
 <p>How does the spatial configuration of green spaces influence pluvial flooding in urban areas such as Delft and Xi’an?</p>
 </section>
-<section id="sub-questions" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="sub-questions"><span class="header-section-number">1.6</span> Sub questions</h2>
+<section id="sub-questions" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sub-questions"><span class="header-section-number">1.5</span> Sub questions</h2>
 <ol type="1">
 <li><p>How can green space configuration and flood related surface water patterns be measured and compared between Delft and Xi’an?</p></li>
 <li><p>What spatial patterns can be identified when green space, flood related, and topographic indicators are combined?</p></li>
@@ -295,6 +300,9 @@ Prokić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. <span>“Pluvial Flo
 </div>
 <div id="ref-sarabi2022" class="csl-entry" role="listitem">
 Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>“The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.”</span> <em>Sustainable Cities and Society</em> 78: 103608. <a href="https://doi.org/10.1016/j.scs.2021.103608">https://doi.org/10.1016/j.scs.2021.103608</a>.
+</div>
+<div id="ref-shi2023ugs" class="csl-entry" role="listitem">
+Shi, Qian, Mengxi Liu, Andrea Marinoni, and Xiaoping Liu. 2023. <span>“<span>UGS-1m</span>: Fine-Grained Urban Green Space Mapping of 31 Major Cities in China Based on the Deep Learning Framework.”</span> <em>Earth System Science Data</em> 15: 555–77. <a href="https://doi.org/10.5194/essd-15-555-2023">https://doi.org/10.5194/essd-15-555-2023</a>.
 </div>
 </div>
 </section>

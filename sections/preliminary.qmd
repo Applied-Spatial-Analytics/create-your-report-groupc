@@ -2,9 +2,9 @@
 
 ## Study area selection
 
-The study areas were selected to allow a more balanced comparison between Delft and Xi’an. Because the two cities are very different in size, comparing their full administrative boundaries would not be very meaningful. Delft is relatively compact, while Xi’an is much larger and more spatially extensive. A full city comparison would therefore create a strong imbalance in scale and land cover variation.
+The study areas were selected to make the comparison between Delft and Xi’an more balanced. Because the full cities are very different in size, both cases were analysed using the same 10 km by 10 km study-area extent. This allowed the project to compare two contrasting urban contexts without relying on full administrative boundaries.
 
-To reduce this problem, both cities were analysed using a 10 km by 10 km study area. This gives both cases the same spatial extent, while still allowing the selected areas to represent different urban and environmental conditions.
+For Delft, the selected area includes the city itself and parts of the surrounding urban and rural landscape. For Xi’an, the selected area focuses on a central urban section that includes dense urban fabric, green patches, and major open spaces. The aim was not to make the two cities identical, but to apply the same spatial logic to two different urban settings.
 
 ::: {layout-ncol=2}
 ![Study area context map for Delft.](../figures/preliminary/delft_study_area_context_map.png){#fig-delft-study-area width=100%}
@@ -25,11 +25,4 @@ For Xi’an, the same 10 km by 10 km study area does not cover the full city. In
 The comparison is therefore not based on the idea that Delft and Xi’an are similar cities. Instead, they are used as contrasting cases. This makes it possible to test whether the same spatial workflow can still identify meaningful green space and flood related patterns in both places.
 
 
-## Data availability and first checks
-
-Before the main analysis, the available green space, FWEI, and DEM layers were checked for both Delft and Xi’an. This was necessary to make sure that the same type of analysis could be applied to both study areas. The layers were clipped to the selected 10 km by 10 km extents and prepared for a common workflow.
-
-The preliminary check showed that both cities had usable green space data, FWEI derived surface water data, and DEM data. However, directly comparable pluvial flood depth maps were not available for both cities. For this reason, FWEI derived surface water change was used as the common flood related proxy.
-
-The detailed metric maps are shown later in the metric selection chapter. This preliminary chapter only introduces the study areas, explains the comparison between Delft and Xi’an, and gives the basic data context for the analysis.
 

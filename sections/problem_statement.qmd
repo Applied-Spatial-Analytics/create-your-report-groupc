@@ -8,21 +8,13 @@ Green infrastructure is often discussed as one way to reduce urban flooding. Gre
 
 For example, one large connected park may function differently from many small isolated green patches. Green spaces can differ in size, compactness, connectivity, and fragmentation. These spatial properties may influence how green areas relate to runoff, storage, and surface water accumulation. Previous work also shows that spatial distribution and connectivity are important in green infrastructure planning [@brom2023].
 
-This project therefore focuses on both the amount and configuration of green space. The analysis uses green space metrics, FWEI derived flood indicators, DEM variables, and combined typologies to compare Delft and Xi’an.
+This project focuses on both the quantity and spatial configuration of green space, and examines how these relate to satellite detected surface water change in two contrasting urban and climatic settings. Xi’an, China, experienced a severe pluvial flood event on 11 August 2023 after extreme rainfall. Delft, the Netherlands, was used as a non event comparison case using dates where major pluvial flooding was not expected in the study area.
 
 ## Research gap
 
-Many studies discuss green infrastructure and nature based solutions in relation to stormwater management and flood risk [@sarabi2022]. However, comparing this relationship between different cities is difficult because cities differ in size, climate, data availability, spatial resolution, and land cover structure.
+Studies linking green infrastructure to flood risk reduction are well established in the literature [@sarabi2022], but cross city comparisons remain difficult. Cities differ in size, climate, data availability, spatial resolution, and land cover structure. Delft and Xi’an are very different in scale and context, so comparing their full administrative areas directly would not be meaningful.
 
-Delft and Xi’an provide two different urban contexts. Delft is a smaller Dutch city in a low lying landscape with a dense water network. Xi’an is a much larger Chinese city with a different urban structure and spatial scale. To make comparison possible, this project uses equal sized study areas and a shared grid based method.
-
-A second challenge is that directly comparable pluvial flood risk datasets were not available for both cities. Therefore, the analysis uses the Flood/Water Extraction Index (FWEI) as a common proxy for flood related surface water change. FWEI was developed to identify water and flooded areas from Sentinel 2 visible and near infrared bands [@farhadi2024fwei].
-
-## Aim
-
-The aim of this project is to analyse how the spatial configuration of green spaces influences pluvial flood related surface water patterns in Delft and Xi’an. The project uses a shared grid based approach, green space rasters, FWEI derived flood indicators, DEM variables, correlation analysis, metric selection, and combined typology construction.
-
-The goal is not to prove a direct causal relationship between green space and flooding. Instead, the project explores whether certain combined spatial conditions are associated with higher or lower detected surface water change.
+A second challenge was that directly comparable pluvial flood datasets did not exist for both cities. For this reason, the project uses the Flood Water Extraction Index (FWEI) as a shared method for detecting surface water change from Sentinel 2 satellite imagery [@farhadi2024fwei]. For Xi’an, the FWEI before and after comparison captures the surface water change caused by the 11 August 2023 flood event. For Delft, the same method applied to two non event dates serves as a control case, expected to show minimal surface water change. This design, with one city affected by a real flood event and one control case, strengthens the ability to interpret what the FWEI derived signals represent.
 
 ## Working assumption
 

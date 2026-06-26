@@ -9,7 +9,7 @@
 <meta name="author" content="Hassan Osman">
 <meta name="author" content="Akhil Veeranki">
 <meta name="author" content="Daniel Marx">
-<meta name="dcterms.date" content="2026-06-24">
+<meta name="dcterms.date" content="2026-06-26">
 
 <title>Green Space Configuration and Pluvial Flood Risk</title>
 <style>
@@ -185,6 +185,18 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./sections/reproducibility_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">reproducibility statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sections/ai_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">AI statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./sections/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -266,7 +278,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 24, 2026</p>
+      <p class="date">June 26, 2026</p>
     </div>
   </div>
   
@@ -282,9 +294,8 @@ div.csl-indent {
 <h1 class="unnumbered">Introduction</h1>
 <p>The present document is the report of Group C for the course Applied Spatial Analysis for Sustainable Urban Development (ARFW0501).</p>
 <p>The repository of this report can be found <a href="https://github.com/Applied-Spatial-Analytics/create-your-report-groupc">here</a>.</p>
-<p>This project investigates the relationship between green space configuration and pluvial flooding in Delft and Xi’an. The main focus is not only the amount of green space, but also how green spaces are spatially arranged.</p>
-<p>Because comparable pluvial flood risk maps were not available for both cities, FWEI derived surface water change is used as a proxy.</p>
-<p>Both cities are analysed using a grid based analysis approach. Green space metrics, flood related indicators, and DEM variables are calculated for each grid cell, after which the results are compared using correlation analysis, metric selection, and combined typology construction.</p>
+<p>This project investigates the relationship between green space configuration and pluvial flood related surface water change in Delft and Xi’an. Because comparable pluvial flood risk maps were not available for both cities, the Flood/Water Extraction Index (FWEI) was used as a shared proxy for detected surface water change <span class="citation" data-cites="farhadi2024fwei">(<a href="sections/references.html#ref-farhadi2024fwei" role="doc-biblioref">Farhadi et al. 2024</a>)</span>.</p>
+<p>The report compares two different urban contexts using the same spatial workflow. The main aim is to explore whether the amount and configuration of green space are associated with higher or lower detected surface water patterns.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -302,6 +313,9 @@ Prokić, Marija, Stevan Savić, and Dragoslav Pavić. 2019. <span>“Pluvial Flo
 </div>
 <div id="ref-sarabi2022" class="csl-entry" role="listitem">
 Sarabi, Shahryar, Qi Han, Bauke de Vries, and A. Georges L. Romme. 2022. <span>“The Nature-Based Solutions Planning Support System: A Playground for Site and Solution Prioritization.”</span> <em>Sustainable Cities and Society</em> 78: 103608. <a href="https://doi.org/10.1016/j.scs.2021.103608">https://doi.org/10.1016/j.scs.2021.103608</a>.
+</div>
+<div id="ref-shi2023ugs" class="csl-entry" role="listitem">
+Shi, Qian, Mengxi Liu, Andrea Marinoni, and Xiaoping Liu. 2023. <span>“<span>UGS-1m</span>: Fine-Grained Urban Green Space Mapping of 31 Major Cities in China Based on the Deep Learning Framework.”</span> <em>Earth System Science Data</em> 15: 555–77. <a href="https://doi.org/10.5194/essd-15-555-2023">https://doi.org/10.5194/essd-15-555-2023</a>.
 </div>
 </div>
 </section>
